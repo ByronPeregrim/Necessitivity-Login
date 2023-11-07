@@ -24,12 +24,6 @@ a:hover {
     color: darkgreen;
 }
 
-.hide {
-    display: none;
-    height: 0;
-    width: 0;
-}
-
 #banner-box {
     height: 22rem;
     display: flex;
@@ -66,6 +60,7 @@ a:hover {
 #user-login-form {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .input-account-info-box {
@@ -142,7 +137,7 @@ a:hover {
 }
 
 #account-recovery-links {
-    margin-top: 6rem;
+    margin-top: 7rem;
     cursor: pointer;
 }
 
@@ -152,6 +147,12 @@ a:hover {
 
 #account-recovery-input:focus {
     background-color: white;
+}
+
+.hide {
+    display: none;
+    height: 0px;
+    width: 0px;
 }
 
 @media (max-width:600px) {
