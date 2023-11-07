@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necessitivity - Login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="banner-box">
+        <h1 id="banner-text">Necessitivity</h1>
+    </div>
+    <button class="login-button" id="login" onclick="ClickLoginButton()">Login</button>
+    <button class="login-button" id="signup" onclick="ClickSignupButton()">Sign-Up</button>
+
+    <!-- Login Active -->
+    <form class="hide" id="user-login-form" action="">
+        <input class="input-account-info-box hide" id="input-username-box" type="text" placeholder="Username"  required>
+        <input class="input-account-info-box hide" id="input-password-box" type="text" placeholder="Password" required>
+        <div class="hide button-box" id="login-button-box">
+            <button type="button" class="hide" id="login-back-button" onClick="ClickLoginButton()">Back</button>
+            <button type="submit" class="hide" id="login-submit-button">Submit</button>
+        </div>
+    </form>
+
+    <!-- Signup Active -->
+    <form class="hide" id="user-signup-form" action="">
+        <input class="hide" type="text" placeholder="Username"  required>
+        <input class="hide" type="password" placeholder="Password" required>
+        <input class="hide" type="password" placeholder="Confirm Password" required>
+        <input class="hide" type="text" placeholder="First Name"  required>
+        <input class="hide" type="text" placeholder="Last Name" required>
+        <input class="hide" type="email" placeholder="Email Address" required>
+        <input class="hide" type="text" placeholder="Height"  required>
+        <input class="hide" type="number" placeholder="Weight" required>
+        <div class="hide button-box" id="signup-button-box">
+            <button type="button" class="hide" id="signup-back-button" onClick="ClickSignupButton()">Back</button>
+            <button type="submit" class="hide" id="signup-submit-button">Submit</button>
+        </div>
+    </form>
+
+    <!-- Account Recovery Active -->
+    <h2 id="account-recovery-text" class="hide">Forgot Username or Password?</h2>
+    <input class="hide" id="account-recovery-input" type="email" placeholder="Email Address" required>
+    <div class="hide button-box" id="account-recovery-button-box">
+        <button type="button" class="hide" id="account-recovery-back-button" onClick="ClickAccountRecoveryLinks()">Back</button>
+        <button type="submit" class="hide" id="account-recovery-submit-button">Submit</button>
+    </div>
+
+    <div id="account-recovery-links">
+        <a onclick="ClickAccountRecoveryLinks()">Forgot Username?</a>
+        <a onclick="ClickAccountRecoveryLinks()">Reset Password?</a>
+    </div>
+</body>
+</html>
