@@ -1,0 +1,5 @@
+- Javascript regex verification of login credentials
+- Hook up backend
+- Recovery Email sent verification
+- Incorrect login credentials notification
+- Registration successful page

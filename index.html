@@ -15,9 +15,9 @@
     <button class="login-button" id="signup" onclick="ClickSignupButton()">Sign-Up</button>
 
     <!-- Login Active -->
-    <form class="hide" id="user-login-form" action="">
+    <form class="hide" id="user-login-form" action="#">
         <input class="input-account-info-box hide" id="input-username-box" type="text" placeholder="Username"  required>
-        <input class="input-account-info-box hide" id="input-password-box" type="text" placeholder="Password" required>
+        <input class="input-account-info-box hide" id="input-password-box" type="password" placeholder="Password" required>
         <div class="hide button-box" id="login-button-box">
             <button type="button" class="hide" id="login-back-button" onClick="ClickLoginButton()">Back</button>
             <button type="submit" class="hide" id="login-submit-button">Submit</button>
@@ -25,15 +25,22 @@
     </form>
 
     <!-- Signup Active -->
-    <form class="hide" id="user-signup-form" action="">
-        <input class="hide" type="text" placeholder="Username"  required>
-        <input class="hide" type="password" placeholder="Password" required>
-        <input class="hide" type="password" placeholder="Confirm Password" required>
-        <input class="hide" type="text" placeholder="First Name"  required>
-        <input class="hide" type="text" placeholder="Last Name" required>
-        <input class="hide" type="email" placeholder="Email Address" required>
-        <input class="hide" type="text" placeholder="Height"  required>
-        <input class="hide" type="number" placeholder="Weight" required>
+    <form class="hide" id="user-signup-form" name="registration" onsubmit="return FormValidation()">
+        <input class="hide" id="username" name="uid" type="text" placeholder="Username"  required>
+        <input class="hide" id="password" name="pass" type="password" placeholder="Password" required>
+        <input class="hide" id="confirm-password" name="c_pass" type="password" placeholder="Confirm Password" required>
+        <input class="hide" id="first" name="first" type="text" placeholder="First Name"  required>
+        <input class="hide" id="last" name="last" type="text" placeholder="Last Name" required>
+        <input class="hide" id="email" type="email" name="email" placeholder="Email Address" required>
+        <div class="hide" id="height_box">
+            <div class="hide" id="height_label">Height</div>
+            <input class="hide" id="height_ft" type="number" name="height_ft" placeholder="ft"  required>
+            <input class="hide" id="height_in" type="number" name="height_in" placeholder="in"  required>
+        </div>
+        <div class="hide" id="weight_box">
+            <div class="hide" id="weight_label">Weight</div>
+            <input class="hide" id="weight" type="number" name="weight" placeholder="lbs" required>
+        </div>
         <div class="hide button-box" id="signup-button-box">
             <button type="button" class="hide" id="signup-back-button" onClick="ClickSignupButton()">Back</button>
             <button type="submit" class="hide" id="signup-submit-button">Submit</button>
@@ -42,11 +49,14 @@
 
     <!-- Account Recovery Active -->
     <h2 id="account-recovery-text" class="hide">Forgot Username or Password?</h2>
-    <input class="hide" id="account-recovery-input" type="email" placeholder="Email Address" required>
-    <div class="hide button-box" id="account-recovery-button-box">
-        <button type="button" class="hide" id="account-recovery-back-button" onClick="ClickAccountRecoveryLinks()">Back</button>
-        <button type="submit" class="hide" id="account-recovery-submit-button">Submit</button>
-    </div>
+    <form id="account-recovery-form">
+        <input class="hide" id="account-recovery-input" type="email" placeholder="Email Address" required>
+        <div class="hide button-box" id="account-recovery-button-box">
+            <button type="button" class="hide" id="account-recovery-back-button" onClick="ClickAccountRecoveryLinks()">Back</button>
+            <button type="submit" class="hide" id="account-recovery-submit-button">Submit</button>
+        </div>
+    </form>
+    
 
     <div id="account-recovery-links">
         <a onclick="ClickAccountRecoveryLinks()">Forgot Username?</a>
