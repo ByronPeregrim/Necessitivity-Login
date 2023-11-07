@@ -26,18 +26,18 @@ a:hover {
     color: darkgreen;
 }
 
-#banner-box {
+#banner_box {
     height: 22rem;
     display: flex;
 }
 
-#banner-text {
+#banner_text {
     align-self: center;
     font-size: 100px;
     text-shadow: 5px 5px darkgreen;
 }
 
-.login-button, .input-account-info-box {
+.login_button, .input_account_info_box {
     width: 20rem;
     height: 5rem;
     border-radius: 20px;
@@ -49,7 +49,7 @@ a:hover {
     cursor: pointer;
 }
 
-.login-button:hover {
+.login_button:hover {
     width: 21rem;
     height: 5.5rem;
     margin-bottom: 1.25rem;
@@ -59,26 +59,26 @@ a:hover {
     box-shadow: 2px 2px 2px rgb(200,200,200);
 }
 
-#user-login-form {
+#user_login_form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.input-account-info-box {
+.input_account_info_box {
     color: black;
     background-color: white;
     padding-left: 10px;
     cursor:text;
 }
 
-.input-account-info-box:focus {
+.input_account_info_box:focus {
     background-color: var(--electric-green);
     padding-left: 10px;
     cursor:text;
 }
 
-.button-box {
+.button_box {
     display: flex;
     height: 3rem;
     flex-direction: row;
@@ -87,7 +87,7 @@ a:hover {
     width: 22rem;
 }
 
-.button-box > button {
+.button_box > button {
     width: 10rem;
     height: 3rem;
     justify-content: space-around;
@@ -99,7 +99,7 @@ a:hover {
     cursor: pointer;
 }
 
-.button-box > button:hover {
+.button_box > button:hover {
     width: 10.5rem;
     height: 3.25rem;
     background-color: rgb(110,110,110);
@@ -108,13 +108,13 @@ a:hover {
     margin-left: -.25rem;
 }
 
-#user-signup-form {
+#user_signup_form {
     display: flex;
     flex-direction: column;
     margin-top: -7rem;
 }
 
-#user-signup-form > input, #account-recovery-input, #height_box > input, #weight {
+#user_signup_form > input, #account_recovery_input, #height_box > input, #weight {
     height: 30px;
     border-radius: 10px;
 	border: 2px solid rgba(0, 0, 0, 0);
@@ -154,30 +154,30 @@ input::placeholder {
     color: black;
 }
 
-#user-signup-form > input:active {
+#user_signup_form > input:active {
     background-color: var(--electric-green);
 }
 
-#user-signup-form > input:focus{
+#user_signup_form > input:focus{
     background-color: white;
 }
 
-#account-recovery-links {
+#account_recovery_links {
     margin-top: 7rem;
     cursor: pointer;
 }
 
-#account-recovery-text {
+#account_recovery_text {
     font-size: 30px;
     margin-bottom: 12px;
 }
 
-#account-recovery-form {
+#account_recovery_form {
     display: flex;
     flex-direction: column;
 }
 
-#account-recovery-input:focus {
+#account_recovery_input:focus {
     background-color: white;
 }
 
@@ -188,13 +188,13 @@ input::placeholder {
 }
 
 @media (max-width:600px) {
-    #banner-text {
+    #banner_text {
         font-size:75px;
     }
 }
 
 @media (max-width:450px) {
-    #banner-text {
+    #banner_text {
         font-size:55px;
     }
 }

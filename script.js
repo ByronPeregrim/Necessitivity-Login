@@ -1,13 +1,14 @@
 var login = document.getElementById('login');
 var signup = document.getElementById('signup');
-var user_login_form = document.getElementById('user-login-form');
-var input_username_box = document.getElementById('input-username-box');
-var input_password_box = document.getElementById('input-password-box');
-var login_button_box = document.getElementById('login-button-box');
-var login_back_button = document.getElementById('login-back-button');
-var login_submit_button = document.getElementById('login-submit-button');
-var signup_form = document.getElementById('user-signup-form');
-var form_elements = document.getElementById('user-signup-form').childNodes;
+var user_login_form = document.getElementById('user_login_form');
+var input_username_box = document.getElementById('input_username_box');
+var input_password_box = document.getElementById('input_password_box');
+var login_button_box = document.getElementById('login_button_box');
+var login_back_button = document.getElementById('login_back_button');
+var login_submit_button = document.getElementById('login_submit_button');
+var signup_form = document.getElementById('user_signup_form');
+var signup_form_text = document.get
+var form_elements = document.getElementById('user_signup_form').childNodes;
 var height_box = document.getElementById('height_box');
 var height_label = document.getElementById('height_label');
 var height_ft = document.getElementById('height_ft');
@@ -15,15 +16,15 @@ var height_in = document.getElementById('height_in');
 var weight_box = document.getElementById('weight_box');
 var weight_label = document.getElementById('weight_label');
 var weight = document.getElementById('weight');
-var signup_button_box = document.getElementById('signup-button-box');
-var signup_back_button = document.getElementById('signup-back-button');
-var signup_submit_button = document.getElementById('signup-submit-button');
-var account_recovery_links = document.getElementById('account-recovery-links');
-var account_recovery_button_box = document.getElementById('account-recovery-button-box');
-var account_recovery_back_button = document.getElementById('account-recovery-back-button');
-var account_recovery_submit_button = document.getElementById('account-recovery-submit-button');
-var account_recovery_text = document.getElementById('account-recovery-text');
-var account_recovery_input = document.getElementById('account-recovery-input');
+var signup_button_box = document.getElementById('signup_button_box');
+var signup_back_button = document.getElementById('signup_back_button');
+var signup_submit_button = document.getElementById('signup_submit_button');
+var account_recovery_links = document.getElementById('account_recovery_links');
+var account_recovery_button_box = document.getElementById('account_recovery_button_box');
+var account_recovery_back_button = document.getElementById('account_recovery_back_button');
+var account_recovery_submit_button = document.getElementById('account_recovery_submit_button');
+var account_recovery_text = document.getElementById('account_recovery_text');
+var account_recovery_input = document.getElementById('account_recovery_input');
 
 function ClickLoginButton() {
     login.classList.toggle('hide');
@@ -70,6 +71,42 @@ function ClickAccountRecoveryLinks() {
     account_recovery_input.classList.toggle('hide');
 }
 
+function LoginValidation() {
+    var user = document.login.username;
+    var pass = document.login.password;
+    console.log(user.value + " " + pass.value);
+    if (LoginUsernameValidation(user)) {
+        if (LoginPasswordValidation(pass)) {
+            // Verify Username and Password in correct combination were found in database
+            return true;
+        }
+    }
+    return false;
+}
+
+function LoginUsernameValidation(user) {
+    var usernameRegex = /^[a-zA-Z0-9]+$/;
+    var user_len = user.value.length;
+    if (user_len != 0 && user_len <= 16 && user_len > 4) {
+        if (user.value.match(usernameRegex)) {
+            return true;    
+        }
+    }
+    alert("The username/password combination provided was not found.");
+    user.focus();
+    return false;
+}
+
+function LoginPasswordValidation(pass) {
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    if (pass.value.match(passwordRegex)) {
+        return true;    
+    }
+    alert("The username/password combination provided was not found.");
+    pass.focus();
+    return false;
+}
+
 function FormValidation() {
     var uid = document.registration.uid;
     var pass = document.registration.pass;
@@ -81,7 +118,7 @@ function FormValidation() {
     var height_in = document.registration.height_in;
     var weight = document.registration.weight;
 
-    if (UserIDValidation(uid)) {
+    if (UsernameValidation(uid)) {
         if (PasswordValidation(pass)) {
             if (ConfirmPassword(pass,c_pass)) {
                 if (FirstNameValidation(first)) {
@@ -101,7 +138,7 @@ function FormValidation() {
     return false
 }
 
-function UserIDValidation(uid) {
+function UsernameValidation(uid) {
     var usernameRegex = /^[a-zA-Z0-9]+$/;
     var uid_len = uid.value.length;
     if (uid_len != 0 && uid_len <= 16 && uid_len > 4) {
@@ -186,4 +223,6 @@ function WeightValidation(weight) {
     weight.focus();
     return false;
 }
+
+
 
