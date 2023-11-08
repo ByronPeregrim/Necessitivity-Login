@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necessitivity - Login</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="banner_box">
+        <h1 id="banner_text">Necessitivity</h1>
+    </div>
+    <button class="login_button" id="login" onclick="ClickLoginButton()">Login</button>
+    <button class="login_button" id="signup" onclick="ClickSignupButton()">Sign-Up</button>
+
+    <!-- Login Active -->
+    <form class="hide" id="user_login_form" name="login" onsubmit="return LoginValidation()">
+        <input class="input_account_info_box hide" id="input_username_box" name="username" type="text" placeholder="Username"  required>
+        <input class="input_account_info_box hide" id="input_password_box" name="password" type="password" placeholder="Password" required>
+        <div class="hide button_box" id="login_button_box">
+            <button type="button" class="hide" id="login_back_button" onClick="ClickLoginButton()">Back</button>
+            <button type="submit" class="hide" id="login_submit_button">Submit</button>
+        </div>
+    </form>
+
+    <!-- Signup Active -->
+    <form class="hide" id="user_signup_form" name="registration" onsubmit="return FormValidation()">
+        <p class="hide" id="signup_form_text">Username and password are case sensitive.</p>
+        <input class="hide" id="username" name="uid" type="text" placeholder="Username"  required>
+        <input class="hide" id="password" name="pass" type="password" placeholder="Password" required>
+        <input class="hide" id="confirm_password" name="c_pass" type="password" placeholder="Confirm Password" required>
+        <input class="hide" id="first" name="first" type="text" placeholder="First Name"  required>
+        <input class="hide" id="last" name="last" type="text" placeholder="Last Name" required>
+        <input class="hide" id="email" type="email" name="email" placeholder="Email Address" required>
+        <div class="hide" id="height_box">
+            <div class="hide" id="height_label">Height</div>
+            <input class="hide" id="height_ft" type="number" name="height_ft" placeholder="ft"  required>
+            <input class="hide" id="height_in" type="number" name="height_in" placeholder="in"  required>
+        </div>
+        <div class="hide" id="weight_box">
+            <div class="hide" id="weight_label">Weight</div>
+            <input class="hide" id="weight" type="number" name="weight" placeholder="lbs" required>
+        </div>
+        <div class="hide button_box" id="signup_button_box">
+            <button type="button" class="hide" id="signup_back_button" onClick="ClickSignupButton()">Back</button>
+            <button type="submit" class="hide" id="signup_submit_button">Submit</button>
+        </div>
+    </form>
+
+    <!-- Account Recovery Active -->
+    <h2 id="account_recovery_text" class="hide">Forgot Username or Password?</h2>
+    <form id="account_recovery_form">
+        <input class="hide" id="account_recovery_input" type="email" placeholder="Email Address" required>
+        <div class="hide button_box" id="account_recovery_button_box">
+            <button type="button" class="hide" id="account_recovery_back_button" onClick="ClickAccountRecoveryLinks()">Back</button>
+            <button type="submit" class="hide" id="account_recovery_submit_button">Submit</button>
+        </div>
+    </form>
+    
+
+    <div id="account_recovery_links">
+        <a onclick="ClickAccountRecoveryLinks()">Forgot Username?</a>
+        <a onclick="ClickAccountRecoveryLinks()">Reset Password?</a>
+    </div>
+</body>
+</html>
