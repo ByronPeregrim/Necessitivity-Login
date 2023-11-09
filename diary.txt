@@ -30,6 +30,7 @@
 - Frontend form verification is left to html's default validation for type = email because it works well enough.
 - That completes setting up the UI. Now it's time to link it to a database.
 - I am going to try to use Node.js to link our UI to our database.
+11/8:
 - Node.js was chosen due to its large 3rd party libraries which should make it easier to use. It was also 
     chosen in order to reduce the overall number of languages being used for this project, hopefully reducing its 
     overall complexity. PHP would be probably be a better choice for ease of use, but Node.js seems like a better
@@ -42,3 +43,6 @@
     this project to github.
 - The node.js package, mongoose is used to connect to our cloud database.
 - Express.js is used to interact with our database.
+- Mongoose was used to connect to database hoste on MongoDB Atlas.
+- A seperate user javascript file was created. It holds the schema for our user data columns. 
+- 

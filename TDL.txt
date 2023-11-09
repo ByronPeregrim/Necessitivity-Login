@@ -1,4 +1,4 @@
-- Hook up backend
+- Check for matching username/email in database when registering new user
 - Recovery Email sent verification
 - Incorrect login credentials notification
 - Registration successful page
