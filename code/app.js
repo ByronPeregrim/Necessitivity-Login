@@ -1,15 +1,25 @@
-require('dotenv').config()
+require('dotenv').config();
 const mongoose = require("mongoose");
 const express = require("express");
 const UserModel = require("./models/user");
-var path = require('path');
+const path = require('path');
 const { Admin } = require('mongodb');
-const app = express()
+const app = express();
+const nodemailer = require('nodemailer');
 
 // Link JS script and CSS styles to node js
 app.use(express.static(path.join(__dirname, 'public')));
 
 const PORT = process.env.PORT;
+
+// Set up for account recovery emails
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'necessitivity@gmail.com',
+      pass: 'ajjsogsnvjxcpjcz'
+    }
+  });
 
 // Retrieve connection string from .env file
 const dbUrl = process.env.SECRET_PASSWORD;
@@ -75,15 +85,15 @@ app.post("/login-user",async (req,res)=>{
     if (userID) {
         const admin_status = await UserModel.find({_id:userID}).select('admin -_id');
         if(admin_status[0].admin){
-            // REDIRECT TO ADMIN PAGE HERE
+            // REDIRECT TO ADMIN PAGE HERE ~~~~~~~~~~~~~~
             console.log("Logging in Admin...");
         }else{
-            // REDIRECT TO USER PAGE HERE
+            // REDIRECT TO USER PAGE HERE ~~~~~~~~~~~~~~
             console.log("Logging in User...");
         }
         res.redirect('/');
     } else {
-        // REDIRECT TO PAGE WITH LOGIN ERROR
+        // Redirect to page with login error message
         res.redirect('/login-error');
     }
 });
@@ -92,17 +102,32 @@ app.post("/recover-account",async (req,res)=>{
     const email = await UserModel.exists({
         email: req.body.email
     })
-    // If email address is in database
+    // If email address is in database, send recovery email and redirect to success page
     if (email) {
+        const userInfo = await UserModel.find({email:req.body.email}).select('username password -_id');
         // Send recovery email
-        // Redirect to recovery email sent page
-        console.log("EMAIL FOUND");
+        var mailOptions = {
+            from: 'necessitivity@gmail.com',
+            to: req.body.email,
+            subject: 'Necessitivity - Account Recovery',
+            text: 'Username: ' + userInfo[0].username +
+                    '\nPassword: ' + userInfo[0].password
+        };
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+        });
+        res.redirect('/account-recovery-success');
     }
-    else {
+    else { // else redirect to page with error message
         res.redirect('/account-recovery-error');
     }
 })
 
+// get functions for page redirects:
 app.get("/", (req, res)=>{
     res.render("index.ejs");
 });
@@ -125,4 +150,8 @@ app.get("/registration-successful", (req, res)=>{
 
 app.get("/account-recovery-error", (req, res)=>{
     res.render("account-recovery-error.ejs");
+})
+
+app.get("/account-recovery-success", (req, res)=>{
+    res.render("account-recovery-success.ejs");
 })

@@ -62,3 +62,9 @@
     If either of these values are duplicates, redirects will occur to respective error pages. The error pages are trimmed down HTML pages, this is easier
     than getting node.js to manipulate the DOM.
 - Created a "registration successful" page and redirect to that page upon successful registration.
+
+11/10:
+- I added another .ejs page, this one being a modified account recovery page containing an error message. I added a route to this page that can be reached
+    if the user enters an email into the account recovery email field. If the system searches the database and does not find a match for the email, it will
+    redirect the user to the page with the error message.
+- I messed with all of the margins to make everything line up well.

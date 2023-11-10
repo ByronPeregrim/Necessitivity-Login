@@ -1,6 +1,4 @@
-- When user enters email for account recovery form
-    - Take email entered in form data and search for that email address in MongoDB.
-        -If Email is found, send recovery email
-        - If email is not found, redirect to email address not found page.
+
+-If Email is found, send recovery email
 - Recovery Email sent verification
 - TAKE NOTES ABOUT EVERYTHING IM DOING FOR HANDOFF ASSIGNMENT
