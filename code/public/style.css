@@ -65,6 +65,12 @@ a:hover {
     align-items: center;
 }
 
+#login_error_message {
+    color: red;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+}
+
 .input_account_info_box {
     color: black;
     background-color: white;
@@ -87,7 +93,7 @@ a:hover {
     width: 22rem;
 }
 
-.button_box > button {
+.button_box > button, #login_error_back_button {
     width: 10rem;
     height: 3rem;
     justify-content: space-around;
@@ -99,7 +105,7 @@ a:hover {
     cursor: pointer;
 }
 
-.button_box > button:hover {
+.button_box > button:hover, #login_error_back_button:hover {
     width: 10.5rem;
     height: 3.25rem;
     background-color: rgb(110,110,110);
@@ -190,6 +196,7 @@ input::placeholder {
     height: 0px;
     width: 0px;
 }
+
 
 @media (max-width:600px) {
     #banner_text {

@@ -41,16 +41,27 @@ app.post("/register",(req,res)=>{
     res.redirect('/');
 });
 
-app.get("/read",(req,res)=>{
-    UserModel.find()
-    .then((data)=>{
-        return res.status(200).send(data)
+app.post("/login-user",async (req,res)=>{
+    const findUserCredentials = await UserModel.exists({
+        username: req.body.username,
+        password: req.body.password
     })
-    .catch((err)=>{
-        return res.status(500).send(err)
-    })
+    if (findUserCredentials) {
+        // REDIRECT TO USER PAGE
+        console.log("TRUE");
+        res.redirect('/');
+    } else {
+        // REDIRECT TO PAGE WITH LOGIN ERROR
+        console.log("FALSE");
+        res.redirect('/login-error');
+    }
 });
 
 app.get("/", (req, res)=>{
     res.render("index.ejs");
 });
+
+app.get("/login-error", (req, res)=>{
+    res.render("login-error.ejs");
+})
+

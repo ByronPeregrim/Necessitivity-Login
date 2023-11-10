@@ -15,7 +15,7 @@
     <button class="login_button" id="signup" onclick="ClickSignupButton()">Sign-Up</button>
 
     <!-- Login Active -->
-    <form class="hide" id="user_login_form" name="login" onsubmit="return LoginValidation()">
+    <form method="post" action="/login-user" class="hide" id="user_login_form" name="login" onsubmit="return LoginValidation()">
         <input class="input_account_info_box hide" id="input_username_box" name="username" type="text" placeholder="Username"  required>
         <input class="input_account_info_box hide" id="input_password_box" name="password" type="password" placeholder="Password" required>
         <div class="hide button_box" id="login_button_box">
@@ -25,7 +25,7 @@
     </form>
 
     <!-- Signup Active -->
-    <form method="POST" action="/register" class="hide" id="user_signup_form" name="registration" onsubmit="return FormValidation()">
+    <form method="post" action="/register" class="hide" id="user_signup_form" name="registration" onsubmit="return FormValidation()">
         <p class="hide" id="signup_form_text">Username and password are case sensitive.</p>
         <input class="hide" id="username" name="username" type="text" placeholder="Username"  required>
         <input class="hide" id="password" name="password" type="password" placeholder="Password" required>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necessitivity - Login</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <div style="margin-bottom: -2rem;" id="banner_box">
+        <h1 id="banner_text">Necessitivity</h1>
+    </div>
+
+    <!-- Login Active -->
+    <form method="post" action="/login-user" class="" id="user_login_form" name="login" onsubmit="return LoginValidation()">
+        <p id="login_error_message">Username/password combination provided was not found.</p>
+        <input class="input_account_info_box" id="input_username_box" name="username" type="text" placeholder="Username"  required>
+        <input class="input_account_info_box" id="input_password_box" name="password" type="password" placeholder="Password" required>
+        <div class="button_box" id="login_button_box">
+            <a href="/">
+                <button type="button" class="" id="login_error_back_button">Back</button>
+            </a>
+            <button type="submit" class="" id="login_submit_button">Submit</button>
+        </div>
+    </form>
+    <div style="margin-top: 0;" id="account_recovery_links">
+        <a onclick="ClickAccountRecoveryLinks()">Forgot Username?</a>
+        <a onclick="ClickAccountRecoveryLinks()">Reset Password?</a>
+    </div>
+</body>
+</html>

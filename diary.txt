@@ -45,4 +45,8 @@
 - Express.js is used to interact with our database.
 - Mongoose was used to connect to database hoste on MongoDB Atlas.
 - A seperate user javascript file was created. It holds the schema for our user data columns. 
-- 
+
+11/9:
+- Rearranged files in project directory in order to link JS script and CSS style files to Node JS.
+- Successfully linked script and stylesheets to nodeJS.
+- Succesfully used registration form to add new user data to mongoDB.

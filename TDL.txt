@@ -1,4 +1,5 @@
 - Check for matching username/email in database when registering new user
+- Use login system to look up username/password combination in MongoDB, return User data and redirect to user page.
 - Recovery Email sent verification
 - Incorrect login credentials notification
 - Registration successful page
