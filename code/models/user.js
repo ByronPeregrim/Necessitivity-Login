@@ -49,13 +49,15 @@ const userSchema = new mongoose.Schema({
     admin: { //true if user has admin priveleges.
         type:Boolean,
         required:true,
-        trim:true
-    },/*
+        trim:true,
+        default:false
+    },
     accountCreated:{
         type:Date,
-        required:true, /TO-DO: Capture date/time and store in database.
-        trim:true
-    }*/
+        required:true,
+        trim:true,
+        default:new Date().toISOString()
+    }
 })
 
 const UserModel = mongoose.model("User",userSchema)

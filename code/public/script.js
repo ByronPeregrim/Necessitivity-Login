@@ -22,6 +22,7 @@ var signup_button_box = document.getElementById('signup_button_box');
 var signup_back_button = document.getElementById('signup_back_button');
 var signup_submit_button = document.getElementById('signup_submit_button');
 var account_recovery_links = document.getElementById('account_recovery_links');
+var login_account_recovery_links = document.getElementById('login_account_recovery_links');
 var account_recovery_button_box = document.getElementById('account_recovery_button_box');
 var account_recovery_back_button = document.getElementById('account_recovery_back_button');
 var account_recovery_submit_button = document.getElementById('account_recovery_submit_button');
@@ -38,6 +39,7 @@ function ClickLoginButton() {
     login_back_button.classList.toggle('hide');
     login_submit_button.classList.toggle('hide');
     account_recovery_links.classList.toggle('hide');
+    login_account_recovery_links.classList.toggle('hide');
 }
 
 function ClickSignupButton() {
@@ -70,6 +72,21 @@ function ClickAccountRecoveryLinks() {
     account_recovery_back_button.classList.toggle('hide');
     account_recovery_submit_button.classList.toggle('hide');
     account_recovery_links.classList.toggle('hide');
+    account_recovery_text.classList.toggle('hide');
+    account_recovery_input.classList.toggle('hide');
+}
+
+function ClickLoginAccountRecoveryLinks() {
+    user_login_form.classList.toggle('hide');
+    input_username_box.classList.toggle('hide');
+    input_password_box.classList.toggle('hide');
+    login_button_box.classList.toggle('hide');
+    login_back_button.classList.toggle('hide');
+    login_submit_button.classList.toggle('hide');
+    login_account_recovery_links.classList.toggle('hide');
+    account_recovery_button_box.classList.toggle('hide');
+    account_recovery_back_button.classList.toggle('hide');
+    account_recovery_submit_button.classList.toggle('hide');
     account_recovery_text.classList.toggle('hide');
     account_recovery_input.classList.toggle('hide');
 }

@@ -178,6 +178,7 @@ input::placeholder {
 }
 
 #account_recovery_text {
+    margin-top: 5rem;
     font-size: 30px;
     margin-bottom: 12px;
 }

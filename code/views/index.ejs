@@ -23,6 +23,10 @@
             <button type="submit" class="hide" id="login_submit_button">Submit</button>
         </div>
     </form>
+    <div class="hide" style="cursor: pointer;" id="login_account_recovery_links">
+        <a onclick="ClickLoginAccountRecoveryLinks()">Forgot Username?</a>
+        <a onclick="ClickLoginAccountRecoveryLinks()">Reset Password?</a>
+    </div>
 
     <!-- Signup Active -->
     <form method="post" action="/register" class="hide" id="user_signup_form" name="registration" onsubmit="return FormValidation()">
