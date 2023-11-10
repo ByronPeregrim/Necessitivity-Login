@@ -1,4 +1,0 @@
-
--If Email is found, send recovery email
-- Recovery Email sent verification
-- TAKE NOTES ABOUT EVERYTHING IM DOING FOR HANDOFF ASSIGNMENT
