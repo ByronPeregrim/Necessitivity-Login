@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const UserModel = require("./models/user");
 var path = require('path');
+const { Admin } = require('mongodb');
 const app = express()
 
 // Link JS script and CSS styles to node js
@@ -36,19 +37,27 @@ app.listen(PORT,()=>{
 });
 
 app.post("/register",(req,res)=>{
+    // Save registration form data to database
     const userModel = UserModel(req.body)
     userModel.save()
     res.redirect('/');
 });
 
 app.post("/login-user",async (req,res)=>{
+    // Search user database for username/password combination
     const findUserCredentials = await UserModel.exists({
         username: req.body.username,
         password: req.body.password
     })
     if (findUserCredentials) {
-        // REDIRECT TO USER PAGE
-        console.log("TRUE");
+        const admin_status = await UserModel.find({_id:findUserCredentials}).select('admin -_id');
+        if(admin_status[0].admin){
+            // REDIRECT TO ADMIN PAGE 
+            console.log("Logging in Admin...");
+        }else{
+            // REDIRECT TO USER PAGE
+            console.log("Logging in User...");
+        }
         res.redirect('/');
     } else {
         // REDIRECT TO PAGE WITH LOGIN ERROR

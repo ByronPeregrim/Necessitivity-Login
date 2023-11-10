@@ -50,3 +50,9 @@
 - Rearranged files in project directory in order to link JS script and CSS style files to Node JS.
 - Successfully linked script and stylesheets to nodeJS.
 - Succesfully used registration form to add new user data to mongoDB.
+- I added database verification when clicking submit after entering login information. This will check if the username/password
+    combination exists in the database.
+- I created a new html(jse) page for when a user enter login information that does not match any values in our database. I added
+    a redirect to this page.
+- I added an admin and a accountCreated column to the user schema. The admin column is default set to "false". A user's admin value
+    can be set to true by another admin within their profile page, or by someone with direct access to the database.
