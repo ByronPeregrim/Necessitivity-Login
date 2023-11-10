@@ -30,6 +30,7 @@
 - Frontend form verification is left to html's default validation for type = email because it works well enough.
 - That completes setting up the UI. Now it's time to link it to a database.
 - I am going to try to use Node.js to link our UI to our database.
+
 11/8:
 - Node.js was chosen due to its large 3rd party libraries which should make it easier to use. It was also 
     chosen in order to reduce the overall number of languages being used for this project, hopefully reducing its 
@@ -54,5 +55,10 @@
     combination exists in the database.
 - I created a new html(jse) page for when a user enter login information that does not match any values in our database. I added
     a redirect to this page.
-- I added an admin and a accountCreated column to the user schema. The admin column is default set to "false". A user's admin value
+- I added an admin and an accountCreated column to the user schema. The admin column is default set to "false". A user's admin value
     can be set to true by another admin within their profile page, or by someone with direct access to the database.
+- Added function that checks admin status during login and redirects to user or admin page based on admin status.
+- Before submitting the registration data, I inserted a validation check to verify that the username and email provided by the new user do not already exist.
+    If either of these values are duplicates, redirects will occur to respective error pages. The error pages are trimmed down HTML pages, this is easier
+    than getting node.js to manipulate the DOM.
+

@@ -36,32 +36,54 @@ app.listen(PORT,()=>{
     console.log(`Listen on PORT: ${PORT}`)
 });
 
-app.post("/register",(req,res)=>{
-    // Save registration form data to database
-    const userModel = UserModel(req.body)
-    userModel.save()
-    res.redirect('/');
+// Save registration form data to database
+app.post("/register",async (req,res)=>{
+    // Check username and email for already existing username and email in user database
+    const username = await UserModel.exists({
+        username:req.body.username
+    })
+    if (username) {
+        // Username exists already, redirect to error page
+        console.log("USERNAME EXISTS ALREADY")
+        res.redirect('/username-exists-error');
+    }else {
+        const email = await UserModel.exists({
+            email:req.body.email
+        })
+        if (email) {
+            // Email exists already, redirect to error page
+            console.log("EMAIL EXISTS ALREADY")
+            res.redirect('/email-exists-error');
+        }
+        else {
+            // If username and email does not already exist, add user registration data to MongoDB database
+            const userModel = UserModel(req.body)
+            userModel.save()
+            res.redirect('/');
+        }
+    }
 });
 
+// activated when a user enters login credentials on login page and hits submit
 app.post("/login-user",async (req,res)=>{
     // Search user database for username/password combination
-    const findUserCredentials = await UserModel.exists({
+    const userID = await UserModel.exists({
         username: req.body.username,
         password: req.body.password
     })
-    if (findUserCredentials) {
-        const admin_status = await UserModel.find({_id:findUserCredentials}).select('admin -_id');
+    // Use UserID to search/retrieve user data from MongoDB.
+    if (userID) {
+        const admin_status = await UserModel.find({_id:userID}).select('admin -_id');
         if(admin_status[0].admin){
-            // REDIRECT TO ADMIN PAGE 
+            // REDIRECT TO ADMIN PAGE HERE
             console.log("Logging in Admin...");
         }else{
-            // REDIRECT TO USER PAGE
+            // REDIRECT TO USER PAGE HERE
             console.log("Logging in User...");
         }
         res.redirect('/');
     } else {
         // REDIRECT TO PAGE WITH LOGIN ERROR
-        console.log("FALSE");
         res.redirect('/login-error');
     }
 });
@@ -72,5 +94,13 @@ app.get("/", (req, res)=>{
 
 app.get("/login-error", (req, res)=>{
     res.render("login-error.ejs");
+})
+
+app.get("/email-exists-error", (req, res)=>{
+    res.render("email-exists-error.ejs");
+})
+
+app.get("/username-exists-error", (req, res)=>{
+    res.render("username-exists-error.ejs");
 })
 

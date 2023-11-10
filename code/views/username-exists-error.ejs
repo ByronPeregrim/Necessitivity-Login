@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necessitivity - Login</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <div id="banner_box">
+        <h1 id="banner_text">Necessitivity</h1>
+    </div>
+
+    <!-- Signup Active -->
+    <form method="post" action="/register" id="user_signup_form" name="registration" onsubmit="return FormValidation()">
+        <p class="red_text" id="signup_form_text">That username is already in use.</p>
+        <input id="username" name="username" type="text" placeholder="Username"  required>
+        <input id="password" name="password" type="password" placeholder="Password" required>
+        <input id="confirm_password" name="c_pass" type="password" placeholder="Confirm Password" required>
+        <input id="first" name="first" type="text" placeholder="First Name"  required>
+        <input id="last" name="last" type="text" placeholder="Last Name" required>
+        <input id="email" type="email" name="email" placeholder="Email Address" required>
+        <div id="height_box">
+            <div id="height_label">Height</div>
+            <input id="height_ft" type="number" name="feet" placeholder="ft"  required>
+            <input id="height_in" type="number" name="inches" placeholder="in"  required>
+        </div>
+        <div id="weight_box">
+            <div id="weight_label">Weight</div>
+            <input id="weight" type="number" name="weight" placeholder="lbs" required>
+        </div>
+        <div class="button_box" id="signup_button_box">
+            <a href="/"><button type="button" class="login_error_back_button">Back</button></a>
+            <button type="submit" id="signup_submit_button">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
