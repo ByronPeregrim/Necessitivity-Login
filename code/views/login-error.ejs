@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Necessitivity - Login</title>
     <link rel="stylesheet" href="/style.css"/>
+    <script src="/login-error.js" defer></script>
 </head>
 <body>
     <div style="margin-bottom: -2rem;" id="banner_box">
@@ -13,16 +14,27 @@
 
     <!-- Login Active -->
     <form method="post" action="/login-user" class="" id="user_login_form" name="login" onsubmit="return LoginValidation()">
-        <p id="login_error_message">Username/password combination provided was not found.</p>
+        <p class="" id="login_error_message">Username/password combination provided was not found.</p>
         <input class="input_account_info_box" id="input_username_box" name="username" type="text" placeholder="Username"  required>
         <input class="input_account_info_box" id="input_password_box" name="password" type="password" placeholder="Password" required>
         <div class="button_box" id="login_button_box">
             <a href="/">
-                <button type="button" class="login_error_back_button">Back</button>
+                <button type="button" id="login_back_button" class="login_error_back_button">Back</button>
             </a>
-            <button type="submit" class="" id="login_submit_button">Submit</button>
+            <button onclick="LoginValidation()" type="submit" class="" id="login_submit_button">Submit</button>
         </div>
     </form>
+
+    <!-- Account Recovery Active -->
+    <h2 id="account_recovery_text" style="margin-top: -1rem;" class="hide">Forgot Username or Password?</h2>
+    <form method="post" action="/recover-account" id="account_recovery_form">
+        <input class="hide" id="account_recovery_input" name="email" type="email" placeholder="Email Address" required>
+        <div class="hide button_box" id="account_recovery_button_box">
+            <button type="button" class="hide" id="account_recovery_back_button" onClick="ClickAccountRecoveryLinks()">Back</button>
+            <button type="submit" class="hide" id="account_recovery_submit_button">Submit</button>
+        </div>
+    </form>
+    
     <div style="margin-top: 0;" id="account_recovery_links">
         <a onclick="ClickAccountRecoveryLinks()">Forgot Username?</a>
         <a onclick="ClickAccountRecoveryLinks()">Reset Password?</a>

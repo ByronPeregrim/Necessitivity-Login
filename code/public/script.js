@@ -111,17 +111,17 @@ function LoginUsernameValidation(user) {
             return true;    
         }
     }
-    alert("The username/password combination provided was not found.");
+    alert("The username provided is of an invalid format.");
     user.focus();
     return false;
 }
 
 function LoginPasswordValidation(pass) {
-    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,25}$/;
     if (pass.value.match(passwordRegex)) {
         return true;    
     }
-    alert("The username/password combination provided was not found.");
+    alert("The password provided is of an invalid format.");
     pass.focus();
     return false;
 }
@@ -176,7 +176,7 @@ function PasswordValidation(pass) {
     if (pass.value.match(passwordRegex)) {
         return true;    
     }
-    alert("The password provided is not valid. Password must be at least 8 characters and must contains at least one letter, one number, and one special character.");
+    alert("The password provided is not valid. Password must be between 8 and 24 characters and must contain at least one letter, one number, and one special character.");
     pass.focus();
     return false;
 }
@@ -243,6 +243,4 @@ function WeightValidation(weight) {
     weight.focus();
     return false;
 }
-
-
 
