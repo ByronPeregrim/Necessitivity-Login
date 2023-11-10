@@ -61,4 +61,4 @@
 - Before submitting the registration data, I inserted a validation check to verify that the username and email provided by the new user do not already exist.
     If either of these values are duplicates, redirects will occur to respective error pages. The error pages are trimmed down HTML pages, this is easier
     than getting node.js to manipulate the DOM.
-
+- Created a "registration successful" page and redirect to that page upon successful registration.

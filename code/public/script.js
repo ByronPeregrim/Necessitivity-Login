@@ -127,14 +127,14 @@ function LoginPasswordValidation(pass) {
 }
 
 function FormValidation() {
-    var uid = document.registration.uid;
-    var pass = document.registration.pass;
+    var uid = document.registration.username;
+    var pass = document.registration.password;
     var c_pass = document.registration.c_pass;
     var first = document.registration.first;
     var last = document.registration.last;
     var email = document.registration.email;
-    var height_ft = document.registration.height_ft;
-    var height_in = document.registration.height_in;
+    var height_ft = document.registration.feet;
+    var height_in = document.registration.inches;
     var weight = document.registration.weight;
 
     if (UsernameValidation(uid)) {

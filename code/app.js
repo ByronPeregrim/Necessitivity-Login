@@ -59,7 +59,7 @@ app.post("/register",async (req,res)=>{
             // If username and email does not already exist, add user registration data to MongoDB database
             const userModel = UserModel(req.body)
             userModel.save()
-            res.redirect('/');
+            res.redirect('/registration-successful');
         }
     }
 });
@@ -88,6 +88,21 @@ app.post("/login-user",async (req,res)=>{
     }
 });
 
+app.post("/recover-account",async (req,res)=>{
+    const email = await UserModel.exists({
+        email: req.body.email
+    })
+    // If email address is in database
+    if (email) {
+        // Send recovery email
+        // Redirect to recovery email sent page
+        console.log("EMAIL FOUND");
+    }
+    else {
+        res.redirect('/account-recovery-error');
+    }
+})
+
 app.get("/", (req, res)=>{
     res.render("index.ejs");
 });
@@ -104,3 +119,10 @@ app.get("/username-exists-error", (req, res)=>{
     res.render("username-exists-error.ejs");
 })
 
+app.get("/registration-successful", (req, res)=>{
+    res.render("registration-successful.ejs");
+})
+
+app.get("/account-recovery-error", (req, res)=>{
+    res.render("account-recovery-error.ejs");
+})
