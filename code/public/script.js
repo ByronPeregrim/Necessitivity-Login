@@ -172,7 +172,7 @@ function UsernameValidation(uid) {
 }
 
 function PasswordValidation(pass) {
-    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,24}$/;
     if (pass.value.match(passwordRegex)) {
         return true;    
     }
@@ -191,31 +191,48 @@ function ConfirmPassword(pass,c_pass) {
 }
 
 function FirstNameValidation(first) {
-    var nameRegex = /^[a-zA-Z\-]+$/;
+    var nameRegex = /^[a-zA-Z\-]{2,30}$/;
     if (first.value.match(nameRegex)) {
         return true;
     }
-    alert("First name provided is not valid. Name must only contain characters A-Z, a-z, and -.");
+    alert("First name provided is not valid. Name must only contain characters A-Z, a-z, and -. Must be between 2 and 30 characters.");
     first.focus();
     return false;
 }
 
 function LastNameValidation(last) {
-    var nameRegex = /^[a-zA-Z\-]+$/;
+    var nameRegex = /^[a-zA-Z\-]{1,30}$/;
     if (last.value.match(nameRegex)) {
         return true;
     }
-    alert("Last name provided is not valid. Name must only contain characters A-Z, a-z, and -.");
+    alert("Last name provided is not valid. Name must only contain characters A-Z, a-z, and -. Can not contain more than 30 characters.");
     last.focus();
     return false;
 }
 
 function EmailValidation(email) {
     var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (email.value.match(emailRegex)) {
-        return true;
+    var email_len = email.value.length;
+    if (email_len != 0 && email_len <= 40 && email_len > 4) {
+        if (email.value.match(emailRegex)) {
+            return true;    
+        }
     }
-    alert("Email provided is not of a valid format.");
+    alert("Email provided is not of a valid format. Email can not be more than 40 characters in length.");
+    email.focus();
+    return false;
+}
+
+function EmailValidation() {
+    var email = document.account_recovery.email;
+    var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var email_len = email.value.length;
+    if (email_len != 0 && email_len <= 40 && email_len > 4) {
+        if (email.value.match(emailRegex)) {
+            return true;    
+        }
+    }
+    alert("Email provided is not of a valid format. Email can not be more than 40 characters in length.");
     email.focus();
     return false;
 }

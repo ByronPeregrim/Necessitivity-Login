@@ -27,3 +27,38 @@ function ClickAccountRecoveryLinks() {
     login_submit_button.classList.toggle('hide');
     login_error_message.classList.toggle('hide');
 }
+
+function LoginValidation() {
+    var user = document.login.username;
+    var pass = document.login.password;
+    if (LoginUsernameValidation(user)) {
+        if (LoginPasswordValidation(pass)) {
+            // Verify Username and Password in correct combination were found in database
+            return true;
+        }
+    }
+    return false;
+}
+
+function LoginUsernameValidation(user) {
+    var usernameRegex = /^[a-zA-Z0-9]+$/;
+    var user_len = user.value.length;
+    if (user_len != 0 && user_len <= 16 && user_len > 4) {
+        if (user.value.match(usernameRegex)) {
+            return true;    
+        }
+    }
+    alert("The username provided is of an invalid format.");
+    user.focus();
+    return false;
+}
+
+function LoginPasswordValidation(pass) {
+    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,24}$/;
+    if (pass.value.match(passwordRegex)) {
+        return true;    
+    }
+    alert("The password provided is of an invalid format.");
+    pass.focus();
+    return false;
+}

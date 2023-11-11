@@ -71,3 +71,7 @@
 - Used nodemailer to create and send emails from the necessitivity gmail account. Use recovery email provided to get username and password from database and send in email.
 - Created account recovery success page and created redirect to that page after sending recovery email.
 - Login page development is complete. Time for testing.
+- While testing I decided to update the form validation for the registration form to not allow passwords above 24 characters. I also found and fixed a broken account recovery link
+    on the login-error page. In order to fix the link I created a new javascript file specific for the login-error page and created a new function to change the DOM when
+    the account recovery links are clicked.
+- Copied LoginValidation function into login-error script file in order to get LoginValidation on the login-error page.
