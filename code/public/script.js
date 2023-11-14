@@ -229,13 +229,11 @@ function AccountRecoveryEmailValidation() {
     var email_len = email.value.length;
     console.log(email_len)
     if (email_len != 0 && email_len <= 40 && email_len > 4) {
-        console.log("TEST0");
         if (email.value.match(emailRegex)) {
             return true;    
         }
     }
     alert("Email provided is not of a valid format. Email can not be more than 40 characters in length.");
-    console.log("TEST2");
     email.focus();
     return false;
 }
