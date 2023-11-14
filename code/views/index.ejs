@@ -54,7 +54,7 @@
 
     <!-- Account Recovery Active -->
     <h2 id="account_recovery_text" class="hide">Forgot Username or Password?</h2>
-    <form method="post" name="account_recovery" onsubmit="return EmailValidation()" action="/recover-account" id="account_recovery_form">
+    <form method="post" name="account_recovery" onsubmit="return AccountRecoveryEmailValidation()" action="/recover-account" id="account_recovery_form">
         <input class="hide" id="account_recovery_input" name="email" type="email" placeholder="Email Address" required>
         <div class="hide button_box" id="account_recovery_button_box">
             <button type="button" class="hide" id="account_recovery_back_button" onClick="ClickAccountRecoveryLinks()">Back</button>
