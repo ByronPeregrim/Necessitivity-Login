@@ -58,6 +58,7 @@
     "is-glob": "^4.0.3",
     "is-number": "^7.0.0",
     "isarray": "^1.0.0",
+    "jquery": "^3.7.1",
     "lru-cache": "^6.0.0",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
