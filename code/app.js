@@ -6,6 +6,7 @@ const path = require('path');
 const { Admin } = require('mongodb');
 const app = express();
 const nodemailer = require('nodemailer');
+const bcrypt = require("bcryptjs");
 
 // Link JS script and CSS styles to node js
 app.use(express.static(path.join(__dirname, 'public')));
@@ -76,26 +77,32 @@ app.post("/register",async (req,res)=>{
 
 // activated when a user enters login credentials on login page and hits submit
 app.post("/login-user",async (req,res)=>{
-    // Search user database for username/password combination
     const userID = await UserModel.exists({
-        username: req.body.username,
-        password: req.body.password
+        username: req.body.username
     })
-    // Use UserID to search/retrieve user data from MongoDB.
-    if (userID) {
-        const admin_status = await UserModel.find({_id:userID}).select('admin -_id');
-        if(admin_status[0].admin){
-            // REDIRECT TO ADMIN PAGE HERE ~~~~~~~~~~~~~~
-            console.log("Logging in Admin...");
-        }else{
-            // REDIRECT TO USER PAGE HERE ~~~~~~~~~~~~~~
-            console.log("Logging in User...");
+    var enteredPassword = req.body.password;
+    const password = await UserModel.find({_id:userID}).select('password -_id');
+    var hashedPassword = password[0].password
+    if (await bcrypt.compare(enteredPassword, hashedPassword)) {
+        if (userID) {
+            const admin_status = await UserModel.find({_id:userID}).select('admin -_id');
+            if(admin_status[0].admin){
+                // REDIRECT TO ADMIN PAGE HERE ~~~~~~~~~~~~~~
+                console.log("Logging in Admin...");
+            }else{
+                // REDIRECT TO USER PAGE HERE ~~~~~~~~~~~~~~
+                console.log("Logging in User...");
+            }
+            res.redirect('/');
+        } else {
+            res.redirect('/login-error');
         }
-        res.redirect('/');
-    } else {
-        // Redirect to page with login error message
-        res.redirect('/login-error');
     }
+    else {
+        res.redirect('/login-error');
+        console.log("Password does not match hash.");
+    }
+    
 });
 
 app.post("/recover-account",async (req,res)=>{
