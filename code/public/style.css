@@ -126,7 +126,7 @@ a:hover {
     text-align: center;
 }
 
-#user_signup_form > input, #account_recovery_input, #height_box > input, #weight {
+#user_signup_form > input, #account_recovery_input, #height_box > input, #weight, #age {
     height: 30px;
     border-radius: 10px;
 	border: 2px solid rgba(0, 0, 0, 0);
@@ -140,7 +140,7 @@ a:hover {
     
 }
 
-#height_box, #weight_box {
+#height_box, #weight_box, #age_box {
     width: 352px;
     display: flex;
 }
@@ -155,11 +155,24 @@ a:hover {
     margin-left: -7px;
 }
 
-#height_label, #weight_label {
+#age {
+    width: 60px;
+    margin-left: 22px;
+}
+
+#height_label, #weight_label, #age_label {
     font-weight: bolder;
     font-size: 20px;
     padding-top: 12px;
     margin-right: 20px;
+}
+
+#height_label {
+    margin-right: 19px;
+}
+
+#age_label {
+    margin-right: 22px;
 }
 
 input::placeholder {
@@ -183,6 +196,7 @@ input::placeholder {
     margin-top: 4rem;
     font-size: 30px;
     margin-bottom: 12px;
+    text-align: center;
 }
 
 #account_recovery_form {

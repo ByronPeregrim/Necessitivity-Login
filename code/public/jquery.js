@@ -24,6 +24,9 @@ $("#signup, #signup_back_button").on("click",function(){
     $("#weight_box").toggleClass("hide");
     $("#weight_label").toggleClass("hide");
     $("#weight").toggleClass("hide");
+    $("#age_box").toggleClass("hide");
+    $("#age_label").toggleClass("hide");
+    $("#age").toggleClass("hide");
     $("#signup_button_box").toggleClass("hide");
     $("#signup_back_button").toggleClass("hide");
     $("#signup_submit_button").toggleClass("hide");

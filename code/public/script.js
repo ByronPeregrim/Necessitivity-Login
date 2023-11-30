@@ -43,6 +43,7 @@ function FormValidation() {
     var height_ft = document.registration.feet;
     var height_in = document.registration.inches;
     var weight = document.registration.weight;
+    var age = document.registration.age;
 
     if (UsernameValidation(uid)) {
         if (PasswordValidation(pass)) {
@@ -52,7 +53,9 @@ function FormValidation() {
                         if (EmailValidation(email)) {
                             if (HeightValidation(height_ft, height_in)) {
                                 if (WeightValidation(weight)) {
-                                    return true;
+                                    if (AgeValidation(age)) {
+                                        return true;
+                                    }
                                 }
                             }
                         }
@@ -165,6 +168,15 @@ function WeightValidation(weight) {
         return true;
     } 
     alert("Weight provided is not valid. Weight entered must be between 50 and 500lbs.");
+    weight.focus();
+    return false;
+}
+
+function AgeValidation(age) {
+    if (age.value < 131 && age.value > 11) {
+        return true;
+    } 
+    alert("Age provided is not valid. Age entered must be between 12 and 130.");
     weight.focus();
     return false;
 }

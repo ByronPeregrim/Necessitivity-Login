@@ -47,6 +47,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
+    age:{
+        type:Number,
+        required:true,
+        trim:true
+    },
     admin: { //true if user has admin priveleges.
         type:Boolean,
         required:true,
