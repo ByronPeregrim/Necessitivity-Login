@@ -1,3 +1,14 @@
+STARTUP:
+
+In order the deploy the project, one must first ensure that all appropriate software, packages, libraries, and modules are installed including Node.js, Express.js, mongoose, dotenv, and nodemailer. Next, login to MongoDB Atlas at https://account.mongodb.com/account/login with the following credentials:
+
+User Email: Necessitivity@gmail.com
+Password: icsi418y
+
+Click “Database Access” on the left-hand menu then make sure your IP is added to the list of trusted addresses.
+
+Next, open up your terminal and travel to the “code” directory. Type “node app” into the terminal and hit enter. Go to your browser and go to the address “http://127.0.0.1:3000/” to connect to your local port 3000 and view the web application.
+
 Nunito Variable Font
 ====================
 
