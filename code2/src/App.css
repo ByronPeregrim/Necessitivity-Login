@@ -1,0 +1,80 @@
+@font-face {
+    font-family: nunito;
+    src: url(../public/fonts/Nunito-VariableFont_wght.ttf);
+}
+
+:root {
+    --electric-green : #09b43a;
+}
+
+
+* {
+    color: var(--electric-green);
+    font-family: nunito;
+    margin: 0;
+    padding: 0;
+    transition-duration: 200ms;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(30, 30, 30);
+}
+
+a:hover {
+    color: darkgreen;
+}
+
+#banner_box {
+    height: 22rem;
+    display: flex;
+    margin-bottom: -2rem;
+}
+
+#banner_text {
+    align-self: center;
+    font-size: 100px;
+    text-shadow: 5px 5px darkgreen;
+}
+
+.login_button, .input_account_info_box {
+    width: 20rem;
+    height: 5rem;
+    border-radius: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+    background-color: rgb(100, 100, 100);
+    border-color: silver;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.login_button:hover {
+    width: 21rem;
+    height: 5.5rem;
+    margin-bottom: 1.25rem;
+    margin-top: -.25rem;
+    background-color: rgb(110,110,110);
+    font-size: 35px;
+    box-shadow: 2px 2px 2px rgb(200,200,200);
+}
+
+#account_recovery_links {
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+}
+
+@media (max-width:600px) {
+    #banner_text {
+        font-size:75px;
+    }
+}
+
+@media (max-width:450px) {
+    #banner_text {
+        font-size:55px;
+    }
+}
