@@ -63,6 +63,11 @@ const userSchema = new mongoose.Schema({
         required:true,
         trim:true,
         default:new Date().toISOString()
+    },
+    workouts:{
+        type:Array,
+        required:false,
+        trim:true
     }
 })
 

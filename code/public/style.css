@@ -13,6 +13,7 @@
     font-family: nunito;
     margin: 0;
     padding: 0;
+    transition-duration: 200ms;
 }
 
 body {
@@ -220,8 +221,8 @@ input::placeholder {
     display: none;
     height: 0px;
     width: 0px;
+    transition-duration: 1000ms;
 }
-
 
 @media (max-width:600px) {
     #banner_text {
