@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
+import React from "react";
 
 type FormValues = {
     username: string
@@ -59,14 +60,14 @@ export const LoginForm = ({change} : {change:any}) => {
                 <input className="input_account_info_box" id="input_password_box" type="password" placeholder="Password" required {...register("password", {
                     required:"Password is required",
                     pattern: {
-                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
-                        message: "Password is not valid",
+                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
+                        message: "Password is not valid1",
                     },
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
                                 fieldValue.length < 25 && fieldValue.length > 7 ||
-                                "Password is not valid"
+                                "Password is not valid2"
                             );
                         }
                     }})}

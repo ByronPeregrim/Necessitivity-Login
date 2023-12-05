@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import React from "react";
 import { DevTool } from "@hookform/devtools";
 
 type FormValues = {
@@ -153,7 +154,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="password" id="password" placeholder="Password" required {...register("password", {
                     required:"Password is required",
                     pattern: {
-                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
                         message: "Password must contain a letter, a number, and a special character",
                     },
                     validate: {
@@ -172,7 +173,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="text" id="first" placeholder="First Name"  required {...register("first_name", {
                     required:"First name is required",
                     pattern: {
-                        value: /^[a-zA-Z\-]$/,
+                        value: /^[a-zA-Z\-]+$/,
                         message: "First name can only contain characters A-Z, a-z, and -",
                     },
                     validate: {
@@ -187,7 +188,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="text" id="last" placeholder="Last Name" required {...register("last_name", {
                     required:"Last name is required",
                     pattern: {
-                        value: /^[a-zA-Z\-]$/,
+                        value: /^[a-zA-Z\-]+$/,
                         message: "Last name can only contain characters A-Z, a-z, and -",
                     },
                     validate: {
@@ -202,13 +203,13 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="email" id="email" placeholder="Email Address" required {...register("email", {
                     required:"Email is required",
                     pattern: {
-                        value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
+                        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                         message: "Invalid email format",
                     },
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 41 && fieldValue.length > 7 ||
+                                fieldValue.length < 41 && fieldValue.length >= 7 ||
                                 "Email must be between 7 and 40 characters"
                             );
                         }
@@ -217,7 +218,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <div id="height_box">
                     <div id="height_label">Height</div>
                     <input type="number" id="height_ft" placeholder="ft"  required {...register("height_ft", {
-                    required:"Height field is required",
+                    required:"Height field (ft) is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
@@ -228,11 +229,11 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     }})}
                 />
                     <input type="number" id="height_in" placeholder="in"  required {...register("height_in", {
-                    required:"Height field is required",
+                    required:"Height field (in) is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 13 && fieldValue >= 0 ||
+                                fieldValue < 12 && fieldValue >= 0 ||
                                 "Height must be within 0 to 11 inches"
                             );
                         }
@@ -246,7 +247,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 500 && fieldValue > 50 ||
+                                fieldValue < 501 && fieldValue > 49 ||
                                 "Weight must be between 50 and 500 pounds"
                             );
                         }
@@ -260,7 +261,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 130 && fieldValue > 17 ||
+                                fieldValue < 131 && fieldValue > 17 ||
                                 "Age must be between 18 and 130 years"
                             );
                         }
