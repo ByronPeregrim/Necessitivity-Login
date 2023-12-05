@@ -87,9 +87,13 @@ a:hover {
 }
 
 .input_account_info_box:focus {
-  background-color: var(--electric-green);
+  background-color: lightgreen;
   padding-left: 10px;
   cursor:text;
+}
+
+.input_account_info_box:active {
+  background-color: var(--electric-green);
 }
 
 .button_box {
@@ -132,20 +136,21 @@ a:hover {
 
 #signup_form_text {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 18px;
+  margin-bottom: 2px;
 }
 
 #user_signup_form > input, #account_recovery_input, #height_box > input, #weight, #age {
   height: 30px;
   border-radius: 10px;
-border: 2px solid rgba(0, 0, 0, 0);
-outline: none;
-background-color: rgba(240, 240, 240, 0.8);
-padding: 0.5rem 1rem;
-font-size: 1.1rem;
-margin-bottom: 22px;
-transition: .3s;
-  color: darkgreen;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(240, 240, 240, 0.8);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: .3s;
+  color: black;
   
 }
 
@@ -188,12 +193,12 @@ input::placeholder {
   color: black;
 }
 
-#user_signup_form > input:active {
-  background-color: var(--electric-green);
+#user_signup_form > input:focus{
+  background-color: lightgreen;
 }
 
-#user_signup_form > input:focus{
-  background-color: white;
+#user_signup_form > input:active {
+  background-color: var(--electric-green);
 }
 
 #account_recovery_text {
@@ -212,7 +217,32 @@ input::placeholder {
 }
 
 #account_recovery_input:focus {
-  background-color: white;
+  background-color: lightgreen;
+}
+
+#account_recovery_input:active {
+  background-color: var(--electric-green);
+}
+
+.login_error, .registration_error, #recovery_error {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+
+.login_error {
+  margin-bottom: 5px;
+  margin-top: -29px;
+}
+
+.registration_error {
+  margin-bottom: 67px;
+  margin-top: -49px;
+}
+
+#recovery_error {
+  margin-top: -12px;
+  margin-bottom: -12px;
 }
 
 @media (max-width:600px) {
