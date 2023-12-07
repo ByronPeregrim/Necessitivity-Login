@@ -145,7 +145,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 31 && fieldValue.length > 1 ||
+                                (fieldValue.length < 31 && fieldValue.length > 1) ||
                                 "Username must be between 2 and 30 characters"
                             );
                         }
@@ -160,7 +160,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 25 && fieldValue.length > 7 ||
+                                (fieldValue.length < 25 && fieldValue.length > 7) ||
                                 "Password must be between 8 and 24 characters"
                             );
                         }
@@ -173,13 +173,13 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="text" id="first" placeholder="First Name"  required {...register("first_name", {
                     required:"First name is required",
                     pattern: {
-                        value: /^[a-zA-Z\-]+$/,
+                        value: /^[a-zA-Z-]+$/,
                         message: "First name can only contain characters A-Z, a-z, and -",
                     },
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 31 && fieldValue.length > 1 ||
+                                (fieldValue.length < 31 && fieldValue.length > 1) ||
                                 "First name must be between 2 and 30 characters"
                             );
                         }
@@ -188,13 +188,13 @@ export const RegistrationForm = ({change} : {change:any}) => {
                 <input type="text" id="last" placeholder="Last Name" required {...register("last_name", {
                     required:"Last name is required",
                     pattern: {
-                        value: /^[a-zA-Z\-]+$/,
+                        value: /^[a-zA-Z-]+$/,
                         message: "Last name can only contain characters A-Z, a-z, and -",
                     },
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 31 && fieldValue.length > 1 ||
+                                (fieldValue.length < 31 && fieldValue.length > 1) ||
                                 "Last name must be between 2 and 30 characters"
                             );
                         }
@@ -209,7 +209,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 41 && fieldValue.length >= 7 ||
+                                (fieldValue.length < 41 && fieldValue.length >= 7) ||
                                 "Email must be between 7 and 40 characters"
                             );
                         }
@@ -222,7 +222,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 8 && fieldValue > 2 ||
+                                (fieldValue < 8 && fieldValue > 2) ||
                                 "Height must be within 3 to 7 feet"
                             );
                         }
@@ -233,7 +233,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 12 && fieldValue >= 0 ||
+                                (fieldValue < 12 && fieldValue >= 0) ||
                                 "Height must be within 0 to 11 inches"
                             );
                         }
@@ -247,7 +247,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 501 && fieldValue > 49 ||
+                                (fieldValue < 501 && fieldValue > 49) ||
                                 "Weight must be between 50 and 500 pounds"
                             );
                         }
@@ -261,7 +261,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue < 131 && fieldValue > 17 ||
+                                (fieldValue < 131 && fieldValue > 17) ||
                                 "Age must be between 18 and 130 years"
                             );
                         }
