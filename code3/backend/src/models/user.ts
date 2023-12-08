@@ -58,9 +58,10 @@ const userSchema = new Schema({
         default:false
     },
     workouts:{
-        type:Array,
-        required:false,
-        trim:true
+        type:Array<unknown>,
+        required:true,
+        trim:true,
+        default:[]
     }
 }, { timestamps: true });
 

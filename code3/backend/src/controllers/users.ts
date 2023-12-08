@@ -2,6 +2,7 @@ import { RequestHandler } from "express";
 import UserModel from "../models/user"
 import createHttpError from "http-errors";
 import mongoose  from "mongoose";
+import Workout from "../classes/Workout";
 
 export const getUsers: RequestHandler = async (req, res, next) => {
     try {
@@ -42,6 +43,8 @@ interface CreateUserBody {
     inches?: number,
     weight?: number,
     age?: number,
+    admin?: boolean,
+    workouts?: Array<Workout>,
 }
 
 export const createUser: RequestHandler<unknown, unknown, CreateUserBody, unknown> = async (req, res, next) => {
@@ -54,6 +57,8 @@ export const createUser: RequestHandler<unknown, unknown, CreateUserBody, unknow
     const inches = req.body.inches;
     const weight = req.body.weight;
     const age = req.body.age;
+    const admin = req.body.admin;
+    const workouts = req.body.workouts;
 
     try {
         if (!username || !password || !first || !last || !email || !feet ||
@@ -71,6 +76,8 @@ export const createUser: RequestHandler<unknown, unknown, CreateUserBody, unknow
             inches: inches,
             weight: weight,
             age: age,
+            admin: admin,
+            workouts: workouts,
         });
 
         res.status(201).json(newUser);
@@ -93,6 +100,8 @@ interface UpdateUserBody {
     inches?: number,
     weight?: number,
     age?: number,
+    admin?: boolean,
+    workouts?: Array<Workout>,
 }
 
 export const updateUser: RequestHandler<UpdateUserParams, unknown, UpdateUserBody, unknown> =async (req,res,next) => {
@@ -106,13 +115,16 @@ export const updateUser: RequestHandler<UpdateUserParams, unknown, UpdateUserBod
     const newInches = req.body.inches;
     const newWeight = req.body.weight;
     const newAge = req.body.age;
+    const newAdmin = req.body.admin;
+    const newWorkouts = req.body.workouts;
     
     try {
         if (!mongoose.isValidObjectId(userId)) {
             throw createHttpError(400, "Invalid User Id");
         }
         if (!newUsername || !newPassword || !newFirst || !newLast ||
-            !newEmail || !newFeet || !newInches || !newWeight || !newAge) {
+            !newEmail || !newFeet || !newInches || !newWeight || !newAge || !newAdmin
+            || !newWorkouts) {
             throw createHttpError(400, "User registration information incomplete.");
         }
 
@@ -131,6 +143,8 @@ export const updateUser: RequestHandler<UpdateUserParams, unknown, UpdateUserBod
         user.inches = newInches;
         user.weight = newWeight;
         user.age = newAge;
+        user.admin = newAdmin;
+        user.workouts = newWorkouts;
 
         const updatedUser = await user.save();
 

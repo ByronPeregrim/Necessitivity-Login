@@ -1,27 +1,26 @@
 import { useForm } from "react-hook-form";
 import React from "react";
-import { DevTool } from "@hookform/devtools";
+import styles from "../styles/RegistrationForm.module.css";
+import { User as UserModel } from "../models/users";
+import { UserInput } from "../network/users_api";
+import * as UsersApi from "../network/users_api";
 
-type FormValues = {
-    username: string;
-    password: string;
-    confirm_password: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    height_ft: number;
-    height_in: number;
-    weight: number;
-    age: number;
+interface AddUserAccountProps {
+    change: () => void,
+    onUserSaved: (user: UserModel) => void,
 }
 
-export const RegistrationForm = ({change} : {change:any}) => {
-    const form = useForm<FormValues>();
-    const { register, control, handleSubmit, formState } = form;
-    const { errors } = formState; 
+export const RegistrationForm = ({change, onUserSaved }: AddUserAccountProps) => {
+    const { register, handleSubmit, formState : { errors, isSubmitting }} = useForm<UserInput>();
 
-    const onSubmit = (data: FormValues) => {
-        console.log('Form submitted', data)
+    async function onSubmit(input: UserInput) {
+        try {
+            const userResponse = await UsersApi.createUser(input);
+            onUserSaved(userResponse);
+        } catch (error) {
+            console.error(error);
+            alert(error);
+        }
     }
 
     let errorDisplayed = false;
@@ -31,7 +30,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
             { 
                 errors.username?.message?.length !== undefined && errorDisplayed === false ? 
                     <>
-                        <p className="registration_error">
+                        <p className={styles.registration_error}>
                             { errors.username?.message }
                         </p>
                         {errorDisplayed = true}
@@ -41,7 +40,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
             { 
                 errors.password?.message?.length !== undefined && errorDisplayed === false? 
                     <>
-                        <p className="registration_error">
+                        <p className={styles.registration_error}>
                             { errors.password?.message }
                         </p>
                         {errorDisplayed = true}
@@ -49,30 +48,30 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     :null
             }
             { 
-                errors.confirm_password?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.confirmPassword?.message?.length !== undefined && errorDisplayed === false ? 
                     <>
-                        <p className="registration_error">
-                            { errors.confirm_password?.message }
+                        <p className={styles.registration_error}>
+                            { errors.confirmPassword?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.first_name?.message?.length !== undefined && errorDisplayed === false? 
+                errors.first?.message?.length !== undefined && errorDisplayed === false? 
                     <>
-                        <p className="registration_error">
-                            { errors.first_name?.message }
+                        <p className={styles.registration_error}>
+                            { errors.first?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.last_name?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.last?.message?.length !== undefined && errorDisplayed === false ? 
                     <>
-                        <p className="registration_error">
-                            { errors.last_name?.message }
+                        <p className={styles.registration_error}>
+                            { errors.last?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
@@ -81,7 +80,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
             { 
                 errors.email?.message?.length !== undefined && errorDisplayed === false? 
                     <>
-                        <p className="registration_error">
+                        <p className={styles.registration_error}>
                             { errors.email?.message }
                         </p>
                         {errorDisplayed = true}
@@ -89,20 +88,20 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     :null
             }
             { 
-                errors.height_ft?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.feet?.message?.length !== undefined && errorDisplayed === false ? 
                     <>
-                        <p className="registration_error">
-                            { errors.height_ft?.message }
+                        <p className={styles.registration_error}>
+                            { errors.feet?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.height_in?.message?.length !== undefined && errorDisplayed === false? 
+                errors.inches?.message?.length !== undefined && errorDisplayed === false? 
                     <>
-                        <p className="registration_error">
-                            { errors.height_in?.message }
+                        <p className={styles.registration_error}>
+                            { errors.inches?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
@@ -111,7 +110,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
             { 
                 errors.weight?.message?.length !== undefined && errorDisplayed === false ? 
                     <>
-                        <p className="registration_error">
+                        <p className={styles.registration_error}>
                             { errors.weight?.message }
                         </p>
                         {errorDisplayed = true}
@@ -121,22 +120,22 @@ export const RegistrationForm = ({change} : {change:any}) => {
             { 
                 errors.age?.message?.length !== undefined && errorDisplayed === false? 
                     <>
-                        <p className="registration_error">
+                        <p className={styles.registration_error}>
                             { errors.age?.message }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
-            <form onSubmit={handleSubmit(onSubmit)} id="user_signup_form" noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} id={styles.user_signup_form} noValidate>
                 {
                     errorDisplayed === false ?
                     <>
-                        <p id="signup_form_text">Username and password are case sensitive.</p>
+                        <p id={styles.signup_form_text}>Username and password are case sensitive.</p>
                     </>
                     :null
                 }
-                <input className="reg_input" type="text" id="username" placeholder="Username"  required {...register("username", {
+                <input type="text" placeholder="Username"  required {...register("username", {
                     required:"Username is required",
                     pattern: {
                         value: /^[a-zA-Z0-9]+$/,
@@ -151,7 +150,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                         }
                     }})}
                 />
-                <input type="password" id="password" placeholder="Password" required {...register("password", {
+                <input type="password" placeholder="Password" required {...register("password", {
                     required:"Password is required",
                     pattern: {
                         value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
@@ -166,11 +165,14 @@ export const RegistrationForm = ({change} : {change:any}) => {
                         }
                     }})}
                 />
-                <input type="password" id="confirm_password" placeholder="Confirm Password" required {...register("confirm_password", {
+                <input type="password" placeholder="Confirm Password" required {...register("confirmPassword", {
                     required:"Password confirmation is required",
+                    validate: {
+                        
+                    }
                 })}
                 />
-                <input type="text" id="first" placeholder="First Name"  required {...register("first_name", {
+                <input type="text" placeholder="First Name"  required {...register("first", {
                     required:"First name is required",
                     pattern: {
                         value: /^[a-zA-Z-]+$/,
@@ -185,7 +187,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                         }
                     }})}
                 />
-                <input type="text" id="last" placeholder="Last Name" required {...register("last_name", {
+                <input type="text" placeholder="Last Name" required {...register("last", {
                     required:"Last name is required",
                     pattern: {
                         value: /^[a-zA-Z-]+$/,
@@ -200,7 +202,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                         }
                     }})}
                 />
-                <input type="email" id="email" placeholder="Email Address" required {...register("email", {
+                <input type="email" placeholder="Email Address" required {...register("email", {
                     required:"Email is required",
                     pattern: {
                         value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -212,12 +214,12 @@ export const RegistrationForm = ({change} : {change:any}) => {
                                 (fieldValue.length < 41 && fieldValue.length >= 7) ||
                                 "Email must be between 7 and 40 characters"
                             );
-                        }
+                        },
                     }})}
                 />
-                <div id="height_box">
-                    <div id="height_label">Height</div>
-                    <input type="number" id="height_ft" placeholder="ft"  required {...register("height_ft", {
+                <div id={styles.height_box}>
+                    <div id={styles.height_label}>Height</div>
+                    <input type="number" placeholder="ft"  required {...register("feet", {
                     required:"Height field (ft) is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
@@ -228,7 +230,7 @@ export const RegistrationForm = ({change} : {change:any}) => {
                         }
                     }})}
                 />
-                    <input type="number" id="height_in" placeholder="in"  required {...register("height_in", {
+                    <input type="number" placeholder="in"  required {...register("inches", {
                     required:"Height field (in) is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
@@ -240,9 +242,9 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     }})}
                 />
                 </div>
-                <div id="weight_box">
-                    <div id="weight_label">Weight</div>
-                    <input type="number" id="weight" placeholder="lbs" required {...register("weight", {
+                <div id={styles.weight_box}>
+                    <div id={styles.weight_label}>Weight</div>
+                    <input type="number" placeholder="lbs" required {...register("weight", {
                     required:"Weight is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
@@ -254,9 +256,9 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     }})}
                 />
                 </div>
-                <div id="age_box">
-                    <div id="age_label">Age</div>
-                    <input type="number" id="age" placeholder="0" required {...register("age", {
+                <div id={styles.age_box}>
+                    <div id={styles.age_label}>Age</div>
+                    <input type="number" placeholder="0" required {...register("age", {
                     required:"Age is required",
                     validate: {
                         notIncorrectSize: (fieldValue) => {
@@ -268,12 +270,11 @@ export const RegistrationForm = ({change} : {change:any}) => {
                     }})}
                 />
                 </div>
-                <div className="button_box" id="signup_button_box">
-                    <button onClick={()=>change()} type="button" id="signup_back_button">Back</button>
-                    <button type="submit" id="signup_submit_button">Submit</button>
+                <div className="button_box">
+                    <button onClick={()=>change()} type="button">Back</button>
+                    <button type="submit" form={styles.user_signup_form}>Submit</button>
                 </div>
             </form>
-            <DevTool control={control} />
         </>
     )
 }

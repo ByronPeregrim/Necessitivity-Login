@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import React from "react";
+import styles from "../styles/RecoveryForm.module.css";
 
 type FormValues = {
     email: string;
@@ -17,17 +18,18 @@ export const RecoveryForm = ({change} : {change:any}) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} id="account_recovery_form" noValidate>
+            <h2 id={styles.account_recovery_text}>Forgot Username or Password?</h2>
+            <form onSubmit={handleSubmit(onSubmit)} id={styles.account_recovery_form} noValidate>
                 { 
                     errors.email?.message?.length !== undefined ? 
                         <>
-                            <p id="recovery_error">
+                            <p id={styles.recovery_error}>
                                 { errors.email?.message }
                             </p>
                         </>
                         :null
                 }
-                <input type="email" id="account_recovery_input" placeholder="Email Address" required {...register("email", {
+                <input type="email" placeholder="Email Address" required {...register("email", {
                     required:"Email is required",
                     pattern: {
                         value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]$/,
@@ -36,15 +38,15 @@ export const RecoveryForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 41 && fieldValue.length > 7 ||
+                                (fieldValue.length < 41 && fieldValue.length > 7) ||
                                 "Email must be between 7 and 40 characters"
                             );
                         }
                     }})}
                 />
-                <div className="button_box" id="account_recovery_button_box">
-                    <button onClick={()=>change()}  type="button" id="account_recovery_back_button">Back</button>
-                    <button type="submit" id="account_recovery_submit_button">Submit</button>
+                <div className="button_box">
+                    <button onClick={()=>change()}  type="button">Back</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
             <DevTool control={control} />

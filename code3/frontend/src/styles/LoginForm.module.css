@@ -1,0 +1,41 @@
+#user_login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_account_info_box {
+  color: black;
+  background-color: white;
+  padding-left: 10px;
+  cursor:text;
+  width: 20rem;
+  height: 5rem;
+  border-radius: 20px;
+  font-size: 30px;
+  font-weight: bolder;
+  border-color: silver;
+  margin-bottom: 1.5rem;
+}
+
+.input_account_info_box:focus {
+  background-color: lightgreen;
+}
+
+.input_account_info_box:active {
+  background-color: var(--electric-green);
+}
+
+.login_error {
+  margin-bottom: 5px;
+  margin-top: -29px;
+  color: red;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width:375px) {
+  .input_account_info_box {
+    width: 18rem;
+  }
+}

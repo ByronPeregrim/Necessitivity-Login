@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import React from "react";
+import styles from "../styles/LoginForm.module.css";
 
 type FormValues = {
     username: string
@@ -20,12 +21,12 @@ export const LoginForm = ({change} : {change:any}) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} id="user_login_form" noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} id={styles.user_login_form} noValidate>
                 {errorDisplayed = false}
                 { 
                     errors.username?.message?.length !== undefined && errorDisplayed === false ? 
                         <>
-                            <p className="login_error">
+                            <p className={styles.login_error}>
                                 { errors.username?.message }
                             </p>
                             {errorDisplayed = true}
@@ -35,14 +36,14 @@ export const LoginForm = ({change} : {change:any}) => {
                 { 
                     errors.password?.message?.length !== undefined && errorDisplayed === false? 
                         <>
-                            <p className="login_error">
+                            <p className={styles.login_errro}>
                                 { errors.password?.message }
                             </p>
                             {errorDisplayed = true}
                         </>
                         :null
                 }
-                <input className="input_account_info_box" id="input_username_box" type="text" placeholder="Username" {...register("username", {
+                <input className={styles.input_account_info_box} type="text" placeholder="Username" {...register("username", {
                     required:"Username is required",
                     pattern: {
                         value: /^[a-zA-Z0-9]+$/,
@@ -51,13 +52,13 @@ export const LoginForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 31 && fieldValue.length > 1 ||
+                                (fieldValue.length < 31 && fieldValue.length > 1) ||
                                 "Username is not valid"
                             );
                         }
                     }})}
                 />
-                <input className="input_account_info_box" id="input_password_box" type="password" placeholder="Password" required {...register("password", {
+                <input className={styles.input_account_info_box} type="password" placeholder="Password" required {...register("password", {
                     required:"Password is required",
                     pattern: {
                         value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
@@ -66,15 +67,15 @@ export const LoginForm = ({change} : {change:any}) => {
                     validate: {
                         notIncorrectSize: (fieldValue) => {
                             return (
-                                fieldValue.length < 25 && fieldValue.length > 7 ||
-                                "Password is not valid2"
+                                (fieldValue.length < 25 && fieldValue.length > 7) ||
+                                "Password is not valid"
                             );
                         }
                     }})}
                 />
-                <div className="button_box" id="login_button_box">
-                    <button onClick={()=>change()} type="button" id="login_back_button">Back</button>
-                    <button type="submit" id="login_submit_button">Submit</button>
+                <div className="button_box">
+                    <button onClick={()=>change()} type="button">Back</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
             <DevTool control={control} />
