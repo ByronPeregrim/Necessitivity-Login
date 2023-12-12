@@ -1,178 +1,117 @@
 import { RequestHandler } from "express";
 import UserModel from "../models/user"
 import createHttpError from "http-errors";
-import mongoose  from "mongoose";
 import Workout from "../classes/Workout";
+import bcrypt from "bcrypt";
 
-export const getUsers: RequestHandler = async (req, res, next) => {
-    try {
-        const users = await UserModel.find().exec();
-        res.status(200).json(users);
-    } catch(error) {
-        next(error);
-    }
-}
+export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
+    const authenticatedUserId = req.session.userId;
 
-export const getUser: RequestHandler = async(req, res, next) => {
-    const userId = req.params.userId;
-    
     try {
-        if (!mongoose.isValidObjectId(userId)) {
-            throw createHttpError(400, "Invalid User Id");
+        if (!authenticatedUserId) {
+            throw createHttpError(401, "User not authenticated");
         }
 
-        const user = await UserModel.findById(userId).exec();
-
-        if (!user) {
-            throw createHttpError(404, "User not found");
-        }
-
+        const user = await UserModel.findById(authenticatedUserId).select(["+first", "+last", "+email", "+weight", "+admin", "+workouts"]);
         res.status(200).json(user);
-    } catch(error) {
-        next(error);
-    }
-};
-
-interface CreateUserBody {
-    username?: string,
-    password?: string,
-    first?: string,
-    last?: string,
-    email?: string,
-    feet?: number,
-    inches?: number,
-    weight?: number,
-    age?: number,
-    admin?: boolean,
-    workouts?: Array<Workout>,
-}
-
-export const createUser: RequestHandler<unknown, unknown, CreateUserBody, unknown> = async (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const first = req.body.first;
-    const last = req.body.last;
-    const email = req.body.email;
-    const feet = req.body.feet;
-    const inches = req.body.inches;
-    const weight = req.body.weight;
-    const age = req.body.age;
-    const admin = req.body.admin;
-    const workouts = req.body.workouts;
-
-    try {
-        if (!username || !password || !first || !last || !email || !feet ||
-            !inches || !weight || !age) {
-            throw createHttpError(400, "User registration information incomplete.");
-        }
-
-        const newUser = await UserModel.create({
-            username: username,
-            password: password,
-            first: first,
-            last: last,
-            email: email,
-            feet: feet,
-            inches: inches,
-            weight: weight,
-            age: age,
-            admin: admin,
-            workouts: workouts,
-        });
-
-        res.status(201).json(newUser);
-    } catch(error) {
-        next(error);
-    }
-};
-
-interface UpdateUserParams {
-    userId: string,
-}
-
-interface UpdateUserBody {
-    username?: string,
-    password?: string,
-    first?: string,
-    last?: string,
-    email?: string,
-    feet?: number,
-    inches?: number,
-    weight?: number,
-    age?: number,
-    admin?: boolean,
-    workouts?: Array<Workout>,
-}
-
-export const updateUser: RequestHandler<UpdateUserParams, unknown, UpdateUserBody, unknown> =async (req,res,next) => {
-    const userId = req.params.userId;
-    const newUsername = req.body.username;
-    const newPassword = req.body.password;
-    const newFirst = req.body.first;
-    const newLast = req.body.last;
-    const newEmail = req.body.email;
-    const newFeet = req.body.feet;
-    const newInches = req.body.inches;
-    const newWeight = req.body.weight;
-    const newAge = req.body.age;
-    const newAdmin = req.body.admin;
-    const newWorkouts = req.body.workouts;
-    
-    try {
-        if (!mongoose.isValidObjectId(userId)) {
-            throw createHttpError(400, "Invalid User Id");
-        }
-        if (!newUsername || !newPassword || !newFirst || !newLast ||
-            !newEmail || !newFeet || !newInches || !newWeight || !newAge || !newAdmin
-            || !newWorkouts) {
-            throw createHttpError(400, "User registration information incomplete.");
-        }
-
-        const user = await UserModel.findById(userId).exec();
-
-        if (!user) {
-            throw createHttpError(404, "User not found");
-        }
-
-        user.username = newUsername;
-        user.password = newPassword;
-        user.first = newFirst;
-        user.last = newLast;
-        user.email = newEmail;
-        user.feet = newFeet;
-        user.inches = newInches;
-        user.weight = newWeight;
-        user.age = newAge;
-        user.admin = newAdmin;
-        user.workouts = newWorkouts;
-
-        const updatedUser = await user.save();
-
-        res.status(200).json(updatedUser);
     } catch (error) {
         next(error);
     }
 };
 
-export const deleteUser: RequestHandler = async (req, res, next) => {
-    const userId = req.params.userId;
-    
+interface SignUpBody {
+    username?: string,
+    password?: string,
+    first?: string,
+    last?: string,
+    email?: string,
+    weight?: number,
+    admin?: boolean,
+    workouts?: Array<Workout>,
+}
+
+export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = async (req, res, next) => {
+    const username = req.body.username;
+    const passwordRaw = req.body.password;
+    const first = req.body.first;
+    const last = req.body.last;
+    const email = req.body.email;
+    const weight = req.body.weight;
+
     try {
-        if (!mongoose.isValidObjectId(userId)) {
-            throw createHttpError(400, "Invalid User Id");
-        }
+        if (!username || !passwordRaw || !first || !last || !email || !weight) {
+                throw createHttpError(400, "Parameters missing");
+            }
 
-        const user = await UserModel.findById(userId).exec();
+            const existingUsername = await UserModel.findOne({ username: username}).exec();
 
-        if (!user) {
-            throw createHttpError(404, "User not found");
-        }
+            if (existingUsername) {
+                throw createHttpError(409, "Username already taken. Please choose a different one.");
+            }
 
-        await user.deleteOne();
+            const existingEmail = await UserModel.findOne({email: email}).exec();
+            if (existingEmail) {
+                throw createHttpError(409, "A user with this email address already exists.");
+            }
 
-        res.sendStatus(204);
+            const passwordHashed = await bcrypt.hash(passwordRaw, 10);
 
-    } catch(error) {
+            const newUser = await UserModel.create({
+                username: username,
+                password: passwordHashed,
+                first: first,
+                last: last,
+                email: email,
+                weight: weight,
+            });
+
+            req.session.userId = newUser._id;
+
+            res.status(201).json(newUser);
+    } catch (error) {
         next(error);
     }
+};
+
+interface LoginBody {
+    username?: string,
+    password?: string,
+}
+
+export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async(req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    try {
+        if (!username || !password) {
+            throw createHttpError(400, "Parameters missing");
+        }
+
+        const user = await UserModel.findOne({username: username}).select("+password +email").exec();
+
+        if (!user) {
+            throw createHttpError(401, "Invalid credentials");
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            throw createHttpError(401, "Invalid credentials");
+        }
+
+        req.session.userId = user._id;
+        res.status(201).json(user);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const logout: RequestHandler = (req,res,next) => {
+    req.session.destroy(error => {
+        if (error) {
+            next(error);
+        } else {
+            res.sendStatus(200);
+        }
+    })
 };

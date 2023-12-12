@@ -1,4 +1,4 @@
-import Workout from "../classes/Workout";
+import { UnauthorizedError, ConflictError } from "../errors/http_errors";
 import { User } from "../models/users";
 
 async function fetchData(input: RequestInfo, init?: RequestInit) {
@@ -8,43 +8,61 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
     } else {
         const errorBody = await response.json();
         const errorMessage = errorBody.error;
-        throw Error(errorMessage);
+        if (response.status === 401) {
+            throw new UnauthorizedError(errorMessage);
+        } else if (response.status === 409) {
+            throw new ConflictError(errorMessage);
+        } else {
+            throw Error("Request failed with status: " + response.status + " message: " + errorMessage);
+        }
     }
 }
 
-export async function fetchUsers(): Promise<User[]> {
+
+export async function getLoggedInUser(): Promise<User[]> {
     const response = await fetchData("/api/users", { method: "GET" });
     return response.json();
 }
 
-export interface UserInput {
+export interface SignUpCredentials {
     username: string,
     password: string,
-    confirmPassword: string,
     first: string,
     last: string,
     email: string,
-    feet: number,
-    inches: number,
     weight: number,
-    age: number,
-    admin?: boolean,
-    workouts?: Array<Workout>,
     createdAt : string,
 }
 
-export async function createUser(user: UserInput): Promise<User> {
-    const response = await fetchData("/api/users",
+export async function signUp(credentials: SignUpCredentials): Promise<User> {
+    const response = await fetchData("/api/users/signup",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+        });
+    return response.json();
+}
+
+export interface LoginCredentials {
+    username: string,
+    password: string,
+}
+
+export async function login(credentials: LoginCredentials): Promise<User> {
+    const response = await fetchData("/api/users/login",
     {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(user),
+        body: JSON.stringify(credentials),
     });
     return response.json();
 }
 
-export async function deleteUser(userId: string) {
-    await fetchData("/api/users/" + userId, { method: "DELETE"});
+export async function logut() {
+    await fetchData("/api/users/logout", { method: "POST"});
 }

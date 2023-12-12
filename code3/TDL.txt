@@ -5,6 +5,7 @@ Encrypt stored user passwords
 Checks for confirm password on user registration
 Get login working
 Get account recovery working
+Stop form errors from showing up mid-type
 
 User:
 

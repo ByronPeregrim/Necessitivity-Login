@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
-import React from "react";
+import { Form, FormControl } from "react-bootstrap";
 import styles from "../styles/RegistrationForm.module.css";
-import { User as UserModel } from "../models/users";
-import { UserInput } from "../network/users_api";
-import * as UsersApi from "../network/users_api";
+import { User as UserModel } from "./frontend/src/models/users";
+import { SignUpCredentials } from "./frontend/src/network/users_api";
+import * as UsersApi from "./frontend/src/network/users_api";
+import TextInputField from "./frontend/src/components/forms/InputField";
 
 interface AddUserAccountProps {
     change: () => void,
@@ -13,121 +14,111 @@ interface AddUserAccountProps {
 export const RegistrationForm = ({change, onUserSaved }: AddUserAccountProps) => {
     const { register, handleSubmit, formState : { errors, isSubmitting }} = useForm<UserInput>();
 
-    async function onSubmit(input: UserInput) {
-        try {
-            const userResponse = await UsersApi.createUser(input);
-            onUserSaved(userResponse);
-        } catch (error) {
-            console.error(error);
-            alert(error);
-        }
-    }
-
     let errorDisplayed = false;
 
     return (
         <>
             { 
-                errors.username?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.username?.message }
+                            { errors.username?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.password?.message?.length !== undefined && errorDisplayed === false? 
+                errors.password?.message?.toString().length !== undefined && errorDisplayed === false? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.password?.message }
+                            { errors.password?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.confirmPassword?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.confirmPassword?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.confirmPassword?.message }
+                            { errors.confirmPassword?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.first?.message?.length !== undefined && errorDisplayed === false? 
+                errors.first?.message?.toString().length !== undefined && errorDisplayed === false? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.first?.message }
+                            { errors.first?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.last?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.last?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.last?.message }
+                            { errors.last?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.email?.message?.length !== undefined && errorDisplayed === false? 
+                errors.email?.message?.toString().length !== undefined && errorDisplayed === false? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.email?.message }
+                            { errors.email?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.feet?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.feet?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.feet?.message }
+                            { errors.feet?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.inches?.message?.length !== undefined && errorDisplayed === false? 
+                errors.inches?.message?.toString().length !== undefined && errorDisplayed === false? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.inches?.message }
+                            { errors.inches?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.weight?.message?.length !== undefined && errorDisplayed === false ? 
+                errors.weight?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.weight?.message }
+                            { errors.weight?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
             { 
-                errors.age?.message?.length !== undefined && errorDisplayed === false? 
+                errors.age?.message?.toString().length !== undefined && errorDisplayed === false? 
                     <>
                         <p className={styles.registration_error}>
-                            { errors.age?.message }
+                            { errors.age?.message.toString() }
                         </p>
                         {errorDisplayed = true}
                     </>
                     :null
             }
-            <form onSubmit={handleSubmit(onSubmit)} id={styles.user_signup_form} noValidate>
+            <Form onSubmit={handleSubmit(onSubmit)} id={styles.user_signup_form} noValidate>
                 {
                     errorDisplayed === false ?
                     <>
@@ -135,7 +126,12 @@ export const RegistrationForm = ({change, onUserSaved }: AddUserAccountProps) =>
                     </>
                     :null
                 }
-                <input type="text" placeholder="Username"  required {...register("username", {
+
+                <FormControl
+                    type="text" 
+                    placeholder="Username"  
+                    isInvalid={!!errors.title}
+                    {...register("username", {
                     required:"Username is required",
                     pattern: {
                         value: /^[a-zA-Z0-9]+$/,
@@ -150,6 +146,10 @@ export const RegistrationForm = ({change, onUserSaved }: AddUserAccountProps) =>
                         }
                     }})}
                 />
+                <Form.Control.Feedback type="invalid">
+                    {errors.username?.message?.toString()}
+                </Form.Control.Feedback>
+                
                 <input type="password" placeholder="Password" required {...register("password", {
                     required:"Password is required",
                     pattern: {

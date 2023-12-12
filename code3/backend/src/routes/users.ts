@@ -3,14 +3,12 @@ import * as UserController from "../controllers/users";
 
 const router = express.Router();
 
-router.get("/", UserController.getUsers);
+router.get("/",UserController.getAuthenticatedUser);
 
-router.get("/:userId", UserController.getUser);
+router.post("/signup", UserController.signUp);
 
-router.post("/", UserController.createUser);
+router.post("/login", UserController.login);
 
-router.patch("/:userId", UserController.updateUser);
-
-router.delete("/:userId", UserController.deleteUser);
+router.post("/logout", UserController.logout);
 
 export default router;
