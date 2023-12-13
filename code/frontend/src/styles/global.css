@@ -5,6 +5,7 @@
 
 :root {
   --electric-green : #09b43a;
+  --electric-green-50: #09b4398a;
 }
 
 * {
@@ -19,10 +20,6 @@
 
 span {
   color: var(--electric-green) !important;
-}
-
-.navbar {
-  z-index: 2000;
 }
 
 .App{

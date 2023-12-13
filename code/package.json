@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@types/css-modules": "^1.0.5"
+  }
+}

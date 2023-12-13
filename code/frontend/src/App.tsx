@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
-import LoginModal from "./components/LoginModal";
-import NavBar from "./components/NavBar";
+import { Container } from "react-bootstrap";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeView from "./components/HomeView";
+import NavBar from "./components/navbar/NavBar";
 import { RecoveryForm } from "./components/RecoveryForm";
 import { RegistrationSuccessful } from "./components/RegistrationSuccessful";
-import SignUpModal from "./components/SignUpModal";
+import LoginModal from "./components/modals/LoginModal";
+import SignUpModal from "./components/modals/SignUpModal";
 import { User } from "./models/users";
 import * as UsersApi from "./network/users_api";
-import UserPageLoggedInView from "./components/UserPageLoggedInView";
-import HomeView from "./components/HomeView";
+import NotFoundPage from "./pages/NotFoundPage";
+import UserPage from "./pages/UserPage";
+import styles from "./styles/App.module.css";
 
 const App = () => {
 
@@ -32,6 +36,7 @@ const App = () => {
     }, []);
 
     return (
+        <BrowserRouter>
         <div>
             <NavBar 
                 loggedInUser={loggedInUser}
@@ -39,22 +44,31 @@ const App = () => {
                 onSignUpClicked={() => {setShowSignUpModal(true)}}
                 onLogoutSuccessful={() => setLoggedInUser(null)}
             />
+            <Container className={styles.pageContainer}>
+                <Routes>
+                    <Route 
+                    path='/'
+                    element={<UserPage
+                        loggedInUser={loggedInUser}
+                        onLoginClicked={() => {setShowLoginModal(true)}}
+                        onSignUpClicked={() => {setShowSignUpModal(true)}}
+                        />}
+                    />
+                    <Route
+                        path="/*"
+                        element={<NotFoundPage />}
+                    />
+                </Routes>
+
+            </Container>
             <div className="App">
-                <>
-                {loggedInUser?
-                <UserPageLoggedInView />
-                :<HomeView
+                
+                {showHomeView?
+                    <HomeView
                     onLoginClicked={() => {setShowLoginModal(true)}}
                     onSignUpClicked={() => {setShowSignUpModal(true)}}
-                />
-                }
-                </>
-                {showHomeView?
-                <HomeView
-                onLoginClicked={() => {setShowLoginModal(true)}}
-                onSignUpClicked={() => {setShowSignUpModal(true)}}
-                />
-                :null
+                    />
+                    :null
                 }
                 {showLoginModal?
                 <>
@@ -77,6 +91,7 @@ const App = () => {
                             setLoggedInUser(user);
                             setShowSignUpModal(false);
                         }}
+                        onBackButtonClicked={() => [setShowSignUpModal(false)]}
                     />
                 </>
                 :null
@@ -108,6 +123,7 @@ const App = () => {
                 }
             </div>
         </div>
+        </BrowserRouter>
     );
 }
 

@@ -1,10 +1,12 @@
-import { useForm } from "react-hook-form";
-import { User } from "../models/users";
-import { LoginCredentials } from "../network/users_api";
-import * as UsersApi from "../network/users_api"
+import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import InputField from "./forms/InputField";
-import styles from "../styles/LoginModal.module.css"
+import { useForm } from "react-hook-form";
+import { UnauthorizedError } from "../../errors/http_errors";
+import { User } from "../../models/users";
+import * as UsersApi from "../../network/users_api";
+import { LoginCredentials } from "../../network/users_api";
+import InputField from "../forms/InputField";
+import styles from "../../styles/LoginModal.module.css";
 
 interface LoginModalProps {
     onDismiss: () => void,
@@ -13,6 +15,9 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginModalProps) => {
+
+    const [errorText, setErrorText] = useState<string | null>(null);
+
     const { register, handleSubmit, formState: { errors, isSubmitting}} = useForm<LoginCredentials>({
         mode: "onSubmit",
         reValidateMode: "onSubmit",
@@ -23,8 +28,12 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
             const user = await UsersApi.login(credentials);
             onLoginSuccessful(user);
         } catch(error) {
-            alert(error);
-            console.error(error);
+            if (error instanceof UnauthorizedError) {
+                setErrorText(error.message);
+            } else {
+                alert(error);
+            }
+            console.error(error)
         }
     }
 
@@ -41,25 +50,34 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
                     { 
                         errors.username?.message?.length !== undefined && errorDisplayed === false ? 
                         <>
+                            {errorDisplayed = true}
                             <p className={styles.login_error}>
                                 { errors.username?.message }
                             </p>
-                            {errorDisplayed = true}
                         </>
                         :null
                     }
                     { 
                         errors.password?.message?.length !== undefined && errorDisplayed === false? 
                         <>
+                            {errorDisplayed = true}
                             <p className={styles.login_error}>
                                 { errors.password?.message }
                             </p>
+                        </>
+                        :null
+                    }
+                    {errorText && errorDisplayed === false?
+                        <>
                             {errorDisplayed = true}
+                            <p className={styles.login_error}>
+                                { errorText }
+                            </p>
                         </>
                         :null
                     }
                     {
-                        errorDisplayed === false ?
+                        !errorText && errorDisplayed === false?
                         <>
                             <p className={styles.signup_form_text}>Enter username and password.</p>
                         </>
@@ -73,16 +91,16 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
                         placeholder="Username"
                         register={register}
                         registerOptions={{
-                            required:"Username is required",
+                            required:"Username is required.",
                             pattern: {
                                 value: /^[a-zA-Z0-9]+$/,
-                                message: "Username and/or password are not valid",
+                                message: "Username and/or password are incorrect.",
                             },
                             validate: {
                                 notIncorrectSize: (fieldValue) => {
                                     return (
                                         (fieldValue.length < 31 && fieldValue.length > 1) ||
-                                        "Username and/or password are not valid"
+                                        "Username and/or password are incorrect."
                                     );
                                 }
                             }
@@ -96,16 +114,16 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
                         placeholder="Password"
                         register={register}
                         registerOptions={{
-                            required:"Password is required",
+                            required:"Password is required.",
                             pattern: {
                                 value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/,
-                                message: "Username and/or password are not valid",
+                                message: "Username and/or password are incorrect.",
                             },
                             validate: {
                                 notIncorrectSize: (fieldValue) => {
                                     return (
                                         (fieldValue.length < 25 && fieldValue.length > 7) ||
-                                        "Username and/or password are not valid"
+                                        "Username and/or password are incorrect."
                                     );
                                 }
                             }

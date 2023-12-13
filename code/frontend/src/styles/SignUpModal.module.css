@@ -1,46 +1,62 @@
 .banner_box {
-  height: 18rem;
+  height: 70px;
   display: flex;
-  margin-bottom: -20px;
   align-self: center;
-  width: 70rem;
+  width: 300px;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .banner_text {
-  align-self: center;
+  align-self: flex-end;
   text-align: center;
-  font-size: 100px;
-  text-shadow: 5px 5px darkgreen;
+  font-size: 50px;
+  text-shadow: 3px 3px darkgreen;
   cursor: pointer;
 }
 
 .modal_body {
   width: 70rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .user_signup_form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -4rem; 
+    margin-top: 10px;
     margin-bottom: 5rem;
-    width: 100%;
+    border: solid var(--electric-green-50);
+    border-radius: 20px;
+    width: 40%;
+    padding-top: 20px;
+    box-shadow: var(--electric-green) 0px 5px 15px;
   }
+
+.signup_message {
+  margin-bottom: 8px;
+  border-bottom: solid rgb(50,50,50);
+  padding-bottom: 5px;
+  width: 200px;
+  text-align: center;
+  text-shadow: 3px 3px darkgreen;
+}
+
+.signup_form_text {
+  color: rgb(200,200,200, .6);
+}
   
 .signup_form_text, .registration_error {
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: larger;
+    font-size: small;
   }
 
 .inputField {
     height: 50px;
-    border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0);
+    color: rgb(200,200,200) !important;
     outline: none;
-    background-color: white !important;
     padding: 0.5rem 1rem;
     font-size: 1.1rem;
     margin-bottom: 10px;
@@ -49,6 +65,12 @@
     color: black;
     display: flex;
     width: 300px;
+    border: none;
+    background-color: rgb(50,50,50) !important;
+}
+
+.inputField::placeholder {
+  color: rgb(200,200,200, .6) !important;
 }
 
 .weight_box {
@@ -62,14 +84,18 @@
 }
 
 .inputField:focus{
-  background-color: lightgreen !important;
-  border-color: var(--electric-green);
+  background-color: rgb(35,35,35) !important;
   box-shadow: none;
+  border-color: none !important;
+}
+
+.inputField:hover{
+  background-color: rgb(35,35,35) !important;
+  color: white;
 }
 
 .inputField:active {
-  background-color: var(--electric-green) !important;
-  border-color: darkgreen;
+  box-shadow: none;
 }
 
 .registration_error {
@@ -80,19 +106,18 @@
   display: flex;
   height: 3rem;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 1rem;
-  width: 22rem;
+  width: 300px;
   align-self: center;
 }
 
 .button_box > * {
-  width: 10rem;
+  width: 140px;
   height: 3rem;
-  justify-content: space-around;
-  border-radius: 20px;
-  background-color: rgb(100,100,100);
-  border-color: white;
+  border-radius: 10px;
+  background-color: rgb(50,50,50) !important;
+  border-color: rgb(100, 100, 100);
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
@@ -100,13 +125,8 @@
 }
 
 .button_box > :hover {
-  width: 10.5rem;
-  height: 3.25rem;
   background-color: rgb(35,35,35) !important;
-  font-size: 23px;
-  margin-right: -.25rem;
-  margin-left: -.25rem;
-  color: var(--electric-green);
+  color: white;
   border-color: white;
 }
 

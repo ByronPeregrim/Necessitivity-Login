@@ -1,17 +1,22 @@
 import { useForm } from "react-hook-form";
-import { User } from "../models/users";
-import { SignUpCredentials } from "../network/users_api";
-import * as UsersApi from "../network/users_api";
+import { User } from "../../models/users";
+import { SignUpCredentials } from "../../network/users_api";
+import * as UsersApi from "../../network/users_api";
 import { Button, Form, Modal } from "react-bootstrap";
-import InputField from "./forms/InputField";
-import styles from "../styles/SignUpModal.module.css";
+import InputField from "../forms/InputField";
+import styles from "../../styles/SignUpModal.module.css";
+import { useState } from "react";
+import { ConflictError } from "../../errors/http_errors";
 
 interface SignUpModalProps {
     onDismiss: () => void, 
     onSignUpSuccessful: (user: User) => void,
+    onBackButtonClicked: () => void,
 }
 
-const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
+const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked}: SignUpModalProps) => {
+
+    const [errorText, setErrorText] = useState<string | null>(null);
 
     const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<SignUpCredentials>({
         mode: "onSubmit",
@@ -23,7 +28,11 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
             const newUser = await UsersApi.signUp(credentials);
             onSignUpSuccessful(newUser);
         } catch (error) {
-            alert(error);
+            if (error instanceof ConflictError) {
+                setErrorText(error.message);
+            } else {
+                alert(error);
+            }
             console.error(error);
         }
     }
@@ -33,11 +42,12 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
     return (
         <>
         <Modal show onHide={onDismiss}>
-            <div className={styles.banner_box}>
-                <h1 className={styles.banner_text}>FitTracker5000</h1>
-            </div>
             <Modal.Body className={styles.modal_body}>
                 <Form className={styles.user_signup_form} onSubmit={handleSubmit(onSubmit)}>
+                    <div className={styles.banner_box}>
+                        <h1 className={styles.banner_text}>FitTracker5000</h1>
+                    </div>
+                    <h1 className={styles.signup_message}>Sign Up!</h1>
                     { 
                         errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 
                             <>
@@ -97,6 +107,15 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
                                 {errorDisplayed = true}
                             </>
                             :null
+                    }
+                    {errorText && errorDisplayed === false?
+                        <>
+                            {errorDisplayed = true}
+                            <p className={styles.registration_error}>
+                                { errorText }
+                            </p>
+                        </>
+                        :null
                     }
                     {
                         errorDisplayed === false ?
@@ -259,6 +278,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
                         <Button
                             type="button"
                             disabled={isSubmitting}
+                            onClick={onBackButtonClicked}
                         >   
                             Back
                         </Button>

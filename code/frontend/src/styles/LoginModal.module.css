@@ -46,6 +46,11 @@
 }
 
 .input_account_info_box:focus {
+  border-color: var(--electric-green);
+  box-shadow: none;
+}
+
+.input_account_info_box:hover {
   background-color: lightgreen !important;
   border-color: var(--electric-green);
   box-shadow: none;

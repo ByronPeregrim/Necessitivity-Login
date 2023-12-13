@@ -1,7 +1,8 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { User } from "../models/users";
+import { User } from "../../models/users";
 import NavBarLoggedInView from "./NavBarLoggedInView";
 import NavBarLoggedOutView from "./NavBarLoggedOutView";
+import { Link } from "react-router-dom";
 
 
 interface NavBarProps {
@@ -15,11 +16,16 @@ const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccess
     return (
         <Navbar className="navbar" variant="dark" expand="sm">
             <Container>
-                <Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">
                     FitTracker5000
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar">
+                    <Nav>
+                        <Nav.Link as={Link} to="/privacy">
+                            Privacy
+                        </Nav.Link>
+                    </Nav>
                     <Nav className="ms-auto">
                         {loggedInUser
                             ? <NavBarLoggedInView user={loggedInUser} onLogoutSuccessful={onLogoutSuccessful} />
