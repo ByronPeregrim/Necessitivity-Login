@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import LoginModal from "./components/LoginModal";
+import NavBar from "./components/NavBar";
 import { RecoveryForm } from "./components/RecoveryForm";
 import { RegistrationSuccessful } from "./components/RegistrationSuccessful";
 import SignUpModal from "./components/SignUpModal";
-import LoginModal from "./components/LoginModal";
-import NavBar from "./components/NavBar";
 import { User } from "./models/users";
+import * as UsersApi from "./network/users_api";
+import UserPageLoggedInView from "./components/UserPageLoggedInView";
+import HomeView from "./components/HomeView";
 
 const App = () => {
 
     const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
-    const [showHomeView, setShowHomeView] = useState(true);
-    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showHomeView, setShowHomeView] = useState(false);
     const [showAccountRecoveryForm,setShowAccountRecoveryForm] = useState(false);
     const [showRegistrationSuccessfulView, setShowRegistrationSuccessfulView] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
+
+    useEffect(() => {
+        async function fetchLoggedInUser() {
+            try {
+                const user = await UsersApi.getLoggedInUser();
+                setLoggedInUser(user);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchLoggedInUser();
+    }, []);
 
     return (
         <div>
@@ -25,40 +40,46 @@ const App = () => {
                 onLogoutSuccessful={() => setLoggedInUser(null)}
             />
             <div className="App">
-                {
-                    showHomeView?
-                        <>
-                            <div className="banner_box">
-                                <h1 className="banner_text">FitTracker5000</h1>
-                            </div>
-                            <button onClick={()=>[setShowHomeView(false), setShowLoginModal(true)]} className="login_button" id="login">Login</button>
-                            <button onClick={()=>[setShowHomeView(false), setShowSignUpModal(true)]} className="signup_button" id="signup">Sign-Up</button>
-                            <div id="account_recovery_links">
-                                <button onClick={()=>[setShowHomeView(false), setShowAccountRecoveryForm(true)]}>Forgot Username?</button>
-                                <button onClick={()=>[setShowHomeView(false), setShowAccountRecoveryForm(true)]}>Reset Password?</button>
-                            </div>
-                        </>
-                        :null
+                <>
+                {loggedInUser?
+                <UserPageLoggedInView />
+                :<HomeView
+                    onLoginClicked={() => {setShowLoginModal(true)}}
+                    onSignUpClicked={() => {setShowSignUpModal(true)}}
+                />
                 }
-                {
-                    showLoginModal?
-                        <>
-                            <LoginModal
-                                onDismiss={() => {}}
-                                onLoginSuccessful={() => {}}
-                            />
-                        </>
-                        :null
+                </>
+                {showHomeView?
+                <HomeView
+                onLoginClicked={() => {setShowLoginModal(true)}}
+                onSignUpClicked={() => {setShowSignUpModal(true)}}
+                />
+                :null
                 }
-                {
-                    showSignUpModal ?
-                        <>
-                            <SignUpModal
-                                onDismiss={() => {}}
-                                onSignUpSuccessful={() => {}}
-                            />
-                        </>
-                        :null
+                {showLoginModal?
+                <>
+                    <LoginModal
+                        onDismiss={() => {setShowLoginModal(false)}}
+                        onLoginSuccessful={(user) => {
+                            setLoggedInUser(user);
+                            setShowLoginModal(false);
+                        }}
+                        onBackButtonClicked={() => [setShowLoginModal(false)]}
+                    />
+                </>
+                :null
+                }
+                {showSignUpModal?
+                <>
+                    <SignUpModal
+                        onDismiss={() => {setShowSignUpModal(false)}}
+                        onSignUpSuccessful={(user) => {
+                            setLoggedInUser(user);
+                            setShowSignUpModal(false);
+                        }}
+                    />
+                </>
+                :null
             
                 }
                 {

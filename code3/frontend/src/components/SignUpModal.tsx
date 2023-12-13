@@ -34,75 +34,74 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
         <>
         <Modal show onHide={onDismiss}>
             <div className={styles.banner_box}>
-                <h1 className={styles.banner_box}>FitTracker5000</h1>
+                <h1 className={styles.banner_text}>FitTracker5000</h1>
             </div>
-            { 
-                errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.username?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-            { 
-                errors.password?.message?.toString().length !== undefined && errorDisplayed === false? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.password?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-            { 
-                errors.email?.message?.toString().length !== undefined && errorDisplayed === false? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.email?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-            { 
-                errors.first?.message?.toString().length !== undefined && errorDisplayed === false? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.first?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-            { 
-                errors.last?.message?.toString().length !== undefined && errorDisplayed === false ? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.last?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-            { 
-                errors.weight?.message?.toString().length !== undefined && errorDisplayed === false ? 
-                    <>
-                        <p className={styles.registration_error}>
-                            { errors.weight?.message.toString() }
-                        </p>
-                        {errorDisplayed = true}
-                    </>
-                    :null
-            }
-
-            <Modal.Body>
+            <Modal.Body className={styles.modal_body}>
                 <Form className={styles.user_signup_form} onSubmit={handleSubmit(onSubmit)}>
+                    { 
+                        errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.username?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
+                    { 
+                        errors.password?.message?.toString().length !== undefined && errorDisplayed === false? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.password?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
+                    { 
+                        errors.email?.message?.toString().length !== undefined && errorDisplayed === false? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.email?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
+                    { 
+                        errors.first?.message?.toString().length !== undefined && errorDisplayed === false? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.first?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
+                    { 
+                        errors.last?.message?.toString().length !== undefined && errorDisplayed === false ? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.last?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
+                    { 
+                        errors.weight?.message?.toString().length !== undefined && errorDisplayed === false ? 
+                            <>
+                                <p className={styles.registration_error}>
+                                    { errors.weight?.message.toString() }
+                                </p>
+                                {errorDisplayed = true}
+                            </>
+                            :null
+                    }
                     {
                         errorDisplayed === false ?
                         <>
-                            <p id={styles.signup_form_text}>Username and password are case sensitive.</p>
+                            <p className={styles.signup_form_text}>Username and password are case sensitive.</p>
                         </>
                         :null
                     }
@@ -235,7 +234,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
                             }
                         }}
                     />
-                    <div id={styles.weight_box}>
+                    <div className={styles.weight_box}>
                         <InputField
                             className={[styles.inputField, styles.weight_input]}
                             name="weight"
@@ -256,7 +255,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
                             }}
                         />
                     </div>
-                    <div className="button_box">
+                    <div className={styles.button_box}>
                         <Button
                             type="button"
                             disabled={isSubmitting}

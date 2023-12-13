@@ -2,11 +2,18 @@
   --electric-green : #09b43a;
 }
 
+.modal_body {
+  width: 70rem;
+  padding-bottom: 10rem;
+}
+
 .banner_box {
   height: 22rem;
   display: flex;
   margin-bottom: -2rem;
   align-self: center;
+  width: 70rem;
+  justify-content: center;
 }
 
 .banner_text {
@@ -40,13 +47,16 @@
 
 .input_account_info_box:focus {
   background-color: lightgreen !important;
+  border-color: var(--electric-green);
+  box-shadow: none;
 }
 
 .input_account_info_box:active {
   background-color: var(--electric-green) !important;
+  border-color: darkgreen;
 }
 
-#signup_form_text, .login_error {
+.signup_form_text, .login_error {
   text-align: center;
   margin-bottom: 5px;
   margin-top: -29px;
@@ -85,6 +95,11 @@
   margin-left: -.25rem;
   color: var(--electric-green);
   border-color: white;
+}
+
+.button_box > :active {
+  border-color: var(--electric-green) !important;
+  color: var(--electric-green) !important;
 }
 
 .login_error {

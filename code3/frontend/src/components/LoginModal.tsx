@@ -9,9 +9,10 @@ import styles from "../styles/LoginModal.module.css"
 interface LoginModalProps {
     onDismiss: () => void,
     onLoginSuccessful: (user: User) => void,
+    onBackButtonClicked: () => void,
 }
 
-const LoginModal = ({onDismiss, onLoginSuccessful}: LoginModalProps) => {
+const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginModalProps) => {
     const { register, handleSubmit, formState: { errors, isSubmitting}} = useForm<LoginCredentials>({
         mode: "onSubmit",
         reValidateMode: "onSubmit",
@@ -35,7 +36,7 @@ const LoginModal = ({onDismiss, onLoginSuccessful}: LoginModalProps) => {
                 <h1 className={styles.banner_text}>FitTracker5000</h1>
             </div>
             {errorDisplayed = false}
-            <Modal.Body>
+            <Modal.Body className={styles.modal_body}>
                 <Form className={styles.user_login_form} onSubmit={handleSubmit(onSubmit)}>
                     { 
                         errors.username?.message?.length !== undefined && errorDisplayed === false ? 
@@ -60,7 +61,7 @@ const LoginModal = ({onDismiss, onLoginSuccessful}: LoginModalProps) => {
                     {
                         errorDisplayed === false ?
                         <>
-                            <p id={styles.signup_form_text}>Enter username and password.</p>
+                            <p className={styles.signup_form_text}>Enter username and password.</p>
                         </>
                         :null
                     }
@@ -114,6 +115,7 @@ const LoginModal = ({onDismiss, onLoginSuccessful}: LoginModalProps) => {
                         <Button
                             type="button"
                             disabled={isSubmitting}
+                            onClick={onBackButtonClicked}
                         >   
                             Back
                         </Button>

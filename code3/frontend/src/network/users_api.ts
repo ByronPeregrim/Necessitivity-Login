@@ -19,7 +19,7 @@ async function fetchData(input: RequestInfo, init?: RequestInit) {
 }
 
 
-export async function getLoggedInUser(): Promise<User[]> {
+export async function getLoggedInUser(): Promise<User> {
     const response = await fetchData("/api/users", { method: "GET" });
     return response.json();
 }

@@ -120,6 +120,10 @@ a:hover {
   margin-left: -.25rem;
 }
 
+.modal-content {
+  align-items: center;
+}
+
 input::placeholder {
   color: black !important;
 }
