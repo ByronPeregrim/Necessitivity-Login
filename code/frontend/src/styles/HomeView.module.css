@@ -5,7 +5,7 @@
   }
 
 .banner_box {
-  height: 20rem;
+  height: 17rem;
   display: flex;
   margin-bottom: -2rem;
 }
@@ -55,4 +55,34 @@
 .account_recovery_links >:hover {
   color: darkgreen;
   cursor: pointer;
+}
+
+@media (max-width:993px) {
+  .banner_text {
+    font-size: 80px;
+  }
+}
+
+@media (max-width:770px) {
+  .banner_text {
+    font-size: 85px;
+  }
+}
+
+@media (max-width:550px) {
+  .banner_text {
+    font-size: 60px;
+  }
+}
+
+@media (max-width:460px) {
+  .banner_text {
+    font-size: 70px;
+  }
+}
+
+@media (max-width:350px) {
+  .banner_text {
+    font-size: 65px;
+  }
 }

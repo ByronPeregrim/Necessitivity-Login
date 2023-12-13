@@ -11,7 +11,7 @@ const HomeView = ({ onSignUpClicked, onLoginClicked, onAccountRecoveryClicked } 
     return (
         <div className={styles.container}>
             <div className={styles.banner_box}>
-            <h1 className={styles.banner_text}>FitTracker5000</h1>
+            <h1 className={styles.banner_text}>FitTracker 5000</h1>
             </div>
             <button onClick={onLoginClicked} className={styles.login_button} id="login">Login</button>
             <button onClick={onSignUpClicked} className={styles.signup_button} id="signup">Sign-Up</button>

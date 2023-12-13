@@ -14,7 +14,7 @@ interface NavBarProps {
 
 const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccessful }: NavBarProps) => {
     return (
-        <Navbar className="navbar" variant="dark" expand="sm">
+        <Navbar className="navbar" variant="dark" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
                     FitTracker5000

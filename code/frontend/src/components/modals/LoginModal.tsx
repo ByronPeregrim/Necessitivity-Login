@@ -42,7 +42,7 @@ const LoginModal = ({onLoginSuccessful, onBackButtonClicked, onAccountRecoveryCl
     return (
         <Modal show>
             <div className={styles.banner_box}>
-                <h1 className={styles.banner_text}>FitTracker5000</h1>
+                <h1 className={styles.banner_text}>FitTracker 5000</h1>
             </div>
             {errorDisplayed = false}
             <Modal.Body className={styles.modal_body}>

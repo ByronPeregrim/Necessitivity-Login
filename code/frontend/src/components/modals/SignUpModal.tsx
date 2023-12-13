@@ -44,10 +44,10 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
         <>
         <Modal show onHide={onDismiss}>
             <Modal.Body className={styles.modal_body}>
+                <div className={styles.banner_box}>
+                    <h1 className={styles.banner_text}>FitTracker 5000</h1>
+                </div>
                 <Form className={styles.user_signup_form} onSubmit={handleSubmit(onSubmit)}>
-                    <div className={styles.banner_box}>
-                        <h1 className={styles.banner_text}>FitTracker5000</h1>
-                    </div>
                     <h1 className={styles.signup_message}>Sign Up!</h1>
                     { 
                         errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 

@@ -22,6 +22,10 @@ span {
   color: var(--electric-green) !important;
 }
 
+#main-navbar {
+  margin-top: 10px;
+}
+
 .App{
   display: flex;
   flex-direction: column;

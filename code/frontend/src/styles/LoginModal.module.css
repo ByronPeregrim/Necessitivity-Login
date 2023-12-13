@@ -3,25 +3,27 @@
 }
 
 .modal_body {
-  width: 70rem;
+  width: 100rem;
   padding-bottom: 10rem;
 }
 
 .banner_box {
-  height: 22rem;
+  height: 17rem;
   display: flex;
-  margin-bottom: -2rem;
   align-self: center;
-  width: 70rem;
+  width: 100rem;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .banner_text {
-  align-self: center;
+  align-self: flex-end;
   text-align: center;
   font-size: 100px;
-  text-shadow: 5px 5px darkgreen;
+  text-shadow: 5px 5px orange;
   cursor: pointer;
+  color: yellow;
+  margin-bottom: 11px;
 }
 
 .user_login_form {
@@ -41,24 +43,42 @@
   font-size: 30px;
   font-weight: bolder;
   border-color: silver;
-  margin-bottom: 1.5rem;
-  margin-top: -26px;
+}
+
+.input_account_info_box {
+  height: 5rem;
+  color: rgb(200,200,200) !important;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  margin-top: -20px;
+  transition: .3s;
+  color: black;
+  display: flex;
+  width: 20rem;
+  border: none;
+  background-color: rgb(50,50,50) !important;
+}
+
+.input_account_info_box::placeholder {
+  color: rgb(200,200,200, .5) !important;
+  font-weight: bold;
 }
 
 .input_account_info_box:focus {
-  border-color: var(--electric-green);
+  background-color: rgb(35,35,35) !important;
   box-shadow: none;
+  border-color: none !important;
 }
 
 .input_account_info_box:hover {
-  background-color: lightgreen !important;
-  border-color: var(--electric-green);
-  box-shadow: none;
+  background-color: rgb(35,35,35) !important;
 }
 
 .input_account_info_box:active {
-  background-color: var(--electric-green) !important;
-  border-color: darkgreen;
+  box-shadow: none;
 }
 
 .signup_form_text, .login_error {
@@ -68,43 +88,42 @@
   font-size: larger;
 }
 
+.signup_form_text {
+  color: yellow;
+  text-shadow: .5px .5px orange;
+}
+
 .button_box {
   display: flex;
   height: 3rem;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 1rem;
-  width: 22rem;
+  width: 300px;
   align-self: center;
 }
 
 .button_box > * {
-  width: 10rem;
+  width: 140px;
   height: 3rem;
-  justify-content: space-around;
-  border-radius: 20px;
-  background-color: rgb(100,100,100);
-  border-color: white;
+  border-radius: 10px;
+  background-color: rgb(50,50,50) !important;
+  border-color: rgb(100, 100, 100);
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
-  color: var(--electric-green);
+  color: yellow;
 }
 
 .button_box > :hover {
-  width: 10.5rem;
-  height: 3.25rem;
   background-color: rgb(35,35,35) !important;
-  font-size: 23px;
-  margin-right: -.25rem;
-  margin-left: -.25rem;
-  color: var(--electric-green);
+  color: white;
   border-color: white;
 }
 
 .button_box > :active {
-  border-color: var(--electric-green) !important;
-  color: var(--electric-green) !important;
+  border-color: darkred !important;
+  color: darkred !important;
 }
 
 .login_error {
@@ -121,27 +140,45 @@
   background-color: rgb(0,0,0,0);
   border: none;
   font-size: 16px;
-  color: var(--electric-green);
+  color: yellow;
   padding: 0;
 }
 
 .account_recovery_links >:hover {
-  color: darkgreen;
+  color: orange;
   cursor: pointer;
   background-color: rgb(0,0,0,0);
 }
 
-@media (max-width:768px) {
+@media (max-width:770px) {
   .banner_text {
-      font-size:75px;
-      margin-top: 75px;
+    font-size: 90px;
   }
 }
 
-@media (max-width:570px) {
+@media (max-width:650px) {
   .banner_text {
-      font-size:55px;
-      margin-top: 100px;
+    font-size: 80px;
+  }
+}
+
+@media (max-width:575px) {
+  .banner_text {
+    font-size: 70px;
+    text-shadow: 4px 4px orange;
+  }
+}
+
+@media (max-width:500px) {
+  .banner_text {
+    font-size: 60px;
+  }
+}
+
+@media (max-width:430px) {
+  .banner_text {
+    font-size: 50px;
+    text-shadow: 3px 3px orange;
   }
 }
 
@@ -152,28 +189,21 @@
 
   .login_error {
     font-size: medium;
+    margin-bottom: 10px;
   }
 
   .banner_text {
-    font-size: 50px;
+    font-size: 40px;
     margin-top: 125px;
-}
+  }
+
+  .button_box { 
+    width: 18rem;
+  }
 }
 
 @media (max-width:330px) {
   .banner_text {
       font-size: 40px;
-  }
-
-  .button_box { 
-    width: 20rem;
-  }
-
-  .button_box > * {
-    width: 9rem;
-  }
-
-  .button_box > :hover {
-    width: 9.5rem;
   }
 }

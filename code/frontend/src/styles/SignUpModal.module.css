@@ -1,17 +1,15 @@
 .banner_box {
-  height: 70px;
+  height: 90px;
   display: flex;
   align-self: center;
-  width: 300px;
   justify-content: center;
-  margin-bottom: 10px;
 }
 
 .banner_text {
   align-self: flex-end;
   text-align: center;
-  font-size: 50px;
-  text-shadow: 3px 3px darkgreen;
+  font-size: 100px;
+  text-shadow: 5px 5px darkblue;
   cursor: pointer;
 }
 
@@ -22,17 +20,21 @@
   flex-direction: column;
 }
 
+.modal_body * {
+  color: blue !important;
+}
+
 .user_signup_form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 5rem;
-    border: solid var(--electric-green-50);
+    border: solid darkblue;
     border-radius: 20px;
     width: 40%;
     padding-top: 20px;
-    box-shadow: var(--electric-green) 0px 5px 15px;
+    box-shadow: blue 0px 5px 15px;
   }
 
 .signup_message {
@@ -41,12 +43,12 @@
   padding-bottom: 5px;
   width: 200px;
   text-align: center;
-  text-shadow: 3px 3px darkgreen;
-  font-size: 30px;
+  text-shadow: 3px 3px darkblue;
+  font-size: 35px;
 }
 
 .signup_form_text {
-  color: rgb(200,200,200, .6);
+  color: rgb(200,200,200, .6) !important;
 }
   
 .signup_form_text, .registration_error {
@@ -93,7 +95,6 @@
 
 .inputField:hover{
   background-color: rgb(35,35,35) !important;
-  color: white;
 }
 
 .inputField:active {
@@ -101,7 +102,7 @@
 }
 
 .registration_error {
-    color: red;
+    color: red !important;
 }
 
 .button_box {
@@ -123,25 +124,46 @@
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
-  color: var(--electric-green);
 }
 
 .button_box > :hover {
   background-color: rgb(35,35,35) !important;
-  color: white;
+  color: white !important;
   border-color: white;
 }
 
 .button_box > :active {
-  border-color: var(--electric-green) !important;
-  color: var(--electric-green) !important;
+  border-color: blue !important;
+  color: blue !important;
 }
 
 .already_have_account_button {
-  color: rgb(200,200,200, .6);
+  color: rgb(200,200,200, .6) !important;
   border: none;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+@media (max-width:750px) {
+  .banner_text {
+    font-size: 90px;
+  }
+}
+
+@media (max-width:650px) {
+  .banner_text {
+    font-size: 80px;
+  }
+}
+
+@media (max-width:575px) {
+  .banner_text {
+    font-size: 70px;
+  }
+  .banner_box {
+    height: 110px;
+  }
 }
 
 
@@ -151,7 +173,7 @@
   }
 
   .banner_text {
-    font-size: 45px;
+    font-size: 60px;
     margin-top: 75px;
   }
 
@@ -179,15 +201,22 @@
   .button_box > * {
     width: 120px;
   }
-
 }
 
-@media (max-width:330px) {
+@media (max-width:450px) {
+  .banner_text {
+    font-size: 50px;
+  }
+}
+
+@media (max-width:400px) {
   .banner_text {
     font-size: 40px;
   }
 
   .user_signup_form {
-    width: 310px;
+    width: 285px;
   }
 }
+
+
