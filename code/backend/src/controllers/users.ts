@@ -3,6 +3,7 @@ import UserModel from "../models/user"
 import createHttpError from "http-errors";
 import Workout from "../classes/Workout";
 import bcrypt from "bcrypt";
+import nodemailer from "nodemailer";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
     try {
@@ -60,7 +61,6 @@ export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = asy
             });
 
             req.session.userId = newUser._id;
-
             res.status(201).json(newUser);
     } catch (error) {
         next(error);
@@ -98,6 +98,55 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
     } catch (error) {
         next(error);
     }
+};
+
+interface RecoveryBody {
+    email?: string,
+}
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'fitnesstracker5000@email.com',
+      pass: 'ajjsogsnvjxcpjcz'
+    }
+  });
+
+export const verifyEmail: RequestHandler<unknown, unknown, RecoveryBody, unknown> =async (req, res, next) => {
+    const email = req.body.email;
+
+    try {
+        if (!email) {
+            throw createHttpError(400, "Parameters missing");
+        }
+
+        const user = await UserModel.findOne({email: email}).select("+username +password").exec();
+
+        if (!user) {
+            throw createHttpError(401, "Invalid email");
+        }
+
+        const mailOptions = {
+            from: 'fitnesstracker5000@email.com',
+            to: user.email,
+            subject: 'FitnessTracker5000 - Account Recovery',
+            text: 'Username: ' + user.username +
+                '\nPassword: ' + user.password
+        };
+
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                console.log(error);
+                throw createHttpError(502, "Failed to send recovery email.");
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        })
+        res.sendStatus(200);
+    } catch (error) {
+        next(error);
+    }
+    
 };
 
 export const logout: RequestHandler = (req,res,next) => {

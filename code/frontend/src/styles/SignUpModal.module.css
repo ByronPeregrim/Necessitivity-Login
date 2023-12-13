@@ -42,6 +42,7 @@
   width: 200px;
   text-align: center;
   text-shadow: 3px 3px darkgreen;
+  font-size: 30px;
 }
 
 .signup_form_text {
@@ -51,6 +52,7 @@
 .signup_form_text, .registration_error {
     text-align: center;
     font-size: small;
+    width: 300px;
   }
 
 .inputField {
@@ -135,25 +137,19 @@
   color: var(--electric-green) !important;
 }
 
-@media (max-width:768px) {
-  .banner_text {
-    font-size: 75px;
-  }
-  
+.already_have_account_button {
+  color: rgb(200,200,200, .6);
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-@media (max-width:570px) {
-  .banner_text {
-    font-size: 50px;
-    margin-top: 75px;
+
+@media (max-width:500px) {
+  .user_signup_form {
+    width: 350px;
   }
 
-  .signup_form_text {
-    font-size: small;
-  }
-}
-
-@media (max-width:375px) {
   .banner_text {
     font-size: 45px;
     margin-top: 75px;
@@ -168,8 +164,8 @@
     width: 100px;
   }
 
-  .registration_error {
-    font-size: small;
+  .registration_error, .signup_form_text {
+    width: 250px;
   }
 
   .weight_box {
@@ -177,15 +173,11 @@
   }
 
   .button_box { 
-    width: 20rem;
+    width: 250px;
   }
 
   .button_box > * {
-    width: 9rem;
-  }
-
-  .button_box > :hover {
-    width: 9.5rem;
+    width: 120px;
   }
 
 }
@@ -193,5 +185,9 @@
 @media (max-width:330px) {
   .banner_text {
     font-size: 40px;
+  }
+
+  .user_signup_form {
+    width: 310px;
   }
 }

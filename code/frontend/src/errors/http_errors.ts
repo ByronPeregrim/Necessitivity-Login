@@ -14,3 +14,9 @@ export class UnauthorizedError extends HttpError { }
  * Status code: 409
  */
 export class ConflictError extends HttpError { }
+
+/**
+ * Status code: 502
+ */
+export class BadGateway extends HttpError { }
+

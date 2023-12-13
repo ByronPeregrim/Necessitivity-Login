@@ -63,6 +63,22 @@ export async function login(credentials: LoginCredentials): Promise<User> {
     return response.json();
 }
 
+export interface EmailCredentials {
+    email: string,
+}
+
+export async function verifyEmail(credentials: EmailCredentials): Promise<User> {
+    const response = await fetchData("/api/users/account-recovery",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+    });
+    return response.json();
+}
+
 export async function logout() {
     await fetchData("/api/users/logout", { method: "POST"});
 }

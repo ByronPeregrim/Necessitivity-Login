@@ -5,16 +5,16 @@ import { UnauthorizedError } from "../../errors/http_errors";
 import { User } from "../../models/users";
 import * as UsersApi from "../../network/users_api";
 import { LoginCredentials } from "../../network/users_api";
-import InputField from "../forms/InputField";
 import styles from "../../styles/LoginModal.module.css";
+import InputField from "../forms/InputField";
 
 interface LoginModalProps {
-    onDismiss: () => void,
     onLoginSuccessful: (user: User) => void,
     onBackButtonClicked: () => void,
+    onAccountRecoveryClicked: () => void,
 }
 
-const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginModalProps) => {
+const LoginModal = ({onLoginSuccessful, onBackButtonClicked, onAccountRecoveryClicked}: LoginModalProps) => {
 
     const [errorText, setErrorText] = useState<string | null>(null);
 
@@ -40,7 +40,7 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
     let errorDisplayed = false;
 
     return (
-        <Modal show onHide={onDismiss}>
+        <Modal show>
             <div className={styles.banner_box}>
                 <h1 className={styles.banner_text}>FitTracker5000</h1>
             </div>
@@ -148,12 +148,14 @@ const LoginModal = ({onDismiss, onLoginSuccessful, onBackButtonClicked}: LoginMo
                         <Button
                             type="button"
                             disabled={isSubmitting}
+                            onClick={()=> {onAccountRecoveryClicked()}}
                         >   
-                            Forget Username?
+                            Forgot Username?
                         </Button>
                         <Button
                             type="button"
                             disabled={isSubmitting}
+                            onClick={()=> {onAccountRecoveryClicked()}}
                         >   
                             Reset Password?
                         </Button>

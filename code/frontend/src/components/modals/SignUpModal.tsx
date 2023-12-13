@@ -1,20 +1,21 @@
-import { useForm } from "react-hook-form";
-import { User } from "../../models/users";
-import { SignUpCredentials } from "../../network/users_api";
-import * as UsersApi from "../../network/users_api";
-import { Button, Form, Modal } from "react-bootstrap";
-import InputField from "../forms/InputField";
-import styles from "../../styles/SignUpModal.module.css";
 import { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { ConflictError } from "../../errors/http_errors";
+import { User } from "../../models/users";
+import * as UsersApi from "../../network/users_api";
+import { SignUpCredentials } from "../../network/users_api";
+import styles from "../../styles/SignUpModal.module.css";
+import InputField from "../forms/InputField";
 
 interface SignUpModalProps {
     onDismiss: () => void, 
     onSignUpSuccessful: (user: User) => void,
     onBackButtonClicked: () => void,
+    onAlreadyHaveAccountButtonClicked: () => void,
 }
 
-const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked}: SignUpModalProps) => {
+const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlreadyHaveAccountButtonClicked}: SignUpModalProps) => {
 
     const [errorText, setErrorText] = useState<string | null>(null);
 
@@ -290,7 +291,13 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked}: SignU
                         </Button>
                     </div>
 
-                    
+                    <Button
+                        className={styles.already_have_account_button}
+                        onClick={onAlreadyHaveAccountButtonClicked}
+                        disabled={isSubmitting}
+                    >
+                        Already have an account?
+                    </Button>
                 </Form>
             </Modal.Body>
         </Modal>

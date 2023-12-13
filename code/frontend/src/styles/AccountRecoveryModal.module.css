@@ -1,0 +1,137 @@
+.modal_body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70rem;
+    height: 30rem;
+  }
+
+.banner_box {
+    height: 200px;
+    display: flex;
+    align-self: center;
+    width: 70rem;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .banner_text {
+    align-self: flex-end;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 3px 3px darkgreen;
+    cursor: pointer;
+  }
+  
+  .banner_text {
+    align-self: center;
+    text-align: center;
+    font-size: 100px;
+    text-shadow: 5px 5px darkgreen;
+    cursor: pointer;
+  }
+
+  .account_recovery_text {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .account_recovery_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 500px;
+    box-shadow: var(--electric-green) 0px 5px 15px;
+    border: solid var(--electric-green-50);
+    border-radius: 20px;
+  }
+  
+  .inputField {
+    height: 50px;
+    color: rgb(200,200,200) !important;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    transition: .3s;
+    color: black;
+    display: flex;
+    width: 300px;
+    border: none;
+    background-color: rgb(100,100,100) !important;
+  }
+  
+  .inputField:focus{
+    background-color: rgb(70,70,70) !important;
+    box-shadow: none;
+    border-color: none !important;
+  }
+  
+  .inputField:hover{
+    background-color: rgb(70,70,70) !important;
+    color: white;
+  }
+  
+  .inputField:active {
+    box-shadow: none;
+  }
+  
+  .recovery_error, .recovery_form_text {
+    color: green !important;
+    text-align: center;
+    font-size: 18px;
+    margin-top: -10px;
+    margin-bottom: -15px;
+    z-index: 1000;
+  }
+
+  .recovery_error {
+    color: red !important;
+  }
+
+  .button_box {
+    display: flex;
+    height: 3rem;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 300px;
+    align-self: center;
+  }
+  
+  .button_box > * {
+    width: 140px;
+    height: 3rem;
+    border-radius: 10px;
+    background-color: rgb(50,50,50) !important;
+    border-color: rgb(100, 100, 100);
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: var(--electric-green);
+  }
+  
+  .button_box > :hover {
+    background-color: rgb(35,35,35) !important;
+    color: white;
+    border-color: white;
+  }
+  
+  .button_box > :active {
+    border-color: var(--electric-green) !important;
+    color: var(--electric-green) !important;
+  }
+  
+  @media (max-width:375px) {
+    .account_recovery_text {
+      font-size: 20px;
+    }
+  
+    .account_recovery_form > input {
+      width: 16rem;
+    }
+  }

@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeView from "./components/HomeView";
 import NavBar from "./components/navbar/NavBar";
-import { RecoveryForm } from "./components/RecoveryForm";
 import { RegistrationSuccessful } from "./components/RegistrationSuccessful";
 import LoginModal from "./components/modals/LoginModal";
 import SignUpModal from "./components/modals/SignUpModal";
@@ -12,13 +11,14 @@ import * as UsersApi from "./network/users_api";
 import NotFoundPage from "./pages/NotFoundPage";
 import UserPage from "./pages/UserPage";
 import styles from "./styles/App.module.css";
+import AccountRecoveryModal from "./components/modals/AccountRecoveryModal";
 
 const App = () => {
 
     const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
     const [showHomeView, setShowHomeView] = useState(false);
-    const [showAccountRecoveryForm,setShowAccountRecoveryForm] = useState(false);
+    const [showAccountRecoveryModal,setShowAccountRecoveryModal] = useState(false);
     const [showRegistrationSuccessfulView, setShowRegistrationSuccessfulView] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
@@ -52,6 +52,7 @@ const App = () => {
                         loggedInUser={loggedInUser}
                         onLoginClicked={() => {setShowLoginModal(true)}}
                         onSignUpClicked={() => {setShowSignUpModal(true)}}
+                        onAccountRecoveryClicked={() => {setShowAccountRecoveryModal(true)}}
                         />}
                     />
                     <Route
@@ -67,18 +68,19 @@ const App = () => {
                     <HomeView
                     onLoginClicked={() => {setShowLoginModal(true)}}
                     onSignUpClicked={() => {setShowSignUpModal(true)}}
+                    onAccountRecoveryClicked={() => {setShowAccountRecoveryModal(true)}}
                     />
                     :null
                 }
                 {showLoginModal?
                 <>
                     <LoginModal
-                        onDismiss={() => {setShowLoginModal(false)}}
                         onLoginSuccessful={(user) => {
                             setLoggedInUser(user);
                             setShowLoginModal(false);
                         }}
                         onBackButtonClicked={() => [setShowLoginModal(false)]}
+                        onAccountRecoveryClicked={() => [setShowLoginModal(false), setShowAccountRecoveryModal(true)]}
                     />
                 </>
                 :null
@@ -92,20 +94,21 @@ const App = () => {
                             setShowSignUpModal(false);
                         }}
                         onBackButtonClicked={() => [setShowSignUpModal(false)]}
+                        onAlreadyHaveAccountButtonClicked={() => [setShowSignUpModal(false), setShowLoginModal(true)]}
                     />
                 </>
                 :null
             
                 }
-                {
-                    showAccountRecoveryForm?
-                        <>
-                            <div className="banner_box">
-                                <h1 id="banner_text">FitTracker5000</h1>
-                            </div>
-                            <RecoveryForm change={()=>[setShowAccountRecoveryForm(false),setShowHomeView(true)]}/>
-                        </>
-                        :null
+                {showAccountRecoveryModal?
+                <>
+                    <AccountRecoveryModal
+                    onDismiss={() => {setShowAccountRecoveryModal(false)}}
+                    onBackButtonClicked={() => [setShowAccountRecoveryModal(false)]}
+                    onRecoverySuccessful={() => null}
+                    />
+                </>
+                :null
                 }
                 {
                     showRegistrationSuccessfulView?
