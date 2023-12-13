@@ -1,0 +1,36 @@
+.backButton {
+    width: 10rem;
+    height: 3rem;
+    justify-content: space-around;
+    border-radius: 20px;
+    background-color: rgb(100,100,100);
+    border-color: white;
+    font-size: 20px;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+  
+  .backButton:hover {
+    width: 10.5rem;
+    height: 3.25rem;
+    background-color: rgb(110,110,110);
+    font-size: 23px;
+    margin-right: -.25rem;
+    margin-left: -.25rem;
+  }
+
+  .text {
+    font-size: 30px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  @media (max-width:375px) {
+    .text {
+      font-size: 20px;
+    }
+  
+    .text > input {
+      width: 16rem;
+    }
+  }

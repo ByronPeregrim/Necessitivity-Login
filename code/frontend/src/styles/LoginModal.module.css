@@ -1,0 +1,174 @@
+:root {
+  --electric-green : #09b43a;
+}
+
+.modal_body {
+  width: 70rem;
+  padding-bottom: 10rem;
+}
+
+.banner_box {
+  height: 22rem;
+  display: flex;
+  margin-bottom: -2rem;
+  align-self: center;
+  width: 70rem;
+  justify-content: center;
+}
+
+.banner_text {
+  align-self: center;
+  text-align: center;
+  font-size: 100px;
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+}
+
+.user_login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input_account_info_box {
+  color: black;
+  background-color: white !important;
+  padding-left: 10px;
+  cursor:text;
+  width: 20rem;
+  height: 5rem;
+  border-radius: 20px;
+  font-size: 30px;
+  font-weight: bolder;
+  border-color: silver;
+  margin-bottom: 1.5rem;
+  margin-top: -26px;
+}
+
+.input_account_info_box:focus {
+  background-color: lightgreen !important;
+  border-color: var(--electric-green);
+  box-shadow: none;
+}
+
+.input_account_info_box:active {
+  background-color: var(--electric-green) !important;
+  border-color: darkgreen;
+}
+
+.signup_form_text, .login_error {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: -29px;
+  font-size: larger;
+}
+
+.button_box {
+  display: flex;
+  height: 3rem;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  width: 22rem;
+  align-self: center;
+}
+
+.button_box > * {
+  width: 10rem;
+  height: 3rem;
+  justify-content: space-around;
+  border-radius: 20px;
+  background-color: rgb(100,100,100);
+  border-color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: var(--electric-green);
+}
+
+.button_box > :hover {
+  width: 10.5rem;
+  height: 3.25rem;
+  background-color: rgb(35,35,35) !important;
+  font-size: 23px;
+  margin-right: -.25rem;
+  margin-left: -.25rem;
+  color: var(--electric-green);
+  border-color: white;
+}
+
+.button_box > :active {
+  border-color: var(--electric-green) !important;
+  color: var(--electric-green) !important;
+}
+
+.login_error {
+  color: red;
+}
+
+.account_recovery_links {
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+}
+
+.account_recovery_links > *{
+  background-color: rgb(0,0,0,0);
+  border: none;
+  font-size: 16px;
+  color: var(--electric-green);
+  padding: 0;
+}
+
+.account_recovery_links >:hover {
+  color: darkgreen;
+  cursor: pointer;
+  background-color: rgb(0,0,0,0);
+}
+
+@media (max-width:768px) {
+  .banner_text {
+      font-size:75px;
+      margin-top: 75px;
+  }
+}
+
+@media (max-width:570px) {
+  .banner_text {
+      font-size:55px;
+      margin-top: 100px;
+  }
+}
+
+@media (max-width:375px) {
+  .input_account_info_box {
+    width: 18rem;
+  }
+
+  .login_error {
+    font-size: medium;
+  }
+
+  .banner_text {
+    font-size: 50px;
+    margin-top: 125px;
+}
+}
+
+@media (max-width:330px) {
+  .banner_text {
+      font-size: 40px;
+  }
+
+  .button_box { 
+    width: 20rem;
+  }
+
+  .button_box > * {
+    width: 9rem;
+  }
+
+  .button_box > :hover {
+    width: 9.5rem;
+  }
+}

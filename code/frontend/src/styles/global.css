@@ -1,0 +1,193 @@
+@font-face {
+  font-family: nunito;
+  src: url(../../public/fonts/Nunito-VariableFont_wght.ttf);
+}
+
+:root {
+  --electric-green : #09b43a;
+}
+
+* {
+  color: var(--electric-green);
+  font-family: nunito;
+  margin: 0;
+  padding: 0;
+  transition-duration: 200ms !important;
+  transition-property: all !important;
+  background-color: rgb(30, 30, 30) !important;
+}
+
+span {
+  color: var(--electric-green) !important;
+}
+
+.navbar {
+  z-index: 2000;
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(30, 30, 30);
+}
+
+a:hover {
+  color: darkgreen;
+}
+
+.banner_box {
+  height: 22rem;
+  display: flex;
+  margin-bottom: -2rem;
+}
+
+.banner_text {
+  align-self: center;
+  text-align: center;
+  font-size: 100px;
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+}
+
+.login_button, .signup_button {
+  width: 20rem;
+  height: 5rem;
+  border-radius: 20px;
+  font-size: 30px;
+  font-weight: bolder;
+  background-color: rgb(100, 100, 100);
+  border-color: silver;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.login_button:hover, .signup_button:hover {
+  width: 21rem;
+  height: 5.5rem;
+  margin-bottom: 1.25rem;
+  margin-top: -.25rem;
+  background-color: rgb(110,110,110);
+  font-size: 35px;
+  box-shadow: 2px 2px 2px rgb(200,200,200);
+}
+
+#account_recovery_links {
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+}
+
+#account_recovery_links > *{
+  background-color: rgb(0,0,0,0);
+  border: none;
+  font-size: 16px;
+}
+
+#account_recovery_links >:hover {
+  color: darkgreen;
+  cursor: pointer;
+}
+
+.button_box {
+  display: flex;
+  height: 3rem;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  width: 22rem;
+  align-self: center;
+}
+
+.button_box > button {
+  width: 10rem;
+  height: 3rem;
+  justify-content: space-around;
+  border-radius: 20px;
+  background-color: rgb(100,100,100);
+  border-color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.button_box > button:hover {
+  width: 10.5rem;
+  height: 3.25rem;
+  background-color: rgb(110,110,110);
+  font-size: 23px;
+  margin-right: -.25rem;
+  margin-left: -.25rem;
+}
+
+.modal-content {
+  align-items: center;
+}
+
+input::placeholder {
+  color: black !important;
+}
+
+
+@media (max-width:768px) {
+  .banner_text {
+      font-size:75px;
+      margin-top: 75px;
+  }
+
+  #reg_banner_box {
+    padding-left: 16px;
+  }
+
+  #reg_banner_text {
+    font-size: 75px;
+  }
+
+}
+
+@media (max-width:570px) {
+  .banner_text {
+      font-size:55px;
+      margin-top: 100px;
+  }
+  #reg_banner_text {
+    font-size: 50px;
+    margin-top: 125px;
+  }
+}
+
+@media (max-width:375px) {
+  .banner_text {
+      font-size: 50px;
+      margin-top: 125px;
+  }
+  #reg_banner_text {
+    font-size: 45px;
+    margin-top: 150px;
+  }
+
+  .button_box {
+    width: 20rem;
+  }
+
+  .button_box > button{
+    width: 9rem;
+  }
+
+  .login_button, .signup_button {
+    width: 18rem;
+  }
+
+  .login_button:hover, .signup_button:hover {
+    width: 19rem;
+  }
+}
+
+@media (max-width:330px) {
+  .banner_text {
+      font-size: 40px;
+  }
+  #reg_banner_text {
+    font-size: 40px;
+  }
+}
