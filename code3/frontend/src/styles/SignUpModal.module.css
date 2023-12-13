@@ -1,4 +1,16 @@
+.banner_box {
+  height: 18rem;
+  padding-left: 32px;
+}
 
+.banner_text {
+  margin-top: 100px;
+  align-self: center;
+  text-align: center;
+  font-size: 100px;
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+}
 
 .user_signup_form {
     display: flex;
@@ -6,7 +18,7 @@
     align-items: center;
     margin-top: -4rem; 
     margin-bottom: 5rem;
-    padding-left: 0;
+    padding-left: 32px;
   }
   
 #signup_form_text, .registration_error {
@@ -55,15 +67,37 @@
     color: red;
     margin-top: -42px;
     margin-bottom: 72px;
+    padding-left: 32px;
 }
 
 @media (max-width:768px) {
-  #user_signup_form {
-    padding-left: 0;
+  .user_signup_form, .registration_error {
+    padding-left: 16px;
+  }
+
+  .banner_box {
+    padding-left: 16px;
+  }
+
+  .banner_text {
+    font-size: 75px;
+  }
+  
+}
+
+@media (max-width:570px) {
+  .banner_text {
+    font-size: 50px;
+    margin-top: 125px;
   }
 }
 
 @media (max-width:375px) {
+  .banner_text {
+    font-size: 45px;
+    margin-top: 150px;
+  }
+
   #signup_form_text {
     font-size: small;
   }
@@ -75,5 +109,20 @@
 
   #weight_box {
     margin-left: 25px;
+  }
+
+  .weight_input {
+    width: 60px;
+  }
+
+  .registration_error {
+    font-size: small;
+}
+
+}
+
+@media (max-width:330px) {
+  .banner_text {
+    font-size: 40px;
   }
 }

@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import styles from "../styles/SignUpModal.module.css";
 import { User } from "../models/users";
 import { SignUpCredentials } from "../network/users_api";
-import * as UserApi from "../network/users_api";
+import * as UsersApi from "../network/users_api";
 import { Button, Form, Modal } from "react-bootstrap";
 import InputField from "./forms/InputField";
+import styles from "../styles/SignUpModal.module.css";
 
 interface SignUpModalProps {
     onDismiss: () => void, 
@@ -13,11 +13,14 @@ interface SignUpModalProps {
 
 const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
 
-    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<SignUpCredentials>();
+    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<SignUpCredentials>({
+        mode: "onSubmit",
+        reValidateMode: "onSubmit",
+    });
 
     async function onSubmit(credentials: SignUpCredentials) {
         try {
-            const newUser = await UserApi.signUp(credentials);
+            const newUser = await UsersApi.signUp(credentials);
             onSignUpSuccessful(newUser);
         } catch (error) {
             alert(error);
@@ -30,7 +33,9 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
     return (
         <>
         <Modal show onHide={onDismiss}>
-
+            <div className={styles.banner_box}>
+                <h1 className={styles.banner_box}>FitTracker5000</h1>
+            </div>
             { 
                 errors.username?.message?.toString().length !== undefined && errorDisplayed === false ? 
                     <>
@@ -252,6 +257,12 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful}: SignUpModalProps) => {
                         />
                     </div>
                     <div className="button_box">
+                        <Button
+                            type="button"
+                            disabled={isSubmitting}
+                        >   
+                            Back
+                        </Button>
                         <Button
                             type="submit"
                             disabled={isSubmitting}
