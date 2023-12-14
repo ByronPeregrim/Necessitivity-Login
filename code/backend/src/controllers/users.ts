@@ -19,6 +19,7 @@ export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
 interface SignUpBody {
     username?: string,
     password?: string,
+    confirm_password?: string,
     first?: string,
     last?: string,
     email?: string,
@@ -30,6 +31,7 @@ interface SignUpBody {
 export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = async (req, res, next) => {
     const username = req.body.username;
     const passwordRaw = req.body.password;
+    const confirmPass = req.body.confirm_password;
     const first = req.body.first;
     const last = req.body.last;
     const email = req.body.email;
@@ -38,6 +40,10 @@ export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = asy
     try {
         if (!username || !passwordRaw || !first || !last || !email || !weight) {
                 throw createHttpError(400, "Parameters missing");
+            }
+
+            if (passwordRaw !== confirmPass) {
+                throw createHttpError(409, "Passwords must match");
             }
 
             const existingUsername = await UserModel.findOne({ username: username}).exec();
