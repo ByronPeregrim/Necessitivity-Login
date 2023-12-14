@@ -25,13 +25,17 @@
     margin-bottom: 11px;
   }
 
-  .account_recovery_text {
+  .account_recovery_text, .account_recovery_success_text {
     font-size: 30px;
     margin-bottom: 30px;
     text-align: center;
     margin-top: 20px;
     color: red;
     text-shadow: 2px 2px darkred;
+  }
+
+  .account_recovery_success_text {
+    margin-top: 50px;
   }
   
   .account_recovery_form {
@@ -45,7 +49,7 @@
     border-radius: 20px;
   }
   
-  .inputField {
+.inputField {
     height: 50px;
     color: rgb(200,200,200) !important;
     outline: none;
@@ -54,20 +58,25 @@
     margin-bottom: 20px;
     margin-top: 0px;
     transition: .3s;
+    color: black;
     display: flex;
     width: 300px;
     border: none;
-    background-color: rgb(100,100,100) !important;
-  }
+    background-color: rgb(50,50,50) !important;
+}
+
+.inputField::placeholder {
+  color: rgb(200,200,200, .6) !important;
+}
   
   .inputField:focus{
-    background-color: rgb(70,70,70) !important;
+    background-color: rgb(35,35,35) !important;
     box-shadow: none;
     border-color: none !important;
   }
   
   .inputField:hover{
-    background-color: rgb(70,70,70) !important;
+    background-color: rgb(35,35,35) !important;
   }
   
   .inputField:active {
@@ -97,7 +106,7 @@
     align-self: center;
   }
   
-  .button_box > * {
+  .button_box > *, .success_button_box > * {
     width: 140px;
     height: 3rem;
     border-radius: 10px;
@@ -166,7 +175,7 @@
       width: 300px;
     }
 
-    .account_recovery_text {
+    .account_recovery_text, .account_recovery_success_text {
       font-size: 25px;
       margin-bottom: 30px;
       margin-top: 30px;

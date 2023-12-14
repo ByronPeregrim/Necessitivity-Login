@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeView from "./components/HomeView";
 import NavBar from "./components/navbar/NavBar";
-import { RegistrationSuccessful } from "./components/RegistrationSuccessful";
 import LoginModal from "./components/modals/LoginModal";
 import SignUpModal from "./components/modals/SignUpModal";
 import { User } from "./models/users";
@@ -12,14 +11,14 @@ import NotFoundPage from "./pages/NotFoundPage";
 import UserPage from "./pages/UserPage";
 import styles from "./styles/App.module.css";
 import AccountRecoveryModal from "./components/modals/AccountRecoveryModal";
+import AccountRecoverySuccess from "./components/modals/AccountRecoverySuccess";
 
 const App = () => {
 
     const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
-
     const [showHomeView, setShowHomeView] = useState(false);
     const [showAccountRecoveryModal,setShowAccountRecoveryModal] = useState(false);
-    const [showRegistrationSuccessfulView, setShowRegistrationSuccessfulView] = useState(false);
+    const [showAccountRecoverySuccess, setShowAccountRecoverySuccess] = useState(false);
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
 
@@ -105,24 +104,18 @@ const App = () => {
                     <AccountRecoveryModal
                     onDismiss={() => {setShowAccountRecoveryModal(false)}}
                     onBackButtonClicked={() => [setShowAccountRecoveryModal(false)]}
-                    onRecoverySuccessful={() => null}
+                    onRecoverySuccessful={() => [setShowAccountRecoverySuccess(true), setShowAccountRecoveryModal(false)]}
                     />
                 </>
                 :null
                 }
-                {
-                    showRegistrationSuccessfulView?
-                        <>
-                            <div className="banner_box">
-                                <h1 id="banner_text">FitTracker5000</h1>
-                            </div>
-                            <RegistrationSuccessful back={() => {
-                                setShowRegistrationSuccessfulView(false);
-                                setShowHomeView(true);
-                            }}
-                            />
-                        </>
-                        :null
+                {showAccountRecoverySuccess?
+                <>
+                    <AccountRecoverySuccess
+                    onBackButtonClicked={() => [setShowAccountRecoverySuccess(false)]}
+                    />
+                </>
+                :null
                 }
             </div>
         </div>

@@ -1,9 +1,11 @@
+import "dotenv/config";
 import { RequestHandler } from "express";
 import UserModel from "../models/user"
 import createHttpError from "http-errors";
 import Workout from "../classes/Workout";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
+import env from "../util/validateEnv";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
     try {
@@ -81,7 +83,7 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
             throw createHttpError(400, "Parameters missing");
         }
 
-        const user = await UserModel.findOne({username: username}).select("+password +email").exec();
+        const user = await UserModel.findOne({username: username}).select(["+password", "+email"]).exec();
 
         if (!user) {
             throw createHttpError(401, "Username and/or password are incorrect.");
@@ -107,29 +109,28 @@ interface RecoveryBody {
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'fitnesstracker5000@email.com',
-      pass: 'ajjsogsnvjxcpjcz'
+      user: env.RECOVERY_EMAIL,
+      pass: env.RECOVERY_EMAIL_PASS,
     }
   });
 
 export const verifyEmail: RequestHandler<unknown, unknown, RecoveryBody, unknown> =async (req, res, next) => {
     const email = req.body.email;
-
     try {
         if (!email) {
             throw createHttpError(400, "Parameters missing");
         }
 
-        const user = await UserModel.findOne({email: email}).select("+username +password").exec();
+        const user = await UserModel.findOne({email: email}).select(["+username", "+password", "+email"]).exec();
 
         if (!user) {
             throw createHttpError(401, "Invalid email");
         }
 
         const mailOptions = {
-            from: 'fitnesstracker5000@email.com',
+            from: 'FitnessTracker 5000',
             to: user.email,
-            subject: 'FitnessTracker5000 - Account Recovery',
+            subject: 'FitnessTracker 5000 - Account Recovery',
             text: 'Username: ' + user.username +
                 '\nPassword: ' + user.password
         };
@@ -142,7 +143,7 @@ export const verifyEmail: RequestHandler<unknown, unknown, RecoveryBody, unknown
                 console.log('Email sent: ' + info.response);
             }
         })
-        res.sendStatus(200);
+        res.status(200).json(user);
     } catch (error) {
         next(error);
     }

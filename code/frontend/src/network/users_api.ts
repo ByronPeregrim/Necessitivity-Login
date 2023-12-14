@@ -68,7 +68,7 @@ export interface EmailCredentials {
 }
 
 export async function verifyEmail(credentials: EmailCredentials): Promise<User> {
-    const response = await fetchData("/api/users/account-recovery",
+    const response = await fetchData("/api/users/accountrecovery",
     {
         method: "POST",
         headers: {
