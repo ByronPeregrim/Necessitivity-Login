@@ -74,16 +74,6 @@
   color: rgb(200,200,200, .6) !important;
 }
 
-.weight_box {
-  width: 300px;
-  display: flex;
-  margin-bottom: 16px;
-}
-
-.weight_input {
-  width: 100px;
-}
-
 .inputField:focus{
   background-color: rgb(35,35,35) !important;
   box-shadow: none;
@@ -96,6 +86,16 @@
 
 .inputField:active {
   box-shadow: none;
+}
+
+.weight_box {
+  width: 300px;
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.weight_input {
+  width: 100px;
 }
 
 .registration_error {

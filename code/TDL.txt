@@ -1,5 +1,7 @@
 Login:
 
+Login In goes to either user or admin home page
+
 User:
 
 

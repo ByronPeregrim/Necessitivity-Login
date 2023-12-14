@@ -89,7 +89,7 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
             throw createHttpError(400, "Parameters missing");
         }
 
-        const user = await UserModel.findOne({username: username}).select(["+password", "+email"]).exec();
+        const user = await UserModel.findOne({username: username}).select(["+password"]).exec();
 
         if (!user) {
             throw createHttpError(401, "Username and/or password are incorrect.");
@@ -155,6 +155,43 @@ export const verifyEmail: RequestHandler<unknown, unknown, RecoveryBody, unknown
     }
     
 };
+
+interface AdminSearchBody {
+    username?: string,
+    email?: string,
+}
+
+export const adminSearch: RequestHandler<unknown, unknown, AdminSearchBody, unknown> =async (req, res, next) => {
+    const username = req.body.username;
+    const email = req.body.email;
+    try {
+        if (!username && !email) {
+            throw createHttpError(400, "Parameters missing");
+        }
+
+        const user = await UserModel.findOne({username: username}).select(["+username", "+email", "+first", "+last", "+weight", "+admin"]).exec();
+
+        if (!user) {
+            const user1 = await UserModel.findOne({email: email}).select(["+username", "+email", "+first", "+last", "+weight", "+admin"]).exec();
+            if (user1) {
+                if (user1.admin === true) {
+                    throw createHttpError(401, "Can not retrieve admin account.");
+                }
+                res.status(201).json(user1);
+            } else {
+                throw createHttpError(401, "User account not found.");
+            }
+        } else {
+            if (user.admin === true) {
+                throw createHttpError(401, "Can not retrieve admin account.");
+            }
+            res.status(201).json(user);
+        }
+
+    } catch (error) {
+        next(error);
+    }
+}; 
 
 export const logout: RequestHandler = (req,res,next) => {
     req.session.destroy(error => {

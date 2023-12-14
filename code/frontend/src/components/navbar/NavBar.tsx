@@ -17,7 +17,7 @@ const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccess
         <Navbar className="navbar" variant="dark" expand="lg">
             <Container>
                 <Navbar.Brand as={Link} to="/">
-                    FitTracker5000
+                    FitTracker 5000
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar">

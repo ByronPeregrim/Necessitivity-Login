@@ -68,7 +68,24 @@ export interface EmailCredentials {
 }
 
 export async function verifyEmail(credentials: EmailCredentials): Promise<User> {
-    const response = await fetchData("/api/users/accountrecovery",
+    const response = await fetchData("/api/users/account-recovery",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+    });
+    return response.json();
+}
+
+export interface AdminSearchInput {
+    username: string,
+    email: string,
+}
+
+export async function getUserForAdmin(credentials: AdminSearchInput): Promise<User> {
+    const response = await fetchData("api/users/admin-search",
     {
         method: "POST",
         headers: {

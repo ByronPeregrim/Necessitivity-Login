@@ -2,6 +2,7 @@ import { Container } from "react-bootstrap";
 import UserPageLoggedInView from "../components/UserPageLoggedInView";
 import HomeView from "../components/HomeView";
 import { User } from "../models/users";
+import AdminPageLoggedInView from "../components/AdminPageLoggedInView";
 
 interface UserPageProps {
     loggedInUser: User | null,
@@ -15,7 +16,11 @@ const UserPage = ({ loggedInUser, onSignUpClicked, onLoginClicked, onAccountReco
         <Container>
             <>
                 {loggedInUser
-                    ? <UserPageLoggedInView />
+                    ? loggedInUser.admin
+                        ? <AdminPageLoggedInView
+                            loggedInAdmin={loggedInUser}
+                            />
+                        : <UserPageLoggedInView user={loggedInUser} />
                     : <HomeView
                         onLoginClicked={() => {onLoginClicked()}}
                         onSignUpClicked={() => {onSignUpClicked()}} 

@@ -1,0 +1,139 @@
+.wrapper {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner_box {
+    height: 100px;
+    display: flex;
+    align-self: center;
+    width: 100rem;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .banner_text {
+    align-self: flex-end;
+    text-align: center;
+    font-size: 80px;
+    text-shadow: 5px 5px darkgreen;
+    cursor: pointer;
+    color: var(--electric-green);
+    margin-bottom: 11px;
+  }
+
+  .admin_search_form {
+    width: 300px;
+    align-self: center;
+  }
+
+  .form_text {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: larger;
+    text-shadow: 1px 1px darkgreen;
+  }
+
+  .inputField {
+    height: 50px;
+    color: rgb(200,200,200) !important;
+    outline: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    margin-top: -6px;
+    transition: .3s;
+    color: black;
+    display: flex;
+    width: 300px;
+    border: none;
+    background-color: rgb(50,50,50) !important;
+}
+
+.inputField::placeholder {
+  color: rgb(200,200,200, .6) !important;
+}
+
+.inputField:focus{
+  background-color: rgb(35,35,35) !important;
+  box-shadow: none;
+  border-color: none !important;
+}
+
+.inputField:hover{
+  background-color: rgb(35,35,35) !important;
+}
+
+.inputField:active {
+  box-shadow: none;
+}
+
+.or {
+  margin-bottom: -10px;
+}
+
+.button_box {
+  display: flex;
+  height: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  margin-top: 20px;
+  width: 300px;
+  align-self: center;
+}
+
+.button_box > * {
+  width: 140px;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: rgb(50,50,50) !important;
+  border-color: rgb(100, 100, 100);
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: green;
+}
+
+.button_box > :hover {
+  background-color: rgb(35,35,35) !important;
+  color: whitesmoke !important;
+  border-color: whitesmoke;
+}
+
+.button_box > :active {
+  border-color: whitesmoke !important;
+  color: whitesmoke !important;
+}
+
+.results_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  border: solid grey;
+  border-radius: 20px;
+  padding: 10px;
+  padding-top: 20px;
+  box-shadow: whitesmoke 0px 5px 15px;
+  margin-top: 10px;
+}
+
+.user_info {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.user_info > *{
+  color: whitesmoke;
+}
+
+.user_info > * > *{
+  color: green;
+}
+
+.delete_button {
+  color: darkred;
+}

@@ -98,7 +98,7 @@ const AccountRecoveryModal = ({onDismiss, onBackButtonClicked, onRecoverySuccess
                             }
                         }}
                     />
-                     <div className={styles.button_box}>
+                    <div className={styles.button_box}>
                         <Button
                             type="button"
                             disabled={isSubmitting}

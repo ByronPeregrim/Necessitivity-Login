@@ -75,6 +75,7 @@ const App = () => {
                 <>
                     <LoginModal
                         onLoginSuccessful={(user) => {
+                            setShowHomeView(false);
                             setLoggedInUser(user);
                             setShowLoginModal(false);
                         }}

@@ -33,19 +33,6 @@
 }
 
 .input_account_info_box {
-  color: black;
-  background-color: white !important;
-  padding-left: 10px;
-  cursor:text;
-  width: 20rem;
-  height: 5rem;
-  border-radius: 20px;
-  font-size: 30px;
-  font-weight: bolder;
-  border-color: silver;
-}
-
-.input_account_info_box {
   height: 5rem;
   color: rgb(200,200,200) !important;
   outline: none;
@@ -55,10 +42,10 @@
   margin-bottom: 1rem;
   margin-top: -20px;
   transition: .3s;
-  color: black;
   display: flex;
   width: 20rem;
-  border: none;
+  border: solid 1px silver;
+  border-radius: 20px;
   background-color: rgb(50,50,50) !important;
 }
 

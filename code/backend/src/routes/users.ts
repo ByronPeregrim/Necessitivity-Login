@@ -12,6 +12,8 @@ router.post("/login", UserController.login);
 
 router.post("/logout", UserController.logout);
 
-router.post("/accountrecovery", UserController.verifyEmail);
+router.post("/account-recovery", UserController.verifyEmail);
+
+router.post("/admin-search", UserController.adminSearch);
 
 export default router;
