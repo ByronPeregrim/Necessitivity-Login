@@ -20,9 +20,9 @@
   align-self: flex-end;
   text-align: center;
   font-size: 100px;
-  text-shadow: 5px 5px orange;
+  text-shadow: 5px 5px darkgreen;
   cursor: pointer;
-  color: yellow;
+  color: var(--electric-green);
   margin-bottom: 11px;
 }
 
@@ -50,7 +50,7 @@
   color: rgb(200,200,200) !important;
   outline: none;
   padding: 0.5rem 1rem;
-  font-size: 1.1rem;
+  font-size: 20px;
   font-weight: bolder;
   margin-bottom: 1rem;
   margin-top: -20px;
@@ -65,6 +65,7 @@
 .input_account_info_box::placeholder {
   color: rgb(200,200,200, .5) !important;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .input_account_info_box:focus {
@@ -89,8 +90,8 @@
 }
 
 .signup_form_text {
-  color: yellow;
-  text-shadow: .5px .5px orange;
+  color: var(--electric-green);
+  text-shadow: .5px .5px darkgreen;
 }
 
 .button_box {
@@ -112,7 +113,7 @@
   font-size: 20px;
   font-weight: bolder;
   cursor: pointer;
-  color: yellow;
+  color: green;
 }
 
 .button_box > :hover {
@@ -122,8 +123,7 @@
 }
 
 .button_box > :active {
-  border-color: darkred !important;
-  color: darkred !important;
+  border-color: white !important;
 }
 
 .login_error {
@@ -140,12 +140,12 @@
   background-color: rgb(0,0,0,0);
   border: none;
   font-size: 16px;
-  color: yellow;
+  color: grey;
   padding: 0;
 }
 
 .account_recovery_links >:hover {
-  color: orange;
+  color: whitesmoke;
   cursor: pointer;
   background-color: rgb(0,0,0,0);
 }
@@ -165,7 +165,7 @@
 @media (max-width:575px) {
   .banner_text {
     font-size: 70px;
-    text-shadow: 4px 4px orange;
+    text-shadow: 4px 4px grey;
   }
 }
 
@@ -178,7 +178,7 @@
 @media (max-width:430px) {
   .banner_text {
     font-size: 50px;
-    text-shadow: 3px 3px orange;
+    text-shadow: 3px 3px grey;
   }
 }
 

@@ -28,6 +28,7 @@
   border-color: silver;
   margin-bottom: 1.5rem;
   cursor: pointer;
+  color: green;
 }
 
 .login_button:hover, .signup_button:hover {
@@ -50,10 +51,11 @@
   background-color: rgb(0,0,0,0);
   border: none;
   font-size: 16px;
+  color: grey;
 }
 
 .account_recovery_links >:hover {
-  color: darkgreen;
+  color: whitesmoke;
   cursor: pointer;
 }
 

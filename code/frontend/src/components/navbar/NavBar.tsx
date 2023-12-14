@@ -21,11 +21,6 @@ const NavBar = ({ loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccess
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar">
-                    <Nav>
-                        <Nav.Link as={Link} to="/privacy">
-                            Privacy
-                        </Nav.Link>
-                    </Nav>
                     <Nav className="ms-auto">
                         {loggedInUser
                             ? <NavBarLoggedInView user={loggedInUser} onLogoutSuccessful={onLogoutSuccessful} />
