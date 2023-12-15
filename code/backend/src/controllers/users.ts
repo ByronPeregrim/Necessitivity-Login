@@ -193,6 +193,86 @@ export const adminSearch: RequestHandler<unknown, unknown, AdminSearchBody, unkn
     }
 }; 
 
+interface UserToDelete {
+    username?: string,
+}
+
+export const deleteUser: RequestHandler<unknown, unknown, UserToDelete, unknown> =async (req, res, next) => {
+    const username = req.body.username;
+    try {
+        const response = UserModel.deleteOne({username : username}).exec();
+        if (!response) {
+            throw createHttpError(409, "Failed to delete user account.");
+        }
+        console.log("User account deleted: " + username);
+        res.status(200).json(response);
+    } catch (error) {
+        next(error);
+    }
+};
+
+interface UpdatedUserInfo {
+    username?: string,
+    email?: string,
+    first?: string,
+    last?: string,
+    weight?: number,
+    admin?: boolean,
+    oldUsername?: string,
+    oldEmail?: string,
+}
+
+export const editUser: RequestHandler<unknown, unknown, UpdatedUserInfo, unknown> =async (req, res, next) => {
+    const username = req.body.username;
+    const first = req.body.first;
+    const last = req.body.last;
+    const email = req.body.email;
+    const weight = req.body.weight;
+    let admin = req.body.admin;
+    const oldUsername = req.body.oldUsername;
+    const oldEmail = req.body.oldEmail;
+
+    try {
+        if (!username || !first || !last || !email || !weight || !oldUsername || !oldEmail) {
+                throw createHttpError(400, "Parameters missing");
+            }
+
+            if (!admin) {
+                admin = false;
+            }
+
+            if (username !== oldUsername) {
+                const existingUsername = await UserModel.findOne({ username: username}).exec();
+
+                if (existingUsername) {
+                    throw createHttpError(409, "Username already taken. Please choose a different one.");
+                }
+            }
+
+            if (email !== oldEmail) {
+                const existingEmail = await UserModel.findOne({email: email}).exec();
+            
+                if (existingEmail) {
+                    throw createHttpError(409, "A user with this email address already exists.");
+                }
+            }
+
+            const updatedUser = await UserModel.findOneAndUpdate({username : oldUsername}, {
+                username : username,
+                first : first,
+                last : last,
+                email : email,
+                weight : weight, 
+                admin : admin,
+            })
+
+            res.status(201).json(updatedUser);
+    } catch (error) {
+        next(error);
+    }
+};
+
+
 export const logout: RequestHandler = (req,res,next) => {
     req.session.destroy(error => {
         if (error) {

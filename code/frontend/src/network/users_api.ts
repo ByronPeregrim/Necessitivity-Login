@@ -96,6 +96,41 @@ export async function getUserForAdmin(credentials: AdminSearchInput): Promise<Us
     return response.json();
 }
 
+export async function deleteUser(user: User | null): Promise<User> {
+    const response = await fetchData("/api/users/delete-user",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+    });
+    return response.json();
+}
+
+export interface EditUserInfoCredentials {
+    username: string,
+    email: string,
+    first: string,
+    last: string,
+    weight: number,
+    admin?: boolean,
+    oldUsername: string,
+    oldEmail: string,
+}
+
+export async function editUserInfo(credentials : EditUserInfoCredentials): Promise<User> {
+    const response = await fetchData("/api/users/edit-user",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+    });
+    return response.json();
+}
+
 export async function logout() {
     await fetchData("/api/users/logout", { method: "POST"});
 }

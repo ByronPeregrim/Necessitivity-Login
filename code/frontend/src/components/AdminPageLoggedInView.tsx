@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { AdminSearchInput } from "../network/users_api";
 import * as UsersApi from "../network/users_api";
-import { BadGateway } from "../errors/http_errors";
+import { BadGateway, MissingParameters } from "../errors/http_errors";
 import AdminSearchResultsModal from "./modals/AdminSearchResultsModal";
 import styles from "../styles/AdminPage.module.css";
+import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
+import DeleteUserSuccessModal from "./modals/DeleteUserSuccessModal";
+import EditInfoFormModal from "./modals/EditInfoFormModal";
 
 interface AdminPageLoggedInViewProps {
     loggedInAdmin: User | null,
@@ -15,9 +18,12 @@ interface AdminPageLoggedInViewProps {
 
 const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => {
 
-    const [returnedUser, setReturnedUser] = useState<User | null>(null);
     const [errorText, setErrorText] = useState<string | null>(null);
+    const [returnedUser, setReturnedUser] = useState<User | null>(null);
     const [showSearchResults, setShowSearchResults] = useState(false);
+    const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
+    const [showDeleteUserSuccessModal, setShowDeleteUserSuccessModal] = useState(false);
+    const [showEditInfoForm, setShowEditInfoForm] = useState(false);
 
     const { register, handleSubmit, formState: { errors, isSubmitting}} = useForm<AdminSearchInput>({
         mode: "onSubmit",
@@ -30,6 +36,22 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
             setReturnedUser(returnedUser);
             setShowSearchResults(true);
         } catch(error) {
+            if (error instanceof MissingParameters) {
+                setErrorText(error.message);
+            } else {
+                alert(error);
+            }
+            console.error(error)
+        }
+    }
+
+    async function deleteUser(user: User | null) {
+        try {
+            await UsersApi.deleteUser(user);
+            setShowConfirmDeleteModal(false);
+            setShowDeleteUserSuccessModal(true);
+            console.log("User account: " + user?.username + " deleted by Admin: " + loggedInAdmin?.username);
+        } catch(error) {
             if (error instanceof BadGateway) {
                 setErrorText(error.message);
             } else {
@@ -40,10 +62,6 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
     }
 
     let errorDisplayed = false;
-
-    const onClearButtonClicked = () => {
-        console.log("CLEAR");
-    }
 
     return ( 
         <Container className={styles.wrapper}>
@@ -74,7 +92,7 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
                         </>
                         :null
                 }
-                                    {errorText && errorDisplayed === false?
+                {errorText && errorDisplayed === false?
                     <>
                         {errorDisplayed = true}
                         <p className={styles.search_error}>
@@ -140,13 +158,7 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
 
                 <div className={styles.button_box}>
                     <Button
-                        type="button"
-                        disabled={isSubmitting}
-                        onClick={onClearButtonClicked}
-                    >   
-                        Clear
-                    </Button>
-                    <Button
+                        className={styles.submit_button}
                         type="submit"
                         disabled={isSubmitting}
                     >   
@@ -157,9 +169,30 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
             </Form>
 
             {showSearchResults?
-                <AdminSearchResultsModal currentUser={returnedUser} />
+                <AdminSearchResultsModal
+                currentUser={returnedUser}
+                onClickedDeleteUser={() => [setShowSearchResults(false), setShowConfirmDeleteModal(true)]}
+                onClickedEditUser={() => [setShowSearchResults(false), setShowEditInfoForm(true)]} />
                 :null
             }
+            {showConfirmDeleteModal?
+                <ConfirmDeleteModal
+                onClickedConfirmDeleteUser={() => deleteUser(returnedUser)}
+                onClickedBackButton={() => [setShowSearchResults(true), setShowConfirmDeleteModal(false)]} />
+                :null
+            }
+            {showDeleteUserSuccessModal?
+                <DeleteUserSuccessModal/>
+                :null
+            }
+            {showEditInfoForm?
+                <EditInfoFormModal
+                currentUser={returnedUser}
+                onEditInfoSuccessful={() => {setShowEditInfoForm(false)}}
+                onBackButtonClicked={() => [setShowEditInfoForm(false), setShowSearchResults(true)]}/>
+                :null
+            }
+
         </Container>
     );
 }

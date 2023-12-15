@@ -16,4 +16,8 @@ router.post("/account-recovery", UserController.verifyEmail);
 
 router.post("/admin-search", UserController.adminSearch);
 
+router.post("/delete-user", UserController.deleteUser);
+
+router.post("/edit-user", UserController.editUser);
+
 export default router;

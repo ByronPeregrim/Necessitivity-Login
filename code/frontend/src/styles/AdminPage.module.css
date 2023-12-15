@@ -3,13 +3,14 @@
   width: 100vw;
   flex-direction: column;
   align-items: center;
+  padding: 0px;
+  padding-right: 30px;
 }
 
 .banner_box {
     height: 100px;
     display: flex;
-    align-self: center;
-    width: 100rem;
+    width: 100vw;
     justify-content: center;
     margin-bottom: 10px;
   }
@@ -26,7 +27,6 @@
 
   .admin_search_form {
     width: 300px;
-    align-self: center;
   }
 
   .form_text {
@@ -82,7 +82,7 @@
   margin-bottom: 1rem;
   margin-top: 20px;
   width: 300px;
-  align-self: center;
+  
 }
 
 .button_box > * {
@@ -106,6 +106,14 @@
 .button_box > :active {
   border-color: whitesmoke !important;
   color: whitesmoke !important;
+}
+
+.button_box:has(.submit_button) {
+  justify-content: center;
+}
+
+.submit_button {
+  width: 200px;
 }
 
 .results_container {
@@ -136,4 +144,34 @@
 
 .delete_button {
   color: darkred;
+}
+
+.confirm_delete_button {
+  background-color: darkred !important;
+  color: white;
+}
+
+.confirm_delete_button:hover {
+  background-color: red !important;
+}
+
+.confirm_delete_text {
+  font-size: larger;
+}
+
+.search_error {
+  color: red;
+}
+
+@media (max-width:600px) {
+  .banner_text {
+    font-size: 55px;
+  }
+}
+
+@media (max-width:430px) {
+  .banner_text {
+    font-size: 50px;
+    text-shadow: 3px 3px darkgreen;
+  }
 }

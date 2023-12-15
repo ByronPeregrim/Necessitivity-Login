@@ -5,9 +5,11 @@ import styles from "../../styles/AdminPage.module.css"
 
 interface AdminSearchResultsModalProps {
     currentUser: User | null,
+    onClickedDeleteUser: () => void,
+    onClickedEditUser: () => void,
 }
 
-const AdminSearchResultsModal = ({currentUser} : AdminSearchResultsModalProps) => {
+const AdminSearchResultsModal = ({currentUser, onClickedDeleteUser, onClickedEditUser} : AdminSearchResultsModalProps) => {
     return (
         <div className={styles.results_container}>
             <div className={styles.user_info}>
@@ -21,11 +23,13 @@ const AdminSearchResultsModal = ({currentUser} : AdminSearchResultsModalProps) =
                 <Button
                     className={styles.delete_button}
                     type="button"
+                    onClick={onClickedDeleteUser}
                 >   
                     Delete
                 </Button>
                 <Button
-                    type="submit"
+                    type="button"
+                    onClick={onClickedEditUser}
                 >   
                     Edit
                 </Button>

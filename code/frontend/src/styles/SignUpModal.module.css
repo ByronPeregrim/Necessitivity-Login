@@ -147,6 +147,15 @@
   color: whitesmoke !important;
 }
 
+.admin_box {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+
 @media (max-width:750px) {
   .banner_text {
     font-size: 90px;

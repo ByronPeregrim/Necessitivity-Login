@@ -6,6 +6,11 @@ class HttpError extends Error {
 }
 
 /**
+ * Status code: 400
+ */
+export class MissingParameters extends HttpError { }
+
+/**
  * Status code: 401
  */
 export class UnauthorizedError extends HttpError { }
