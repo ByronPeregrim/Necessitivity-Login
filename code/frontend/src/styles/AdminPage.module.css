@@ -175,3 +175,18 @@
     text-shadow: 3px 3px darkgreen;
   }
 }
+
+
+@media (max-width:350px) {
+  .results_container {
+    width: 300px;
+  }
+  
+  .button_box {
+    width: 280px;
+  }
+
+  .button_box > * {
+    width: 130px;
+  }
+}
