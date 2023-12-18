@@ -89,7 +89,7 @@ export const login: RequestHandler<unknown, unknown, LoginBody, unknown> = async
             throw createHttpError(400, "Parameters missing");
         }
 
-        const user = await UserModel.findOne({username: username}).select(["+password"]).exec();
+        const user = await UserModel.findOne({username: username}).select(["+password", "+email"]).exec();
 
         if (!user) {
             throw createHttpError(401, "Username and/or password are incorrect.");

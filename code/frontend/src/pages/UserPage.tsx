@@ -15,13 +15,11 @@ const UserPage = ({ loggedInUser, onSignUpClicked, onLoginClicked, onAccountReco
     return (
         <Container>
             <>
-                {loggedInUser
-                    ? loggedInUser.admin
-                        ? <AdminPageLoggedInView
-                            loggedInAdmin={loggedInUser}
-                            />
-                        : <UserPageLoggedInView user={loggedInUser} />
-                    : <HomeView
+                {loggedInUser?
+                    loggedInUser.admin?
+                        <AdminPageLoggedInView loggedInAdmin={loggedInUser}/>
+                        :<UserPageLoggedInView user={loggedInUser} />
+                    :<HomeView
                         onLoginClicked={() => {onLoginClicked()}}
                         onSignUpClicked={() => {onSignUpClicked()}} 
                         onAccountRecoveryClicked={() => {onAccountRecoveryClicked()}}

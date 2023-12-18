@@ -1,8 +1,11 @@
 Login:
 
-Login In goes to either user or admin home page
+Reset Password
 
 User:
 
 
+
 Admin:
+
+Clear buttons, clears entries and removes user results modal
