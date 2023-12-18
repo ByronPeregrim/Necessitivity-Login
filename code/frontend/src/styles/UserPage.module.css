@@ -41,6 +41,7 @@
 }
 
 .edit_info_button {
+  color: var(--electric-green);
   border: none;
 }
 
@@ -48,7 +49,61 @@
   color: darkgreen;
 }
 
+.user_page_button {
+  width: 250px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: rgb(50,50,50) !important;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
+.user_page_button:hover {
+  background-color: rgb(35,35,35) !important;
+  color: whitesmoke !important;
+  border-color: whitesmoke !important;
+}
+
+.user_page_button:active {
+  border-color: whitesmoke !important;
+  color: whitesmoke !important;
+}
+
+.calories_burned_wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+}
+
+.calories_burned_wrapper > div {
+  width: 200px;
+  height: 250px;
+  border: solid grey;
+  border-radius: 20px;
+  box-shadow: whitesmoke 0px 5px 15px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(50,50,50) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+  font-size: 16px;
+  text-shadow: 1px 1px darkgreen;
+}
+
+.calories_burned_wrapper > div > div {
+  height: 150px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: whitesmoke;
+}
 
 @media (max-width:600px) {
     .banner_text {

@@ -265,7 +265,6 @@ export const editUser: RequestHandler<unknown, unknown, UpdatedUserInfo, unknown
                 weight : weight, 
                 admin : admin,
             })
-
             res.status(201).json(updatedUser);
     } catch (error) {
         next(error);

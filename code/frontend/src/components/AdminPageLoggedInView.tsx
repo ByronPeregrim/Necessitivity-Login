@@ -10,7 +10,7 @@ import AdminSearchResultsModal from "./modals/AdminSearchResultsModal";
 import styles from "../styles/AdminPage.module.css";
 import ConfirmDeleteModal from "./modals/ConfirmDeleteModal";
 import DeleteUserSuccessModal from "./modals/DeleteUserSuccessModal";
-import EditInfoFormModal from "./modals/EditInfoFormModal";
+import EditInfoFormModal from "./modals/AdminEditInfoFormModal";
 
 interface AdminPageLoggedInViewProps {
     loggedInAdmin: User | null,
