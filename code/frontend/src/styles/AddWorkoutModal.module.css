@@ -1,0 +1,15 @@
+.banner_box {
+    height: 90px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+  }
+  
+  .banner_text {
+    align-self: flex-end;
+    text-align: center;
+    font-size: 100px;
+    text-shadow: 5px 5px darkgreen;
+    cursor: pointer;
+    color: var(--electric-green) !important;
+  }

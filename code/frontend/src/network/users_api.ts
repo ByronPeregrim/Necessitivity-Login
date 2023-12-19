@@ -1,3 +1,4 @@
+import Workout from "../classes/Workout";
 import { UnauthorizedError, ConflictError } from "../errors/http_errors";
 import { User } from "../models/users";
 
@@ -127,6 +128,23 @@ export async function editUserInfo(credentials : EditUserInfoCredentials): Promi
             "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
+    });
+    return response.json();
+}
+
+export interface UpdatedWorkoutInfo {
+    username: string,
+    workouts: Workout[],
+}
+
+export async function updateUserWorkout(updatedWorkout: UpdatedWorkoutInfo): Promise<User> {
+    const response = await fetchData("/api/users/update-workout",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedWorkout),
     });
     return response.json();
 }

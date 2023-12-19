@@ -20,4 +20,6 @@ router.post("/delete-user", UserController.deleteUser);
 
 router.post("/edit-user", UserController.editUser);
 
+router.post("update-workout", UserController.updateWorkout);
+
 export default router;

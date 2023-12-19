@@ -3,6 +3,7 @@ import { User } from "../models/users";
 import styles from "../styles/UserPage.module.css";
 import { useState } from "react";
 import UserEditInfoFormModal from "./modals/UserEditInfoForm";
+import AddWorkoutModal from "./modals/AddWorkoutModal";
 
 interface UserPageLoggedInViewProps {
     user: User | null,
@@ -12,6 +13,7 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
 
     const [showUserInfo, setShowUserInfo] = useState(true);
     const [showEditInfoForm, setShowEditInfoForm] = useState(false);
+    const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
 
     return (
         <Container className={styles.wrapper}>
@@ -52,9 +54,17 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
             </div>
             <Button
                 className={styles.user_page_button}
+                onClick={() => [setShowAddWorkoutModal(true)]}
                 >
                 Add Workout
-            </Button> 
+            </Button>
+            {showAddWorkoutModal?
+            <AddWorkoutModal
+                currentUser = {user}
+                onUpdateWorkoutSuccessful={() => {}}
+                onBackButtonClicked={() => [setShowAddWorkoutModal(false)]} />
+            :null
+            }
             <div className={styles.calories_burned_wrapper}>
                 <div>
                     Calories burned today:

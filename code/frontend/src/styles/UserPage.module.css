@@ -91,8 +91,10 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 18px;
-  font-size: 16px;
+  padding-top: 10px;
+  font-size: 20px;
   text-shadow: 1px 1px darkgreen;
+  color: white;
 }
 
 .calories_burned_wrapper > div > div {
@@ -102,7 +104,7 @@
   align-items: center;
   justify-content: center;
   font-size: 40px;
-  color: whitesmoke;
+  color: var(--electric-green);
 }
 
 @media (max-width:600px) {
