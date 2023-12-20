@@ -4,7 +4,7 @@ Reset Password
 
 User:
 
-
+Calories burned display boxes execute one retrieve per day, need to change this to execute a single retrieve for all days.
 
 Admin:
 

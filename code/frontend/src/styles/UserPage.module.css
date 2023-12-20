@@ -76,6 +76,7 @@
   display: flex;
   justify-content: space-evenly;
   margin-top: 60px;
+  gap: 20px;
 }
 
 .calories_burned_wrapper > div {
@@ -93,7 +94,7 @@
   padding: 18px;
   padding-top: 10px;
   font-size: 20px;
-  text-shadow: 1px 1px darkgreen;
+  text-shadow: 1px 1px gray;
   color: white;
 }
 
@@ -105,6 +106,8 @@
   justify-content: center;
   font-size: 40px;
   color: var(--electric-green);
+  text-shadow: 2px 2px darkgreen;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 @media (max-width:600px) {
@@ -117,6 +120,14 @@
   .banner_text {
     font-size: 50px;
     text-shadow: 3px 3px darkgreen;
+  }
+}
+
+@media (max-width: 775px) {
+  .calories_burned_wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
   }
 }
 

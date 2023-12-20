@@ -13,3 +13,8 @@
     cursor: pointer;
     color: var(--electric-green) !important;
   }
+
+  .total_calories_text {
+    display: flex;
+    gap: 5px;
+  }

@@ -1,11 +1,6 @@
 import { InferSchemaType, model, Schema } from "mongoose";
 
 const userSchema = new Schema({
-    /*userID:{
-        type:Number,
-        required: true,
-        trim: true
-    }, */
     username:{
         type:String,
         required: true,
@@ -46,12 +41,7 @@ const userSchema = new Schema({
         trim:true,
         default:false,
     },
-    workouts:{
-        type:Array<unknown>,
-        required:true,
-        trim:true,
-        default:[]
-    }
+    workouts: [{ type: Schema.Types.ObjectId, ref: "Workout"}]
 }, { timestamps: true });
 
 type User = InferSchemaType<typeof userSchema>;

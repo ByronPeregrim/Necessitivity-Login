@@ -4,29 +4,32 @@ import styles from "../../styles/AddWorkoutModal.module.css"
 import * as UsersApi from "../../network/users_api";
 import { ConflictError } from "../../errors/http_errors";
 import { useState } from "react";
-import Workout from "../../classes/Workout";
-import { UpdatedWorkoutInfo } from "../../network/users_api";
+import { NewWorkoutInfo } from "../../network/users_api";
 import { User } from "../../models/users";
+import moment from "moment";
 
 interface AddWorkoutModalProps {
     currentUser : User | null,
-    onUpdateWorkoutSuccessful : () => void,
+    onAddWorkoutSuccessful : () => void,
     onBackButtonClicked: () => void,
 }
 
-const AddWorkoutModal = ({currentUser, onUpdateWorkoutSuccessful, onBackButtonClicked} : AddWorkoutModalProps) => {
+const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClicked} : AddWorkoutModalProps) => {
 
-    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<UpdatedWorkoutInfo>({
+    const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<NewWorkoutInfo>({
         mode: "onSubmit",
         reValidateMode: "onSubmit",
     });
 
-    const updatedWorkouts = currentUser?.workouts;
+    const [calories, setCalories] = useState(0);
+    const [totalCalories, setTotalCalories] = useState(0);
 
-    async function onSubmit(updatedWorkout: UpdatedWorkoutInfo) {
+    async function onSubmit(newWorkoutInfo: NewWorkoutInfo) {
         try {
-            const updatedUser = await UsersApi.updateUserWorkout(updatedWorkout);
-            onUpdateWorkoutSuccessful();
+            newWorkoutInfo.calories = totalCalories;
+            const newWorkout = await UsersApi.addWorkout(newWorkoutInfo);
+            alert("Add Workout Successful!");
+            onAddWorkoutSuccessful();
         } catch (error) {
             if (error instanceof ConflictError) {
                 
@@ -37,32 +40,42 @@ const AddWorkoutModal = ({currentUser, onUpdateWorkoutSuccessful, onBackButtonCl
         }
     }
 
+    const updateTotalCalories = () => {
+        setTotalCalories(totalCalories + calories);
+    }
+
     return ( 
         <Modal show>
             <Modal.Body>
                 <div className={styles.banner_box}>
                     <h1 className={styles.banner_text}>FitTracker 5000</h1>
                 </div>
-                HERE IS WHERE I NEED TO UPDATE updatedWorkouts BEFORE IT IS SUBMITTED
+                <label htmlFor="calories">Enter amount of calories burned:</label>
+                <input type="number" id="calories" name="calories" placeholder="0" defaultValue={0} onChange={e => setCalories(Number(e.target.value))}/>
+                <button type="button" onClick={updateTotalCalories}>Enter</button>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="hidden" {...register("username")} defaultValue={currentUser?.username}/>
-                    <input type="hidden" {...register("workouts")} defaultValue={JSON.stringify(updatedWorkouts)}/>
+                    <input type="hidden" {...register("user")} defaultValue={currentUser?._id}/>
+                    <input type="hidden" {...register("calories")} defaultValue={totalCalories}/>
+                    <input type="hidden" {...register("date")} defaultValue={moment().format("MMM Do YY")}/>
+                    <div className={styles.total_calories_text}>
+                        <p><b>Total Calories: </b></p> {totalCalories}
+                    </div>
+                    <div className={styles.button_box}>
+                        <Button
+                            type="button"
+                            disabled={isSubmitting}
+                            onClick={onBackButtonClicked}
+                        >   
+                            Back
+                        </Button>
+                        <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                        >   
+                            Confirm
+                        </Button>
+                    </div>
                 </Form>
-                <div className={styles.button_box}>
-                    <Button
-                        type="button"
-                        disabled={isSubmitting}
-                        onClick={onBackButtonClicked}
-                    >   
-                        Back
-                    </Button>
-                    <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                    >   
-                        Confirm
-                    </Button>
-                </div>
             </Modal.Body>
         </Modal>
      );

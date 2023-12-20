@@ -2,7 +2,6 @@ import "dotenv/config";
 import { RequestHandler } from "express";
 import UserModel from "../models/user"
 import createHttpError from "http-errors";
-import Workout from "../classes/Workout";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
 import env from "../util/validateEnv";
@@ -25,7 +24,6 @@ interface SignUpBody {
     email?: string,
     weight?: number,
     admin?: boolean,
-    workouts?: Array<Workout>,
 }
 
 export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = async (req, res, next) => {
@@ -74,7 +72,7 @@ export const signUp: RequestHandler<unknown, unknown, SignUpBody, unknown> = asy
         next(error);
     }
 };
-
+    
 interface LoginBody {
     username?: string,
     password?: string,
@@ -270,38 +268,6 @@ export const editUser: RequestHandler<unknown, unknown, UpdatedUserInfo, unknown
         next(error);
     }
 };
-
-interface UpdatedWorkout{
-    username?: string,
-    workouts?: Workout[],
-}
-
-export const updateWorkout: RequestHandler<unknown, unknown, UpdatedWorkout, unknown> =async (req, res, next) => {
-    const username = req.body.username;
-    const workouts = req.body.workouts;
-
-    try {
-        if (!username || !workouts) {
-                throw createHttpError(400, "Parameters missing");
-            }
-
-            const updatedUser = await UserModel.findOneAndUpdate({username : username}, {
-                username : username,
-                workouts: workouts,
-            })
-            if (updatedUser) {
-                req.session.userId = updatedUser._id;
-                res.status(201).json(updatedUser);
-            } else {
-                throw createHttpError(401, "Error updating workouts.");
-            }
-    } catch (error) {
-        next(error);
-    }
-};
-
-
-
 
 export const logout: RequestHandler = (req,res,next) => {
     req.session.destroy(error => {

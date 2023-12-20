@@ -1,6 +1,6 @@
-import Workout from "../classes/Workout";
 import { UnauthorizedError, ConflictError } from "../errors/http_errors";
 import { User } from "../models/users";
+import { Workout } from "../models/workouts";
 
 async function fetchData(input: RequestInfo, init?: RequestInit) {
     const response = await fetch(input, init);
@@ -132,19 +132,37 @@ export async function editUserInfo(credentials : EditUserInfoCredentials): Promi
     return response.json();
 }
 
-export interface UpdatedWorkoutInfo {
-    username: string,
-    workouts: Workout[],
+export interface NewWorkoutInfo {
+    user : string,
+    calories: number,
+    date: string,
 }
 
-export async function updateUserWorkout(updatedWorkout: UpdatedWorkoutInfo): Promise<User> {
-    const response = await fetchData("/api/users/update-workout",
+export async function addWorkout(updatedWorkout: NewWorkoutInfo): Promise<Workout> {
+    const response = await fetchData("/api/users/add-workout",
     {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedWorkout),
+    });
+    return response.json();
+}
+
+export interface TodaysData {
+    id : string,
+    dates : string[],
+}
+
+export async function getCaloriesByDay(selectors: TodaysData): Promise<Workout[]> {
+    const response = await fetchData("/api/users/get-calories-by-day",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectors),
     });
     return response.json();
 }
