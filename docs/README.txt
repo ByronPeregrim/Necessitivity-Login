@@ -1,9 +1,9 @@
 STARTUP:
 
-In order the deploy the project, one must first ensure that all appropriate software, packages, libraries, and modules are installed including Node.js, Express.js, mongoose, dotenv, and nodemailer. Next, login to MongoDB Atlas at https://account.mongodb.com/account/login with the following credentials:
+In order the deploy the project, one must first ensure that all appropriate packages are installed by running "npm install" on the command line while in the project directory. Next, login to MongoDB Atlas at https://account.mongodb.com/account/login with the following credentials:
 
-User Email: Necessitivity@gmail.com
-Password: icsi418y
+User Email: XXXXXXXXXXXXXXX
+Password: XXXXXXX
 
 Click “Database Access” on the left-hand menu then make sure your IP is added to the list of trusted addresses.
 
