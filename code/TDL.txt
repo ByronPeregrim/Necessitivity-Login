@@ -4,7 +4,6 @@ Reset Password
 
 User:
 
-Add Workout: Confirm add workout screen. Fix responsiveness of page. Add ability to subtract calories from total calories burned.
 
 Admin:
 

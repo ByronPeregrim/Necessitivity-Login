@@ -151,12 +151,12 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                         </div>
                         <div className={styles.add_calories_wrapper}>
                             <div className={styles.enter_calories_box}>
-                                <Button type="button" onClick={() => updateTotalCalories(false)}>-</Button>
+                                <label htmlFor="calories"><b>Adjust Total Calories:</b></label>
                                 <div>
-                                    <label htmlFor="calories"><b>Enter Calories:</b></label>
+                                    <Button type="button" onClick={() => updateTotalCalories(false)}>-</Button>
                                     <input type="number" id="calories" name="calories" value={showEnteredCalories.toString()} onChange={handleChange}/>
+                                    <Button type="button" onClick={() => updateTotalCalories(true)}>+</Button>
                                 </div>
-                                <Button type="button" onClick={() => updateTotalCalories(true)}>+</Button>
                             </div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <input type="hidden" {...register("user")} defaultValue={currentUser?._id}/>

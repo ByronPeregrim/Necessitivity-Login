@@ -6,19 +6,41 @@ import UserEditInfoFormModal from "./modals/UserEditInfoForm";
 import AddWorkoutModal from "./modals/AddWorkoutModal";
 import * as UsersApi from "../network/users_api";
 import moment from "moment";
+import { Line } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    LineElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Tooltip
+} from 'chart.js';
+import { Workout } from "../models/workouts";
+
+ChartJS.register(
+    LineElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Tooltip,
+)
 
 interface UserPageLoggedInViewProps {
     user: User | null,
 }
 
+const array : Workout[] = [];
+
 const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
 
+    let maxCalories = 1000;
     const [showUserInfo, setShowUserInfo] = useState(true);
     const [showEditInfoForm, setShowEditInfoForm] = useState(false);
     const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
     const [showTodaysCalories, setShowTodaysCalories] = useState(0);
     const [showLastSevenDaysCalories, setShowLastSevenDaysCalories] = useState(0);
     const [showLastThirtyDaysCalories, setShowLastThirtyDaysCalories] = useState(0);
+    const [lastTenDays, setLastTenDays] = useState(array);
     const id = user?._id;
     
     useEffect(() => {
@@ -59,6 +81,18 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
             }
             return totalCalories;
         }
+        const setLastTenDaysUseState = async() => {
+            const dates = getLastXDays(10);
+            try {
+                if (id) {
+                    const lastTenDays = await UsersApi.getCaloriesByDay({id, dates})
+                    setLastTenDays(lastTenDays);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        setLastTenDaysUseState();
         updateCalorieBoxes();
     }, [id]);
 
@@ -68,6 +102,80 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
           dates.push(moment().subtract(i, 'day').format("MMM Do YY"));
         }
         return dates;
+    }
+
+
+
+    const getLastTenDaysCalories = () => {
+        const dates = getLastXDays(10);
+        let array: number[] = [];
+        let max = 0;
+        for (let i = 0; i < dates.length; i++) {
+            let mySwitch = false;
+            for (let j = 0; j < lastTenDays.length; j++) {
+                if (dates[i] === lastTenDays[j].date) {
+                    array.push(lastTenDays[j].calories);
+                    mySwitch = true;
+                    if (lastTenDays[j].calories > maxCalories) {
+                        max = lastTenDays[j].calories;
+                    }
+                }
+            }
+            if (!mySwitch) {
+                array.push(0);
+            }
+        }
+        if (max > 1000) {
+            maxCalories = max + 500;
+        }
+        return array;
+    }
+
+    const data = {
+        labels: getLastXDays(10).reverse(),
+        datasets: [{
+            data: getLastTenDaysCalories().reverse(),
+            backgroundColor: 'green',
+            borderColor: 'black',
+            pointBorderColor: 'green',
+            tension: 0.2
+        }
+        ]
+    }
+
+    const options = {
+        plugins: {
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: maxCalories,
+                title: {
+                    display: true,
+                    text: "Calories Burned",
+                    font: {
+                        size: 16,
+                    },
+                    color: "silver",
+                },
+                ticks: {
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: "Date",
+                    font: {
+                        size: 16
+                    },
+                    color: "silver",
+                },
+                ticks: {
+                    maxRotation: 45,
+                    minRotation: 45,
+                }
+            }
+        }
     }
 
     return (
@@ -139,6 +247,14 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
                         {showLastThirtyDaysCalories}
                     </div>
                 </div>
+            </div>
+            <div className={styles.line_chart_wrapper}>
+                <label htmlFor="line_chart">Calories Burned Over Last Ten Days</label>
+                <Line
+                    id="line_chart"
+                    data = {data}
+                    options={options}
+                ></Line>
             </div>
         </Container>
     );

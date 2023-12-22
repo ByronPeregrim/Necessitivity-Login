@@ -60,13 +60,13 @@
   border-radius: 20px;
   padding: 40px;
   padding-bottom: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   width: 320px;
 }
 
 .add_exercise_wrapper > p {
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   font-size: large;
   text-align: center;
   color: whitesmoke;
@@ -88,6 +88,12 @@
   width: 300px;
 }
 
+.add_calories_wrapper > Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .duration_box {
   display: flex;
   justify-content: space-between;
@@ -106,17 +112,22 @@
 
 .enter_calories_box {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: -10px;
 }
 
+.enter_calories_box > label {
+  font-size: 18px;
+}
+
 .enter_calories_box > div {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin-bottom: 28.5px;
   font-size: larger;
+  margin-top: 5px;
 }
 
 .enter_calories_box > div > input {
@@ -124,7 +135,7 @@
   border: solid 1px;
 }
 
-.enter_calories_box > Button {
+.enter_calories_box > div > Button {
   height: 40px;
   background-color: rgb(50,50,50) !important;
   border: none;
@@ -155,8 +166,8 @@
   display: flex;
   gap: 5px;
   margin-top: 20px;
-  margin-bottom: 30px;
-  font-size: larger;
+  margin-bottom: 20px;
+  font-size: 20px;
   color: whitesmoke;
   justify-content: center;
 }
@@ -191,4 +202,53 @@
 .button_box > :active {
   border-color: whitesmoke !important;
   color: whitesmoke !important;
+}
+
+@media (max-width: 530px) {
+  .banner_text {
+    font-size: 60px;
+  }
+
+  .modal_wrapper {
+    width: 400px;
+  }
+
+  .add_workout_wrapper {
+    width: 300px;
+  }
+}
+
+@media (max-width: 460px) {
+  .banner_text {
+    font-size: 50px;
+    text-shadow: 3px 3px darkgreen;
+  }
+}
+
+@media (max-width: 460px) {
+  .banner_text {
+    font-size: 45px;
+  }
+
+  .modal_wrapper {
+    width: 300px;
+  }
+
+  .add_workout_wrapper, .add_exercise_wrapper, .add_calories_wrapper {
+    width: 280px;
+  }
+
+  .button_box {
+    width: 260px;
+   }
+
+  .button_box > Button {
+    width: 120px;
+  }
+}
+
+@media (max-width: 360px) {
+  .banner_text {
+    font-size: 40px;
+  }
 }
