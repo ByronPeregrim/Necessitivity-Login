@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@types/css-modules": "^1.0.5",
-    "chart.js": "^4.4.1",
-    "moment": "^2.29.4",
-    "react-chartjs-2": "^5.2.0"
-  }
-}
