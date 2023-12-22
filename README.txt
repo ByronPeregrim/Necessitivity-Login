@@ -7,7 +7,7 @@ Password: XXXXXXX
 
 Click “Database Access” on the left-hand menu then make sure your IP is added to the list of trusted addresses.
 
-Next, open up your terminal and travel to the “code” directory. Type “node app” into the terminal and hit enter. Go to your browser and go to the address “http://127.0.0.1:3000/” to connect to your local port 3000 and view the web application.
+Next, open up your terminal and travel to the “code” directory. Travel to the "backend" directory and run the command "npm start". Ensure that console prints message indicating server successfully connected to database. In a seperate terminal, open up the "frontend" directory located in the "code" folder, and run "npm start" as well. The browser should automatically open with the application in view.
 
 Nunito Variable Font
 ====================
