@@ -45,7 +45,7 @@ const LoginModal = ({onLoginSuccessful, onBackButtonClicked, onAccountRecoveryCl
                 <h1 className={styles.banner_text}>FitTracker 5000</h1>
             </div>
             {errorDisplayed = false}
-            <Modal.Body className={styles.modal_body}>
+            <Modal.Body>
                 <Form className={styles.user_login_form} onSubmit={handleSubmit(onSubmit)}>
                     { 
                         errors.username?.message?.length !== undefined && errorDisplayed === false ? 
@@ -135,13 +135,13 @@ const LoginModal = ({onLoginSuccessful, onBackButtonClicked, onAccountRecoveryCl
                             disabled={isSubmitting}
                             onClick={onBackButtonClicked}
                         >   
-                            Back
+                            BACK
                         </Button>
                         <Button
                             type="submit"
                             disabled={isSubmitting}
                         >   
-                            Submit
+                            SUBMIT
                         </Button>
                     </div>
                     <div className={styles.account_recovery_links}>

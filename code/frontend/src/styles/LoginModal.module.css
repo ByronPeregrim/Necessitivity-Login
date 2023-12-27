@@ -1,29 +1,25 @@
-:root {
-  --electric-green : #09b43a;
-}
-
-.modal_body {
-  width: 100rem;
-  padding-bottom: 10rem;
-}
-
 .banner_box {
-  height: 17rem;
-  display: flex;
-  align-self: center;
-  width: 100rem;
-  justify-content: center;
-  margin-bottom: 10px;
+  margin-top: 140px;
+  width: 100vw;
+  margin-bottom: 12px;
 }
 
 .banner_text {
-  align-self: flex-end;
   text-align: center;
-  font-size: 100px;
+  font-size: var(--xx-large);
   text-shadow: 5px 5px darkgreen;
   cursor: pointer;
-  color: var(--electric-green);
-  margin-bottom: 11px;
+}
+
+.signup_form_text, .login_error {
+  text-align: center;
+  margin-bottom: 7px;
+  margin-top: -29px;
+  font-size: var(--small);
+}
+
+.signup_form_text {
+  text-shadow: .5px .5px darkgreen;
 }
 
 .user_login_form {
@@ -33,32 +29,29 @@
 }
 
 .input_account_info_box {
-  height: 5rem;
-  color: rgb(200,200,200) !important;
-  outline: none;
+  height: 75px;
   padding: 0.5rem 1rem;
-  font-size: 20px;
-  font-weight: bolder;
+  color: whitesmoke !important;
+  font-size: var(--medium);
+  font-weight: 500;
   margin-bottom: 1rem;
-  margin-top: -20px;
+  margin-top: -25px;
   transition: .3s;
-  display: flex;
-  width: 20rem;
-  border: solid 1px silver;
-  border-radius: 20px;
-  background-color: rgb(50,50,50) !important;
+  width: 300px;
+  border: none;
+  border-radius: 10px;
+  border: solid 1px steelblue;
 }
 
 .input_account_info_box::placeholder {
   color: rgb(200,200,200, .5) !important;
   font-weight: bold;
-  font-size: 20px;
+  font-size: var(--medium);
 }
 
 .input_account_info_box:focus {
   background-color: rgb(35,35,35) !important;
   box-shadow: none;
-  border-color: none !important;
 }
 
 .input_account_info_box:hover {
@@ -69,21 +62,8 @@
   box-shadow: none;
 }
 
-.signup_form_text, .login_error {
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: -29px;
-  font-size: larger;
-}
-
-.signup_form_text {
-  color: var(--electric-green);
-  text-shadow: .5px .5px darkgreen;
-}
-
 .button_box {
   display: flex;
-  height: 3rem;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -93,24 +73,23 @@
 
 .button_box > * {
   width: 140px;
-  height: 3rem;
-  border-radius: 10px;
-  background-color: rgb(50,50,50) !important;
-  border-color: rgb(100, 100, 100);
-  font-size: 20px;
-  font-weight: bolder;
-  cursor: pointer;
-  color: green;
+  height: 45px;
+  border-radius: 2px;
+  background-color: steelblue!important;
+  border: none;
+  font-size: var(--small);
+  font-weight: 800;
+  color: whitesmoke;
 }
 
 .button_box > :hover {
-  background-color: rgb(35,35,35) !important;
-  color: white;
-  border-color: white;
+  background-color: rgba(70, 131, 180, 0.5) !important;
+  color: rgba(245, 245, 245, 0.5) !important;
 }
 
 .button_box > :active {
-  border-color: white !important;
+  background-color: rgba(70, 131, 180, 0.5) !important;
+  color: rgba(245, 245, 245, 0.5) !important;
 }
 
 .login_error {

@@ -183,7 +183,7 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
             <div className={styles.banner_box}>
                 <div className={styles.text_wrapper}>
                     <h1 className={styles.banner_text}>Hello, {user?.first}!</h1>
-                    <p className={styles.welcome_message}>Welcome to your dashboard</p>
+                    <p className={styles.welcome_message}>Welcome to your dashboard...</p>
                 </div>
                 <div>
                     <Button
