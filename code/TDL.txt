@@ -4,7 +4,11 @@ Reset Password
 
 User:
 
+Change Adjust total calories section in "Add workout" modal to add and reset buttons rather than plus and minus
+Add edit account function to new navbar location
+Add Calendar feature
 
 Admin:
 
 Clear buttons, clears entries and removes user results modal
+

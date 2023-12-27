@@ -34,7 +34,6 @@ const array : Workout[] = [];
 const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
 
     let maxCalories = 1000;
-    const [showUserInfo, setShowUserInfo] = useState(true);
     const [showEditInfoForm, setShowEditInfoForm] = useState(false);
     const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
     const [showTodaysCalories, setShowTodaysCalories] = useState(0);
@@ -135,9 +134,9 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
         labels: getLastXDays(10).reverse(),
         datasets: [{
             data: getLastTenDaysCalories().reverse(),
-            backgroundColor: 'green',
-            borderColor: 'black',
-            pointBorderColor: 'green',
+            backgroundColor: 'steelblue',
+            borderColor: 'grey',
+            pointBorderColor: 'steelblue',
             tension: 0.2
         }
         ]
@@ -182,45 +181,36 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
         <Container className={styles.wrapper}>
 
             <div className={styles.banner_box}>
-                <h1 className={styles.banner_text}>FitTracker 5000</h1>
+                <div className={styles.text_wrapper}>
+                    <h1 className={styles.banner_text}>Hello, {user?.first}!</h1>
+                    <p className={styles.welcome_message}>Welcome to your dashboard</p>
+                </div>
+                <div>
+                    <Button
+                        className={styles.user_page_button}
+                        onClick={() => [setShowAddWorkoutModal(true)]}
+                        >
+                        ADD WORKOUT
+                    </Button>
+                </div>
             </div>
+            <Button
+                onClick={() => [setShowEditInfoForm(true)]}
+                className={styles.edit_info_button}
+            > Edit
+            </Button>
 
             <div className={styles.user_info_box}>
-                {showUserInfo?
-                    <>
-                        <div className={styles.user_info}>
-                            <p><b>Name: </b>{user?.first} {user?.last}</p>
-                            <p><b>Username: </b>{user?.username}</p>
-                            <p><b>Email: </b>{user?.email}</p>
-                            <p><b>Weight: </b>{user?.weight}lbs</p>
-                        </div>
-                        <div className={styles.edit_info_box}>
-                            <Button
-                                onClick={() => [setShowUserInfo(false), setShowEditInfoForm(true)]}
-                                className={styles.edit_info_button}
-                            > Edit
-                            </Button>
-                        </div>
-                    </>
-                    :null
-
-                }
                 {showEditInfoForm?
                     <>
                         <UserEditInfoFormModal
                             currentUser={user}
-                            onEditInfoSuccessful={() => [window.location.reload(), setShowEditInfoForm(false), setShowUserInfo(true)]}
-                            onBackButtonClicked={() => [setShowEditInfoForm(false), setShowUserInfo(true)]}/>
+                            onEditInfoSuccessful={() => [window.location.reload(), setShowEditInfoForm(false)]}
+                            onBackButtonClicked={() => [setShowEditInfoForm(false)]}/>
                     </>
                     :null
                 } 
             </div>
-            <Button
-                className={styles.user_page_button}
-                onClick={() => [setShowAddWorkoutModal(true)]}
-                >
-                Add Workout
-            </Button>
             {showAddWorkoutModal?
             <AddWorkoutModal
                 currentUser = {user}
@@ -230,21 +220,25 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
             }
             <div className={styles.calories_burned_wrapper}>
                 <div>
-                    Calories burned today:
                     <div>
-                        {showTodaysCalories}
+                        <div className={styles.calorie_data}>
+                            {showTodaysCalories}
+                        </div>
+                        calories burned today
                     </div>
-                </div>
-                <div>
-                    Calories burned over last 7 days:
+                    <div className={styles.divider}>|</div>
                     <div>
-                        {showLastSevenDaysCalories}
+                        <div className={styles.calorie_data}>
+                            {showLastSevenDaysCalories}
+                        </div>
+                        calories burned over last 7 days
                     </div>
-                </div>
-                <div>
-                    Calories burned over last 30 days:
+                    <div className={styles.divider}>|</div>
                     <div>
-                        {showLastThirtyDaysCalories}
+                        <div className={styles.calorie_data}>
+                            {showLastThirtyDaysCalories}
+                        </div>
+                        calories burned over last 30 days
                     </div>
                 </div>
             </div>

@@ -6,6 +6,14 @@
 :root {
   --electric-green : #09b43a;
   --electric-green-50: #09b4398a;
+  --charcoal: rgb(30,30,30);
+  --small: 16px;
+  --medium: 26px;
+  --large: 42px;
+  --x-large: 68px;
+  --xx-large: 110px;
+  display: flex;
+  justify-content: center;
 }
 
 * {
@@ -15,7 +23,7 @@
   padding: 0;
   transition-duration: 200ms !important;
   transition-property: all !important;
-  background-color: rgb(30, 30, 30) !important;
+  background-color: var(--charcoal) !important;
 }
 
 span {
@@ -30,7 +38,7 @@ span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(30, 30, 30);
+  background-color: var(--charcoal);
 }
 
 a:hover {
@@ -49,6 +57,10 @@ a:hover {
   font-size: 100px;
   text-shadow: 5px 5px darkgreen;
   cursor: pointer;
+}
+
+.logout_button {
+  border: none;
 }
 
 .login_button, .signup_button {

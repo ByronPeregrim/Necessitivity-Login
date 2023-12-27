@@ -1,119 +1,111 @@
 .wrapper {
     display: flex;
-    width: 100vw;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    padding-right: 30px;
+
   }
   
 .banner_box {
-  height: 100px;
   display: flex;
-  width: 100vw;
-  justify-content: center;
-  margin-bottom: 10px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .banner_text {
   align-self: flex-end;
   text-align: center;
-  font-size: 80px;
-  text-shadow: 5px 5px darkgreen;
-  cursor: pointer;
-  color: var(--electric-green);
-  margin-bottom: 11px;
-}
-
-.user_info_box {
-    width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.user_info > p {
-    font-size: 20px;
-    color: whitesmoke;
-}
-
-.user_info > p > b {
-    color: grey;
+  font-size: var(--large);
+  text-shadow: 2px 2px darkgreen;
+  margin: 0;
 }
 
 .edit_info_button {
   color: var(--electric-green);
   border: none;
+  display: none;
 }
 
 .edit_info_button:hover {
   color: darkgreen;
 }
 
+.add_workout_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+}
+
+.welcome_message {
+  color: whitesmoke;
+  align-self: flex-start;
+  margin: 0;
+}
+
 .user_page_button {
-  width: 250px;
-  height: 60px;
-  border-radius: 10px;
-  background-color: rgb(50,50,50) !important;
-  font-size: 20px;
-  font-weight: bolder;
+  width: 180px;
+  height: 45px;
+  border-radius: 2px;
+  background-color: steelblue!important;
+  border: none;
+  font-size: 14px;
+  font-weight: 800;
   cursor: pointer;
-  margin-top: 40px;
+  color: whitesmoke;
 }
 
 .user_page_button:hover {
-  background-color: rgb(35,35,35) !important;
-  color: whitesmoke !important;
-  border-color: whitesmoke !important;
+  background-color: rgba(70, 131, 180, 0.5) !important;
+  color: rgba(245, 245, 245, 0.5) !important;
 }
 
 .user_page_button:active {
-  border-color: whitesmoke !important;
-  color: whitesmoke !important;
+  background-color: rgba(70, 131, 180, 0.5) !important;
+  color: rgba(245, 245, 245, 0.5) !important;
 }
 
 .calories_burned_wrapper {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 80px;
+  justify-content: center;
+  margin-top: 20px;
   gap: 20px;
 }
 
 .calories_burned_wrapper > div {
-  width: 200px;
-  height: 250px;
-  border: solid grey;
-  border-radius: 20px;
-  box-shadow: whitesmoke 0px 5px 15px;
-  text-align: center;
-  padding: 10px;
-  background-color: rgb(50,50,50) !important;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: row;
+  text-shadow: 1px 1px darkgreen;
+  align-items: center;
   padding: 18px;
-  padding-top: 10px;
-  font-size: 20px;
-  text-shadow: 1px 1px gray;
-  color: white;
+  gap: 10px;
 }
 
 .calories_burned_wrapper > div > div {
-  height: 150px;
-  border-radius: 20px;
   display: flex;
+  gap: 5px;
   align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  color: var(--electric-green);
-  text-shadow: 2px 2px darkgreen;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.calorie_data {
+  font-size: var(--medium);
+  color: whitesmoke;
+  text-shadow: 1px 1px grey !important;
+}
+
+.divider {
+  font-size: var(--large);
+  color: steelblue;
+  text-shadow: none !important;
 }
 
 .line_chart_wrapper {
-  width: 800px;
+  width: 75%;
   height: 400px;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-bottom: 100px;
   display: flex;
   flex-direction: column;
@@ -122,8 +114,32 @@
 
 .line_chart_wrapper > label {
   color: whitesmoke;
-  text-shadow: 1px 1px grey;
-  font-size: 18px;
+  text-shadow: 2px 2px grey;
+  font-size: var(--medium);
+}
+
+@media (max-width:1000px) {
+.banner_box {
+  width: 100%;
+}
+
+.line_chart_wrapper {
+  width: 100%;
+}
+
+.calories_burned_wrapper {
+  width: 100%;
+}
+
+.calories_burned_wrapper > div {
+  padding: 16px;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.calorie_data {
+  font-size: var(--small);
+}
 }
 
 @media (max-width:815px) {
@@ -145,12 +161,14 @@
   }
 }
 
-@media (max-width: 775px) {
-  .calories_burned_wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    margin-top: 50px;
+@media (max-width: 767px) {
+
+  .banner_box {
+    margin-top: 0;
+  }
+
+  .divider {
+    font-size: var(--medium);
   }
 }
 
@@ -158,41 +176,32 @@
   .line_chart_wrapper {
     width: 500px;
   }
-}
 
-@media (max-width:600px) {
-    .banner_text {
-      font-size: 55px;
-    }
+  .line_chart_wrapper > label {
+    font-size: var(--small);
   }
+
+  .banner_box {
+    width: 90%;
+  }
+}
 
 @media (max-width:525px) {
   .line_chart_wrapper {
-    width: 400px;
-  }
-}
-  
-@media (max-width:430px) {
-  .banner_text {
-    font-size: 50px;
-    text-shadow: 3px 3px darkgreen;
+    width: 450px;
   }
 
-  .line_chart_wrapper {
-    width: 300px;
+  .user_page_button {
+    width: 140px;
   }
-  
-  .line_chart_wrapper > label {
-    font-size: 14px;
+
+  .calories_burned_wrapper > div > div {
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
   }
 }
 
+@media (max-width:450px) {
 
-
-
-
-@media (max-width:600px) {
-  .user_info_box {
-    justify-content: space-around;
-  }
 }

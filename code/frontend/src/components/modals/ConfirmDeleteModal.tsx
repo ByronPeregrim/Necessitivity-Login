@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import styles from "../../styles/AddWorkoutModal.module.css";
+import styles from "../../styles/AdminPage.module.css";
 
 interface ConfirmDeleteModalProps {
     onClickedConfirmDeleteUser: () => void,
@@ -8,7 +8,7 @@ interface ConfirmDeleteModalProps {
 
 const ConfirmDeleteModal = ({onClickedConfirmDeleteUser, onClickedBackButton} : ConfirmDeleteModalProps) => {
     return ( 
-        <div className={styles.add_workout_wrapper}>
+        <div className={styles.results_container}>
             <p className={styles.confirm_delete_text}>Confirm Delete?</p>
             <div className={styles.button_box}>
                 <Button
