@@ -2,7 +2,6 @@ import { Button, Container } from "react-bootstrap";
 import { User } from "../models/users";
 import styles from "../styles/UserPage.module.css";
 import { useEffect, useState } from "react";
-import UserEditInfoFormModal from "./modals/UserEditInfoForm";
 import AddWorkoutModal from "./modals/AddWorkoutModal";
 import * as UsersApi from "../network/users_api";
 import moment from "moment";
@@ -34,7 +33,6 @@ const array : Workout[] = [];
 const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
 
     let maxCalories = 1000;
-    const [showEditInfoForm, setShowEditInfoForm] = useState(false);
     const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
     const [showTodaysCalories, setShowTodaysCalories] = useState(0);
     const [showLastSevenDaysCalories, setShowLastSevenDaysCalories] = useState(0);
@@ -193,23 +191,6 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
                         ADD WORKOUT
                     </Button>
                 </div>
-            </div>
-            <Button
-                onClick={() => [setShowEditInfoForm(true)]}
-                className={styles.edit_info_button}
-            > Edit
-            </Button>
-
-            <div className={styles.user_info_box}>
-                {showEditInfoForm?
-                    <>
-                        <UserEditInfoFormModal
-                            currentUser={user}
-                            onEditInfoSuccessful={() => [window.location.reload(), setShowEditInfoForm(false)]}
-                            onBackButtonClicked={() => [setShowEditInfoForm(false)]}/>
-                    </>
-                    :null
-                } 
             </div>
             {showAddWorkoutModal?
             <AddWorkoutModal

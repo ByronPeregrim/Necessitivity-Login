@@ -43,7 +43,7 @@ const UserEditInfoFormModal = ({currentUser, onEditInfoSuccessful, onBackButtonC
         <Modal show>
             <Modal.Body className={styles.modal_body}>
                 <div className={styles.banner_box}>
-                    <h1 className={styles.banner_text}>FitTracker 5000</h1>
+                    <h1 className={styles.banner_text}>Edit Account Info</h1>
                 </div>
                 <Form className={styles.user_edit_info_form} onSubmit={handleSubmit(onSubmit)}>
                     { 

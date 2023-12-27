@@ -30,6 +30,11 @@ span {
   color: var(--electric-green) !important;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s;
+}
+
 #main-navbar {
   margin-top: 10px;
 }

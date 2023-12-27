@@ -23,16 +23,6 @@
   margin: 0;
 }
 
-.edit_info_button {
-  color: var(--electric-green);
-  border: none;
-  display: none;
-}
-
-.edit_info_button:hover {
-  color: darkgreen;
-}
-
 .add_workout_wrapper {
   display: flex;
   justify-content: space-between;

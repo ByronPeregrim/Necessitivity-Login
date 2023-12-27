@@ -130,7 +130,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="username"
                         label="Username"
                         type="text"
-                        placeholder="Username"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"Username is required",
@@ -153,7 +153,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="password"
                         label="Password"
                         type="password"
-                        placeholder="Password"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"Password is required",
@@ -176,7 +176,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="confirm_password"
                         label="Confirm Password"
                         type="password"
-                        placeholder="Confirm Password"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"Password confirmation is required",
@@ -190,7 +190,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="email"
                         label="Email"
                         type="email"
-                        placeholder="user@email.com"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"Email is required",
@@ -213,7 +213,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="first"
                         label="First Name"
                         type="text"
-                        placeholder="John"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"First name is required",
@@ -236,7 +236,7 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         name="last"
                         label="Last Name"
                         type="text"
-                        placeholder="Doe"
+                        placeholder=""
                         register={register}
                         registerOptions={{
                             required:"Last name is required",
@@ -258,9 +258,9 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                         <InputField
                             className={[styles.inputField, styles.weight_input]}
                             name="weight"
-                            label="Weight"
+                            label="Weight (lbs)"
                             type="number"
-                            placeholder="0"
+                            placeholder=""
                             register={register}
                             registerOptions={{
                                 required:"Weight is required",
@@ -281,13 +281,13 @@ const SignUpModal = ({onDismiss, onSignUpSuccessful, onBackButtonClicked, onAlre
                             disabled={isSubmitting}
                             onClick={onBackButtonClicked}
                         >   
-                            Back
+                            BACK
                         </Button>
                         <Button
                             type="submit"
                             disabled={isSubmitting}
                         >   
-                            Submit
+                            SUBMIT
                         </Button>
                     </div>
 

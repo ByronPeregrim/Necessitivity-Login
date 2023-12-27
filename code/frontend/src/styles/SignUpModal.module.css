@@ -1,5 +1,5 @@
 .banner_box {
-  height: 90px;
+  height: 70px;
   display: flex;
   align-self: center;
   justify-content: center;
@@ -8,14 +8,14 @@
 .banner_text {
   align-self: flex-end;
   text-align: center;
-  font-size: 100px;
-  text-shadow: 5px 5px darkgreen;
+  font-size: var(--x-large);
+  text-shadow: 4px 4px darkgreen;
   cursor: pointer;
   color: var(--electric-green) !important;
 }
 
 .modal_body {
-  width: 70rem;
+  width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,7 +29,7 @@
     margin-bottom: 5rem;
     border: solid grey;
     border-radius: 20px;
-    width: 40%;
+    width: 400px;
     padding-top: 20px;
     box-shadow: whitesmoke 0px 5px 15px;
   }
@@ -40,52 +40,51 @@
   padding-bottom: 5px;
   width: 200px;
   text-align: center;
-  text-shadow: 3px 3px darkgreen;
-  font-size: 35px;
+  text-shadow: 2px 2px darkgreen;
+  font-size: var(--medium);
 }
 
 .signup_form_text {
-  color: rgb(200,200,200, .6) !important;
+  color: var(--electric-green) !important;
 }
   
 .signup_form_text, .registration_error {
     text-align: center;
-    font-size: small;
+    font-size: 14px;
     width: 300px;
+    margin-bottom: 20px;
   }
 
 .inputField {
-    height: 50px;
+    height: 20px;
     color: rgb(200,200,200) !important;
-    outline: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: -6px;
+    font-size: var(--small);
+    margin-bottom: 20px;
+    margin-top: -3px;
     transition: .3s;
-    color: black;
-    display: flex;
     width: 300px;
     border: none;
-    background-color: rgb(50,50,50) !important;
+    border-bottom: solid 1px grey;
+    border-radius: 0;
+    padding-left: 2px;
+    padding-bottom: 5px;
+    font-weight: 700;
 }
 
-.inputField::placeholder {
-  color: rgb(200,200,200, .6) !important;
+label {
+  color: grey;
+  font-weight: bolder;
 }
 
 .inputField:focus{
-  background-color: rgb(35,35,35) !important;
   box-shadow: none;
-  border-color: none !important;
-}
-
-.inputField:hover{
-  background-color: rgb(35,35,35) !important;
+  border-bottom: solid 1px grey;
+  
 }
 
 .inputField:active {
   box-shadow: none;
+  border-bottom: solid 1px grey;
 }
 
 .weight_box {
@@ -95,7 +94,7 @@
 }
 
 .weight_input {
-  width: 100px;
+  width: 70px;
 }
 
 .registration_error {
@@ -114,25 +113,25 @@
 
 .button_box > * {
   width: 140px;
-  height: 3rem;
+  height: 45px;
   border-radius: 10px;
-  background-color: rgb(50,50,50) !important;
-  border-color: rgb(100, 100, 100);
-  font-size: 20px;
-  font-weight: bolder;
-  cursor: pointer;
-  color: green;
+  background-color: var(--charcoal)!important;
+  border: solid 1px whitesmoke;
+  font-size: var(--small);
+  font-weight: 800;
+  color: var(--electric-green);
 }
 
 .button_box > :hover {
-  background-color: rgb(35,35,35) !important;
-  color: whitesmoke !important;
-  border-color: whitesmoke;
+  background-color: rgb(50,50,50) !important;
+  border: solid 1px white;
+  color: white;
 }
 
 .button_box > :active {
-  border-color: whitesmoke !important;
-  color: whitesmoke !important;
+  background-color: rgb(50,50,50) !important;
+  border: solid 1px white;
+  color: white;
 }
 
 .already_have_account_button {
@@ -156,24 +155,16 @@
   margin-top: -10px;
 }
 
-@media (max-width:750px) {
-  .banner_text {
-    font-size: 90px;
-  }
-}
-
-@media (max-width:650px) {
-  .banner_text {
-    font-size: 80px;
-  }
-}
-
 @media (max-width:575px) {
   .banner_text {
     font-size: 70px;
   }
-  .banner_box {
-    height: 110px;
+}
+
+@media (max-width:535px) {
+  .banner_text {
+    font-size: var(--large);
+    text-shadow: 3px 3px darkgreen;
   }
 }
 
@@ -183,18 +174,13 @@
     width: 350px;
   }
 
-  .banner_text {
-    font-size: 60px;
-    margin-top: 75px;
-  }
-
   .inputField {
     width: 250px;
     align-self: center;
   }
 
   .weight_input {
-    width: 100px;
+    width: 70px;
   }
 
   .registration_error, .signup_form_text {
@@ -218,19 +204,15 @@
   }
 }
 
-@media (max-width:450px) {
-  .banner_text {
-    font-size: 50px;
+@media (max-width:400px) {
+  .user_signup_form {
+    width: 285px;
   }
 }
 
-@media (max-width:400px) {
-  .banner_text {
-    font-size: 40px;
-  }
-
-  .user_signup_form {
-    width: 285px;
+@media (max-width:332px) {
+  .banner_box{
+    width: 110%;
   }
 }
 

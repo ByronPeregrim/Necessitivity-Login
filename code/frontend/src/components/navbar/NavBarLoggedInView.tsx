@@ -1,7 +1,9 @@
-import { Button, Navbar } from "react-bootstrap";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
 import { User } from "../../models/users";
 import * as UsersApi from "../../network/users_api";
-import styles from "../../styles/Navbar.module.css"
+import styles from "../../styles/Navbar.module.css";
+import UserEditInfoFormModal from "../modals/UserEditInfoForm";
 
 interface NavBarLoggedInViewProps {
     user: User,
@@ -9,6 +11,8 @@ interface NavBarLoggedInViewProps {
 }
 
 const NavBarLoggedInView = ({ user, onLogoutSuccessful }: NavBarLoggedInViewProps) => {
+
+    const [showEditAccountForm, setShowEditAccountForm] = useState(false);
 
     async function logout() {
         try {
@@ -22,10 +26,21 @@ const NavBarLoggedInView = ({ user, onLogoutSuccessful }: NavBarLoggedInViewProp
 
     return (
         <>
-            <Navbar.Text className="me-2">
+            <Button className={styles.edit_info_button} onClick={() => setShowEditAccountForm(true)}>
                 Edit Account
-            </Navbar.Text>
+            </Button>
             <Button className={styles.logout_button} style={{border:"solid 2px steelblue"}} onClick={logout}>Log out</Button>
+            <div className={styles.user_info_box}>
+                {showEditAccountForm?
+                    <>
+                        <UserEditInfoFormModal
+                            currentUser={user}
+                            onEditInfoSuccessful={() => [window.location.reload(), setShowEditAccountForm(false)]}
+                            onBackButtonClicked={() => [setShowEditAccountForm(false)]}/>
+                    </>
+                    :null
+                } 
+            </div>
         </>
     );
 }

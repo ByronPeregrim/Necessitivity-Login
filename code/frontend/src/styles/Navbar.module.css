@@ -2,3 +2,11 @@
     border-color:rgba(70, 131, 180, 0.5) !important;
     color:rgba(245, 245, 245, 0.5) !important;
 }
+
+.edit_info_button {
+    border: none;
+}
+
+.edit_info_button:hover {
+    color: grey;
+}
