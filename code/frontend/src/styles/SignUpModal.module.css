@@ -155,19 +155,12 @@ label {
   margin-top: -10px;
 }
 
-@media (max-width:575px) {
-  .banner_text {
-    font-size: 70px;
-  }
-}
-
-@media (max-width:535px) {
+@media (max-width:550px) {
   .banner_text {
     font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
   }
 }
-
 
 @media (max-width:500px) {
   .user_signup_form {
@@ -208,12 +201,9 @@ label {
   .user_signup_form {
     width: 285px;
   }
-}
 
-@media (max-width:332px) {
   .banner_box{
     width: 110%;
   }
 }
-
 

@@ -3,26 +3,16 @@
   width: 100vw;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
-  padding-right: 30px;
 }
-
-.banner_box {
-    height: 100px;
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
   
   .banner_text {
     align-self: flex-end;
     text-align: center;
-    font-size: 80px;
+    font-size: var(--x-large);
     text-shadow: 5px 5px darkgreen;
     cursor: pointer;
     color: var(--electric-green);
-    margin-bottom: 11px;
+    margin-bottom: 20px;
   }
 
   .admin_search_form {
@@ -164,21 +154,21 @@
   color: red;
 }
 
-@media (max-width:600px) {
-  .banner_text {
-    font-size: 55px;
+@media (max-width:770px) {
+  .banner_box {
+    width: 120%;
   }
 }
 
-@media (max-width:430px) {
+@media (max-width:520px) {
   .banner_text {
-    font-size: 50px;
+    font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
   }
 }
 
 
-@media (max-width:350px) {
+@media (max-width:330px) {
   .results_container {
     width: 300px;
   }

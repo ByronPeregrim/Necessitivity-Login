@@ -4,7 +4,6 @@ Reset Password
 
 User:
 
-Change Adjust total calories section in "Add workout" modal to add and reset buttons rather than plus and minus
 Add Calendar feature
 
 Admin:
