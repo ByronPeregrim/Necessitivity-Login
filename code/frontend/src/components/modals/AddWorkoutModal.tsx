@@ -1,13 +1,13 @@
-import { Modal, Form, Button } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import styles from "../../styles/AddWorkoutModal.module.css"
-import * as UsersApi from "../../network/users_api";
-import { ConflictError, MissingParameters } from "../../errors/http_errors";
-import { useState } from "react";
-import { NewWorkoutInfo } from "../../network/users_api";
-import { User } from "../../models/users";
 import moment from "moment";
+import { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import { exercises } from "../../dictionaries/workouts";
+import { MissingParameters } from "../../errors/http_errors";
+import { User } from "../../models/users";
+import * as UsersApi from "../../network/users_api";
+import { NewWorkoutInfo } from "../../network/users_api";
+import styles from "../../styles/AddWorkoutModal.module.css";
 
 interface AddWorkoutModalProps {
     currentUser : User | null,
@@ -59,11 +59,7 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                     setErrorText("Total calories may not exceed 2000.");
                 }
             } else {
-                if (totalCalories - showEnteredCalories >= 0) {
-                    setTotalCalories(totalCalories - showEnteredCalories);
-                } else {
-                    setErrorText("Total calories may not subceed 0.");
-                }
+                setShowEnteredCalories(0);
             }
         } else {
             setErrorText("Number of calories entered must be between 1 and 2000.")
@@ -151,11 +147,13 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                         </div>
                         <div className={styles.add_calories_wrapper}>
                             <div className={styles.enter_calories_box}>
-                                <label htmlFor="calories"><b>Adjust Total Calories:</b></label>
                                 <div>
-                                    <Button type="button" onClick={() => updateTotalCalories(false)}>-</Button>
+                                    <label htmlFor="calories">Adjust Total Calories:</label>
                                     <input type="number" id="calories" name="calories" value={showEnteredCalories.toString()} onChange={handleChange}/>
-                                    <Button type="button" onClick={() => updateTotalCalories(true)}>+</Button>
+                                </div>
+                                <div>
+                                    <Button type="button" onClick={() => updateTotalCalories(false)}>RESET</Button>
+                                    <Button type="button" onClick={() => updateTotalCalories(true)}>ADD</Button>
                                 </div>
                             </div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -169,13 +167,13 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                                         disabled={isSubmitting}
                                         onClick={onBackButtonClicked}
                                     >
-                                        Back
+                                        BACK
                                     </Button>
                                     <Button
                                         type="submit"
                                         disabled={isSubmitting}
                                     >
-                                        Confirm
+                                        CONFIRM
                                     </Button>
                                 </div>
                             </Form>

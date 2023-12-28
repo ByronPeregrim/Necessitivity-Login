@@ -231,6 +231,10 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
                     options={options}
                 ></Line>
             </div>
+            <div className={styles.calendar_wrapper}>
+                <label htmlFor="calendar">Daily Calories Burned</label>
+                
+            </div>
         </Container>
     );
 }

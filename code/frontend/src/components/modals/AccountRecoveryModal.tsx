@@ -104,13 +104,13 @@ const AccountRecoveryModal = ({onDismiss, onBackButtonClicked, onRecoverySuccess
                             disabled={isSubmitting}
                             onClick={onBackButtonClicked}
                         >   
-                            Back
+                            BACK
                         </Button>
                         <Button
                             type="submit"
                             disabled={isSubmitting}
                         >   
-                            Submit
+                            SUBMIT
                         </Button>
                     </div>
                 </Form>

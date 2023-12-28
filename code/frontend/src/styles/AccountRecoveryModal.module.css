@@ -2,35 +2,33 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100rem;
-    height: 30rem;
+    width: 100vw;
+    height: 600px;
   }
 
 .banner_box {
-    height: 17rem;
     display: flex;
     align-self: center;
     width: 100rem;
     justify-content: center;
     margin-bottom: 10px;
+    margin-top: 140px;
   }
   
   .banner_text {
     align-self: flex-end;
     text-align: center;
-    font-size: 100px;
+    font-size: var(--xx-large);
     text-shadow: 5px 5px darkgreen;
     cursor: pointer;
     color: var(--electric-green);
-    margin-bottom: 11px;
   }
 
   .account_recovery_text, .account_recovery_success_text {
-    font-size: 30px;
+    font-size: var(--medium);
     margin-bottom: 30px;
     text-align: center;
     margin-top: 30px;
-    color: var(--electric-green);
     text-shadow: 2px 2px darkgreen;
   }
 
@@ -46,23 +44,19 @@
     width: 500px;
     box-shadow: whitesmoke 0px 5px 15px;
     border: solid grey;
-    border-radius: 20px;
+    border-radius: 10px;
   }
   
 .inputField {
     height: 50px;
-    color: rgb(200,200,200) !important;
-    outline: none;
+    color: whitesmoke!important;
     padding: 0.5rem 1rem;
-    font-size: 1.1rem;
     margin-bottom: 20px;
     margin-top: 0px;
     transition: .3s;
-    color: black;
-    display: flex;
     width: 300px;
-    border: none;
-    background-color: rgb(50,50,50) !important;
+    border-radius: 10px;
+    border: solid 1px whitesmoke;
 }
 
 .inputField::placeholder {
@@ -86,7 +80,6 @@
   .recovery_error, .recovery_form_text {
     color: grey;
     text-align: center;
-    font-size: 18px;
     margin-top: -10px;
     margin-bottom: -15px;
     z-index: 1000;
@@ -98,87 +91,67 @@
 
   .button_box {
     display: flex;
-    height: 3rem;
-    flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 1rem;
     width: 300px;
-    align-self: center;
   }
   
   .button_box > *, .success_button_box > * {
-    width: 140px;
-    height: 3rem;
-    border-radius: 10px;
-    background-color: rgb(50,50,50) !important;
-    border-color: rgb(100, 100, 100);
-    font-size: 20px;
-    font-weight: bolder;
-    cursor: pointer;
-    color: green;
-  }
-  
-  .button_box > :hover {
-    background-color: rgb(35,35,35) !important;
-    color: white;
-    border-color: white;
-  }
-  
-  .button_box > :active {
-    border-color: grey !important;
-    color: grey !important;
-  }
+      width: 140px;
+      height: 45px;
+      border-radius: 10px;
+      background-color: var(--charcoal)!important;
+      border: solid 1px whitesmoke;
+      font-size: var(--small);
+      font-weight: 800;
+      color: var(--electric-green);
+    }
+    
+    .button_box > :hover {
+      background-color: rgb(50,50,50) !important;
+      border: solid 1px white;
+      color: white;
+    }
+    
+    .button_box > :active {
+      background-color: rgb(50,50,50) !important;
+      border: solid 1px white;
+      color: white;
+    }
 
   
-  @media (max-width:770px) {
+  @media (max-width:870px) {
     .banner_text {
-      font-size: 90px;
+      font-size: var(--x-large);
     }
   }
   
-  @media (max-width:650px) {
+  @media (max-width:525px) {
     .banner_text {
-      font-size: 80px;
-    }
-  }
-  
-  @media (max-width:575px) {
-    .banner_text {
-      font-size: 70px;
-      text-shadow: 4px 4px grey;
-    }
-  }
-  
-  @media (max-width:500px) {
-    .banner_text {
-      font-size: 60px;
+      font-size: var(--large);
     }
 
     .account_recovery_form {
-      width: 400px;
+      width: 450px;
     }
 
     .account_recovery_text {
-      font-size: 25px;
       margin-bottom: 30px;
       margin-top: 30px;
     }
   }
 
-  @media (max-width:430px) {
+  @media (max-width:450px) {
     .banner_text {
-      font-size: 40px;
-      text-shadow: 3px 3px grey;
+      text-shadow: 3px 3px darkgreen;
     }
 
     .account_recovery_form {
-      width: 300px;
+      width: 320px;
+      height: 250px;
     }
 
     .account_recovery_text, .account_recovery_success_text {
-      font-size: 25px;
-      margin-bottom: 30px;
-      margin-top: 30px;
+      font-size: var(--small);
     }
 
     .inputField {

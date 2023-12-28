@@ -1,6 +1,6 @@
 @font-face {
-  font-family: nunito;
-  src: url(../../public/fonts/Nunito-VariableFont_wght.ttf);
+  font-family: inter;
+  src: url(../../public/fonts/Inter-VariableFont_slnt\,wght.ttf);
 }
 
 :root {
@@ -18,7 +18,7 @@
 
 * {
   color: var(--electric-green);
-  font-family: nunito;
+  font-family: inter;
   margin: 0;
   padding: 0;
   transition-duration: 200ms !important;

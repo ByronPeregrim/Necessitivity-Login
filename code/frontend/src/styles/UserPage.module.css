@@ -103,10 +103,14 @@
   align-items: center;
 }
 
-.line_chart_wrapper > label {
+.line_chart_wrapper > label, .calendar_wrapper > label {
   color: whitesmoke;
   text-shadow: 2px 2px grey;
   font-size: var(--medium);
+}
+
+.calendar_wrapper > label {
+  margin-top: 30px;
 }
 
 @media (max-width:1400px) {
@@ -129,7 +133,7 @@
 }
 
 .calories_burned_wrapper {
-  width: 100%;
+  width: 110%;
 }
 
 .calories_burned_wrapper > div {
@@ -185,15 +189,15 @@
   .banner_box {
     width: 90%;
   }
+
+  .user_page_button {
+    width: 140px;
+  }
 }
 
 @media (max-width:525px) {
   .line_chart_wrapper {
     width: 450px;
-  }
-
-  .user_page_button {
-    width: 140px;
   }
 
   .calories_burned_wrapper > div > div {

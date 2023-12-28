@@ -4,31 +4,20 @@
   flex-direction: column;
   align-items: center;
 }
-
-.banner_box {
-    height: 90px;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-}
   
 .banner_text {
-    align-self: flex-end;
-    text-align: center;
-    font-size: 70px;
+    font-size: var(--x-large);
     text-shadow: 5px 5px darkgreen;
     cursor: pointer;
-    color: var(--electric-green) !important;
+    text-align: center;
 }
 
 .modal_wrapper {
-  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid grey;
-  border-radius: 20px;
-  margin-top: 30px;
+  border-radius: 10px;
+  margin-top: 10px;
   padding: 20px;
   box-shadow: whitesmoke 0px 5px 15px;
 }
@@ -44,6 +33,7 @@
   text-align: center;
   margin: 0;
   margin-top: -15px;
+  font-size: 14px;
 }
 
 .add_workout_wrapper {
@@ -57,7 +47,7 @@
   display: flex;
   flex-direction: column;
   border: solid grey;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 40px;
   padding-bottom: 10px;
   margin-bottom: 40px;
@@ -67,7 +57,7 @@
 .add_exercise_wrapper > p {
   margin-top: 30px;
   margin-bottom: 30px;
-  font-size: large;
+  font-size: var(--small);
   text-align: center;
   color: whitesmoke;
 }
@@ -94,6 +84,10 @@
   align-items: center;
 }
 
+.duration_label {
+  margin-top: 12px;
+}
+
 .duration_box {
   display: flex;
   justify-content: space-between;
@@ -104,70 +98,67 @@
   width: 70px;
   height: 40px;
   border: none;
-  background-color: rgb(50,50,50) !important;
   padding-left: 10px;
   color: whitesmoke;
   text-align: center;
+}
+
+.duration_box > input {
+  background-color: rgb(50,50,50) !important;
 }
 
 .enter_calories_box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-bottom: -10px;
 }
 
-.enter_calories_box > label {
-  font-size: 18px;
+.enter_calories_box > div > label {
+  color: var(--electric-green);
+  font-size: var(--small);
+  margin-right: 3px;
 }
 
-.enter_calories_box > div {
+.enter_calories_box > div:last-child {
   display: flex;
-  align-items: center;
-  margin-bottom: 28.5px;
-  font-size: larger;
-  margin-top: 5px;
+
 }
 
 .enter_calories_box > div > input {
   width: 90px;
-  border: solid 1px;
+  font-size: var(--medium);
+}
+
+.enter_calories_box > div > input:hover {
+  border: solid 1px whitesmoke;
 }
 
 .enter_calories_box > div > Button {
   height: 40px;
-  background-color: rgb(50,50,50) !important;
-  border: none;
   border-radius: 0;
   display: flex;
   align-items: center;
-  border: solid 1px;
-  font-size: large;
+  border: none;
+  font-size: var(--small);
   font-weight: bolder;
 }
 
-.enter_calories_box > Button:hover {
-  background-color: rgb(35,35,35) !important;
-  color: whitesmoke !important;
-  border-color: whitesmoke;
+.enter_calories_box > div > Button:hover {
+  border: solid 1px white !important;
+  background-color: rgb(50, 50, 50) !important;
 }
 
-.enter_calories_box > Button:active {
-  border-color: whitesmoke !important;
-  color: whitesmoke !important;
-}
-
-.duration_label {
-  margin-top: 12px;
+.enter_calories_box > div > Button:active {
+  border: solid 1px white !important;
 }
 
 .total_calories_text {
   display: flex;
   gap: 5px;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: var(--small);
+  font-weight: 800;
   color: whitesmoke;
   justify-content: center;
 }
@@ -183,30 +174,31 @@
 
 .button_box > * {
   width: 140px;
-  height: 3rem;
+  height: 45px;
   border-radius: 10px;
-  background-color: rgb(50,50,50) !important;
-  border-color: rgb(100, 100, 100);
-  font-size: 20px;
-  font-weight: bolder;
-  cursor: pointer;
-  color: green;
+  background-color: var(--charcoal)!important;
+  border: solid 1px whitesmoke;
+  font-size: var(--small);
+  font-weight: 800;
+  color: var(--electric-green);
 }
 
 .button_box > :hover {
-  background-color: rgb(35,35,35) !important;
-  color: whitesmoke !important;
-  border-color: whitesmoke;
+  background-color: rgb(50,50,50) !important;
+  border: solid 1px white;
+  color: white;
 }
 
 .button_box > :active {
-  border-color: whitesmoke !important;
-  color: whitesmoke !important;
+  background-color: rgb(50,50,50) !important;
+  border: solid 1px white;
+  color: white;
 }
 
-@media (max-width: 530px) {
+@media (max-width: 550px) {
   .banner_text {
-    font-size: 60px;
+    font-size: var(--large);
+    text-shadow: 3px 3px darkgreen;
   }
 
   .modal_wrapper {
@@ -219,17 +211,6 @@
 }
 
 @media (max-width: 460px) {
-  .banner_text {
-    font-size: 50px;
-    text-shadow: 3px 3px darkgreen;
-  }
-}
-
-@media (max-width: 460px) {
-  .banner_text {
-    font-size: 45px;
-  }
-
   .modal_wrapper {
     width: 300px;
   }
@@ -247,8 +228,8 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 350px) {
   .banner_text {
-    font-size: 40px;
+    font-size: var(--medium);
   }
 }
