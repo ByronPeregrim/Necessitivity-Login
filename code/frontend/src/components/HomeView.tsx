@@ -13,9 +13,11 @@ const HomeView = ({
 }: HomeViewProps) => {
   return (
     <div className={styles.container}>
+
       <div className={styles.banner_box}>
         <h1 className={styles.banner_text}>FitTracker 5000</h1>
       </div>
+
       <button
         onClick={onLoginClicked}
         className={styles.login_button}
@@ -23,6 +25,7 @@ const HomeView = ({
       >
         Login
       </button>
+
       <button
         onClick={onSignUpClicked}
         className={styles.signup_button}
@@ -30,7 +33,9 @@ const HomeView = ({
       >
         Sign-Up
       </button>
+
       <div className={styles.account_recovery_links}>
+        
         <button
           onClick={() => {
             onAccountRecoveryClicked();
@@ -38,6 +43,7 @@ const HomeView = ({
         >
           Forgot Username?
         </button>
+
         <button
           onClick={() => {
             onAccountRecoveryClicked();
@@ -45,6 +51,7 @@ const HomeView = ({
         >
           Reset Password?
         </button>
+
       </div>
     </div>
   );

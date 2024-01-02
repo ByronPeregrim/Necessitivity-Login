@@ -52,14 +52,17 @@ const SignUpModal = ({
     <>
       <Modal show onHide={onDismiss}>
         <Modal.Body className={styles.modal_body}>
+
           <div className={styles.banner_box}>
             <h1 className={styles.banner_text}>FitTracker 5000</h1>
           </div>
+
           <Form
             className={styles.user_signup_form}
             onSubmit={handleSubmit(onSubmit)}
           >
             <h1 className={styles.signup_message}>Sign Up!</h1>
+            
             {errors.username?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -69,6 +72,7 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errors.password?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -78,6 +82,7 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errors.email?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -87,6 +92,7 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errors.first?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -96,6 +102,7 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errors.last?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -105,6 +112,7 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errors.weight?.message?.toString().length !== undefined &&
             errorDisplayed === false ? (
               <>
@@ -114,12 +122,14 @@ const SignUpModal = ({
                 {(errorDisplayed = true)}
               </>
             ) : null}
+
             {errorText && errorDisplayed === false ? (
               <>
                 {(errorDisplayed = true)}
                 <p className={styles.registration_error}>{errorText}</p>
               </>
             ) : null}
+
             {errorDisplayed === false ? (
               <>
                 <p className={styles.signup_form_text}>
@@ -127,6 +137,7 @@ const SignUpModal = ({
                 </p>
               </>
             ) : null}
+
             <InputField
               className={styles.inputField}
               name="username"
@@ -150,6 +161,7 @@ const SignUpModal = ({
                 },
               }}
             />
+
             <InputField
               className={styles.inputField}
               name="password"
@@ -175,6 +187,7 @@ const SignUpModal = ({
                 },
               }}
             />
+
             <InputField
               className={styles.inputField}
               name="confirm_password"
@@ -187,6 +200,7 @@ const SignUpModal = ({
                 validate: {},
               }}
             />
+
             <InputField
               className={styles.inputField}
               name="email"
@@ -211,6 +225,7 @@ const SignUpModal = ({
                 },
               }}
             />
+
             <InputField
               className={styles.inputField}
               name="first"
@@ -235,6 +250,7 @@ const SignUpModal = ({
                 },
               }}
             />
+
             <InputField
               className={styles.inputField}
               name="last"
@@ -259,6 +275,7 @@ const SignUpModal = ({
                 },
               }}
             />
+
             <div className={styles.weight_box}>
               <InputField
                 className={[styles.inputField, styles.weight_input]}
@@ -280,6 +297,7 @@ const SignUpModal = ({
                 }}
               />
             </div>
+            
             <div className={styles.button_box}>
               <Button
                 type="button"

@@ -160,10 +160,10 @@ export interface TodaysData {
   dates: string[];
 }
 
-export async function getCaloriesByDay(
+export async function getCaloriesForEachDay(
   selectors: TodaysData,
 ): Promise<Workout[]> {
-  const response = await fetchData("/api/users/get-calories-by-day", {
+  const response = await fetchData("/api/users/get-calories-for-each-day", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

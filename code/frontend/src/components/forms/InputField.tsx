@@ -7,7 +7,7 @@ interface InputFieldProps {
   register: UseFormRegister<any>;
   registerOptions?: RegisterOptions;
   error?: FieldError;
-  [x: string]: any;
+  [x: string]: any; // Enables the ability to add additional props
 }
 
 const InputField = ({

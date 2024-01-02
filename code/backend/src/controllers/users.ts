@@ -56,19 +56,19 @@ export const signUp: RequestHandler<
       throw createHttpError(409, "Passwords must match");
     }
 
-    const existingUsername = await UserModel.findOne({
+    const usernameAlreadyExists = await UserModel.findOne({
       username: username,
     }).exec();
 
-    if (existingUsername) {
+    if (usernameAlreadyExists) {
       throw createHttpError(
         409,
         "Username already taken. Please choose a different one."
       );
     }
 
-    const existingEmail = await UserModel.findOne({ email: email }).exec();
-    if (existingEmail) {
+    const emailAlreadyExists = await UserModel.findOne({ email: email }).exec();
+    if (emailAlreadyExists) {
       throw createHttpError(
         409,
         "A user with this email address already exists."
@@ -113,16 +113,16 @@ export const login: RequestHandler<
     }
 
     const user = await UserModel.findOne({ username: username })
-      .select(["+password", "+email"])
+      .select(["+password"])
       .exec();
 
     if (!user) {
       throw createHttpError(401, "Username and/or password are incorrect.");
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordsMatch = await bcrypt.compare(password, user.password);
 
-    if (!passwordMatch) {
+    if (!passwordsMatch) {
       throw createHttpError(401, "Username and/or password are incorrect.");
     }
 
@@ -145,7 +145,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const verifyEmail: RequestHandler<
+export const sendRecoveryEmail: RequestHandler<
   unknown,
   unknown,
   RecoveryBody,
@@ -158,7 +158,7 @@ export const verifyEmail: RequestHandler<
     }
 
     const user = await UserModel.findOne({ email: email })
-      .select(["+username", "+password", "+email"])
+      .select(["+username", "+email"])
       .exec();
 
     if (!user) {
@@ -169,7 +169,7 @@ export const verifyEmail: RequestHandler<
       from: "FitnessTracker 5000",
       to: user.email,
       subject: "FitnessTracker 5000 - Account Recovery",
-      text: "Username: " + user.username + "\nPassword: " + user.password,
+      text: "Username: " + user.username,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -203,28 +203,28 @@ export const adminSearch: RequestHandler<
     if (!username && !email) {
       throw createHttpError(400, "Parameters missing");
     }
-
-    const user = await UserModel.findOne({ username: username })
+    // Function will always prioritize search by username, even if both parameters are given.
+    const userByUsername = await UserModel.findOne({ username: username })
       .select(["+username", "+email", "+first", "+last", "+weight", "+admin"])
       .exec();
 
-    if (!user) {
-      const user1 = await UserModel.findOne({ email: email })
+    if (!userByUsername) {
+      const userByEmail = await UserModel.findOne({ email: email })
         .select(["+username", "+email", "+first", "+last", "+weight", "+admin"])
         .exec();
-      if (user1) {
-        if (user1.admin === true) {
+      if (userByEmail) {
+        if (userByEmail.admin === true) {
           throw createHttpError(401, "Can not retrieve admin account.");
         }
-        res.status(201).json(user1);
+        res.status(201).json(userByEmail);
       } else {
         throw createHttpError(401, "User account not found.");
       }
     } else {
-      if (user.admin === true) {
+      if (userByUsername.admin === true) {
         throw createHttpError(401, "Can not retrieve admin account.");
       }
-      res.status(201).json(user);
+      res.status(201).json(userByUsername);
     }
   } catch (error) {
     next(error);
@@ -297,6 +297,8 @@ export const editUser: RequestHandler<
       admin = false;
     }
 
+    /* Old email and old username variables used to reduce number of average queries by ensuring that a query only executes
+       if a change has occurred. Old username also required for update query if username has been changed.*/
     if (username !== oldUsername) {
       const existingUsername = await UserModel.findOne({
         username: username,

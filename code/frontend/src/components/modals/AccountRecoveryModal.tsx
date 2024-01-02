@@ -47,10 +47,13 @@ const AccountRecoveryModal = ({
 
   return (
     <Modal show onHide={onDismiss}>
+
       <div className={styles.banner_box}>
         <h1 className={styles.banner_text}>FitTracker 5000</h1>
       </div>
+
       {(errorDisplayed = false)}
+
       <Modal.Body className={styles.modal_body}>
         <Form
           className={styles.account_recovery_form}
@@ -59,23 +62,27 @@ const AccountRecoveryModal = ({
           <h2 className={styles.account_recovery_text}>
             Forgot Username or Password?
           </h2>
+
           {errors.email?.message?.length !== undefined ? (
             <>
               {(errorDisplayed = true)}
               <p className={styles.recovery_error}>{errors.email?.message}</p>
             </>
           ) : null}
+
           {errorText && errorDisplayed === false ? (
             <>
               {(errorDisplayed = true)}
               <p className={styles.recovery_error}>{errorText}</p>
             </>
           ) : null}
+          
           {!errorText && errorDisplayed === false ? (
             <>
               <p className={styles.recovery_form_text}>Enter email address</p>
             </>
           ) : null}
+
           <InputField
             className={styles.inputField}
             name="email"
@@ -100,6 +107,7 @@ const AccountRecoveryModal = ({
               },
             }}
           />
+
           <div className={styles.button_box}>
             <Button
               type="button"
@@ -112,6 +120,7 @@ const AccountRecoveryModal = ({
               SUBMIT
             </Button>
           </div>
+
         </Form>
       </Modal.Body>
     </Modal>

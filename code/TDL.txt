@@ -4,7 +4,7 @@ Reset Password
 
 User:
 
-Change Add Workout to be more intuitive. Put an X in the corner instead of a back button.
+
 
 Admin:
 

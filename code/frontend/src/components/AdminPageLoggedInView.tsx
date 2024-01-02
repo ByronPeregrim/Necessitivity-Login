@@ -76,6 +76,7 @@ const AdminPageLoggedInView = ({
 
   return (
     <Container className={styles.wrapper}>
+
       <div className={styles.banner_box}>
         <h1 className={styles.banner_text}>FitTracker 5000</h1>
       </div>
@@ -84,6 +85,7 @@ const AdminPageLoggedInView = ({
         className={styles.admin_search_form}
         onSubmit={handleSubmit(onSubmit)}
       >
+
         {errors.username?.message?.toString().length !== undefined &&
         errorDisplayed === false ? (
           <>
@@ -93,6 +95,7 @@ const AdminPageLoggedInView = ({
             {(errorDisplayed = true)}
           </>
         ) : null}
+
         {errors.email?.message?.toString().length !== undefined &&
         errorDisplayed === false ? (
           <>
@@ -102,17 +105,20 @@ const AdminPageLoggedInView = ({
             {(errorDisplayed = true)}
           </>
         ) : null}
+
         {errorText && errorDisplayed === false ? (
           <>
             {(errorDisplayed = true)}
             <p className={styles.search_error}>{errorText}</p>
           </>
         ) : null}
+
         {errorDisplayed === false ? (
           <>
             <p className={styles.form_text}>Search for user by:</p>
           </>
         ) : null}
+
         <InputField
           className={styles.inputField}
           name="username"
@@ -168,6 +174,7 @@ const AdminPageLoggedInView = ({
             Search
           </Button>
         </div>
+
       </Form>
 
       {showSearchResults ? (
@@ -183,6 +190,7 @@ const AdminPageLoggedInView = ({
           ]}
         />
       ) : null}
+
       {showConfirmDeleteModal ? (
         <ConfirmDeleteModal
           onClickedConfirmDeleteUser={() => deleteUser(returnedUser)}
@@ -192,6 +200,7 @@ const AdminPageLoggedInView = ({
           ]}
         />
       ) : null}
+
       {showDeleteUserSuccessModal ? <DeleteUserSuccessModal /> : null}
       {showEditInfoForm ? (
         <EditInfoFormModal
@@ -205,6 +214,7 @@ const AdminPageLoggedInView = ({
           ]}
         />
       ) : null}
+      
     </Container>
   );
 };

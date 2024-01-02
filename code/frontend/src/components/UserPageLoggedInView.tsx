@@ -37,8 +37,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
   const [showAddWorkoutModal, setShowAddWorkoutModal] = useState(false);
   const [showTodaysCalories, setShowTodaysCalories] = useState(0);
   const [showLastSevenDaysCalories, setShowLastSevenDaysCalories] = useState(0);
-  const [showLastThirtyDaysCalories, setShowLastThirtyDaysCalories] =
-    useState(0);
+  const [showLastThirtyDaysCalories, setShowLastThirtyDaysCalories] = useState(0);
   const [lastTenDays, setLastTenDays] = useState(array);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [clickedCellDay, setClickedCellDay] = useState(0);
@@ -75,7 +74,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
       let totalCalories = 0;
       try {
         if (id) {
-          const lastXDays = await UsersApi.getCaloriesByDay({ id, dates });
+          const lastXDays = await UsersApi.getCaloriesForEachDay({ id, dates });
           for (let i = 0; i < lastXDays.length; i++) {
             totalCalories += lastXDays[i].calories;
           }
@@ -89,7 +88,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
       const dates = getLastXDays(10);
       try {
         if (id) {
-          const lastTenDays = await UsersApi.getCaloriesByDay({ id, dates });
+          const lastTenDays = await UsersApi.getCaloriesForEachDay({ id, dates });
           setLastTenDays(lastTenDays);
         }
       } catch (error) {
@@ -118,6 +117,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
         if (dates[i] === lastTenDays[j].date) {
           array.push(lastTenDays[j].calories);
           mySwitch = true;
+          // Tracks max calories in order to adjust y-axis range
           if (lastTenDays[j].calories > maxCalories) {
             max = lastTenDays[j].calories;
           }
@@ -181,6 +181,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
 
   return (
     <Container className={styles.wrapper}>
+
       <div className={styles.banner_box}>
         <div className={styles.text_wrapper}>
           <h1 className={styles.banner_text}>Hello, {user?.first}!</h1>
@@ -195,6 +196,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
           </Button>
         </div>
       </div>
+
       {showAddWorkoutModal ? (
         <AddWorkoutModal
           currentUser={user}
@@ -205,6 +207,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
           onBackButtonClicked={() => [setShowAddWorkoutModal(false)]}
         />
       ) : null}
+
       <div className={styles.calories_burned_wrapper}>
         <div>
           <div>
@@ -227,10 +230,12 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
           </div>
         </div>
       </div>
+
       <div className={styles.line_chart_wrapper}>
         <label htmlFor="line_chart">Calories Burned Over Last Ten Days</label>
         <Line id="line_chart" data={data} options={options}></Line>
       </div>
+
       {showCalendar ? (
         <div className={styles.calendar_wrapper}>
           <label htmlFor="calendar">Daily Calories Burned</label>
@@ -244,6 +249,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
           />
         </div>
       ) : null}
+
       {showEditDate ? (
         <div className={styles.calendar_wrapper}>
           <EditWorkoutModal
@@ -263,6 +269,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
           />
         </div>
       ) : null}
+      
     </Container>
   );
 };

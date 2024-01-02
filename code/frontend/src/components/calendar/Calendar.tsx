@@ -41,26 +41,51 @@ const Calendar = ({
   const array: { date: string; calories: number }[] = [];
   const [userWorkouts, setUserWorkouts] = useState(array);
 
+  useEffect(() => {
+    const newArray: { date: string; calories: number }[] = [];
+    
+    async function fetchUserWorkouts() {
+      try {
+        const workouts = await UsersApi.getUserWorkouts({ id });
+        onFetchUserWorkoutsSuccessful(workouts);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
+    const onFetchUserWorkoutsSuccessful = (workouts: Workout[]) => {
+      workouts.forEach((workout) => {
+        const date = workout.date;
+        const calories = workout.calories;
+        newArray.push({ date, calories });
+      });
+      setUserWorkouts(newArray);
+    };
+    
+    fetchUserWorkouts();
+  }, [id]);
+
   const prevMonth = () => onChange && onChange(sub(value, { months: 1 }));
+  
   const nextMonth = () => {
     const nextMonth = add(value, { months: 1 });
-    if (!isAfter(nextMonth, currentMonth)) {
+    if (!isAfter(nextMonth, currentMonth)) { // Prevents user from going past current month.
       onChange && onChange(nextMonth);
     }
   };
 
-  const handleClickCell = (value: Date, date: number) => {
-    const selectedDate = add(value, { days: date - 1 });
+  const handleClickCell = (firstDateOfMonth: Date, daysToAdd: number) => {
+    const selectedDate = add(firstDateOfMonth, { days: daysToAdd - 1 });
     const today = new Date();
-    if (isBefore(selectedDate, today)) {
-      onCellClicked && onCellClicked(date);
-      setCalories && setCalories(getTodaysCalories(value, date));
+    if (isBefore(selectedDate, today)) { //Prevents interaction with future dates
+      onCellClicked && onCellClicked(daysToAdd);
+      setCalories && setCalories(getCaloriesForDate(firstDateOfMonth, daysToAdd));
       onDateSet && onDateSet();
     }
   };
 
-  const getTodaysCalories = (value: Date, date: number) => {
-    const selectedDate = add(value, { days: date - 1 });
+  const getCaloriesForDate = (firstDateOfMonth: Date, daysToAdd: number) => {
+    const selectedDate = add(firstDateOfMonth, { days: daysToAdd - 1 });
     const formattedDate = format(selectedDate, "LLL d yy");
     let calories = 0;
     userWorkouts.forEach((workout) => {
@@ -70,27 +95,6 @@ const Calendar = ({
     });
     return calories;
   };
-
-  useEffect(() => {
-    const newArray: { date: string; calories: number }[] = [];
-    async function fetchUserWorkouts() {
-      try {
-        const workouts = await UsersApi.getUserWorkouts({ id });
-        onFetchUserWorkoutsSuccessful(workouts);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    const onFetchUserWorkoutsSuccessful = (workouts: Workout[]) => {
-      workouts.forEach((workout) => {
-        const date = workout.date;
-        const calories = workout.calories;
-        newArray.push({ date, calories });
-      });
-      setUserWorkouts(newArray);
-    };
-    fetchUserWorkouts();
-  }, [id]);
 
   return (
     <div className={styles.calendar_wrapper}>
@@ -109,11 +113,9 @@ const Calendar = ({
             <Cell key={day} day_of_week={day} />
           </div>
         ))}
-
         {Array.from({ length: preceedingDays }).map((_, index) => (
           <div key={index}></div>
         ))}
-
         {Array.from({ length: numDays }).map((_, index) => {
           const date = index + 1;
           const day = add(value, { days: date - new Date().getDay() });
@@ -124,7 +126,7 @@ const Calendar = ({
                 key={date}
                 day={date}
                 today={true}
-                calories={getTodaysCalories(value, date - 1)}
+                calories={getCaloriesForDate(value, date - 1)}
               />
             );
           } else {
@@ -133,7 +135,7 @@ const Calendar = ({
                 onClick={() => handleClickCell(value, date - 1)}
                 key={date}
                 day={date}
-                calories={getTodaysCalories(value, date - 1)}
+                calories={getCaloriesForDate(value, date - 1)}
               />
             );
           }

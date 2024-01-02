@@ -1,5 +1,5 @@
 export var exercises: { [exercise: string]: number } = {};
-
+// Stores MET score for common activities
 exercises["running"] = 11.2;
 exercises["walking"] = 3;
 exercises["biking"] = 6;

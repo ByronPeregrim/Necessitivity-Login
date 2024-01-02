@@ -49,13 +49,16 @@ const UserEditInfoFormModal = ({
   return (
     <Modal show>
       <Modal.Body className={styles.modal_body}>
+
         <div className={styles.banner_box}>
           <h1 className={styles.banner_text}>Edit Account Info</h1>
         </div>
+
         <Form
           className={styles.user_edit_info_form}
           onSubmit={handleSubmit(onSubmit)}
         >
+
           {errors.username?.message?.toString().length !== undefined &&
           errorDisplayed === false ? (
             <>
@@ -65,6 +68,7 @@ const UserEditInfoFormModal = ({
               {(errorDisplayed = true)}
             </>
           ) : null}
+
           {errors.email?.message?.toString().length !== undefined &&
           errorDisplayed === false ? (
             <>
@@ -74,6 +78,7 @@ const UserEditInfoFormModal = ({
               {(errorDisplayed = true)}
             </>
           ) : null}
+
           {errors.first?.message?.toString().length !== undefined &&
           errorDisplayed === false ? (
             <>
@@ -83,6 +88,7 @@ const UserEditInfoFormModal = ({
               {(errorDisplayed = true)}
             </>
           ) : null}
+
           {errors.last?.message?.toString().length !== undefined &&
           errorDisplayed === false ? (
             <>
@@ -92,6 +98,7 @@ const UserEditInfoFormModal = ({
               {(errorDisplayed = true)}
             </>
           ) : null}
+
           {errors.weight?.message?.toString().length !== undefined &&
           errorDisplayed === false ? (
             <>
@@ -101,12 +108,14 @@ const UserEditInfoFormModal = ({
               {(errorDisplayed = true)}
             </>
           ) : null}
+
           {errorText && errorDisplayed === false ? (
             <>
               {(errorDisplayed = true)}
               <p className={styles.error_message}>{errorText}</p>
             </>
           ) : null}
+
           {errorDisplayed === false ? (
             <>
               <p className={styles.signup_form_text}>
@@ -114,6 +123,7 @@ const UserEditInfoFormModal = ({
               </p>
             </>
           ) : null}
+
           <InputField
             className={styles.inputField}
             name="first"
@@ -139,6 +149,7 @@ const UserEditInfoFormModal = ({
               },
             }}
           />
+
           <InputField
             className={styles.inputField}
             name="last"
@@ -164,6 +175,7 @@ const UserEditInfoFormModal = ({
               },
             }}
           />
+
           <InputField
             className={styles.inputField}
             name="username"
@@ -188,6 +200,7 @@ const UserEditInfoFormModal = ({
               },
             }}
           />
+
           <InputField
             className={styles.inputField}
             name="email"
@@ -213,6 +226,7 @@ const UserEditInfoFormModal = ({
               },
             }}
           />
+
           <div className={styles.weight_box}>
             <InputField
               className={[styles.inputField, styles.weight_input]}
@@ -235,6 +249,7 @@ const UserEditInfoFormModal = ({
               }}
             />
           </div>
+
           <input
             type="hidden"
             {...register("oldUsername")}
@@ -245,6 +260,7 @@ const UserEditInfoFormModal = ({
             {...register("oldEmail")}
             defaultValue={currentUser?.email}
           ></input>
+
           <div className={styles.button_box}>
             <Button
               type="button"
@@ -257,6 +273,7 @@ const UserEditInfoFormModal = ({
               Confirm
             </Button>
           </div>
+          
         </Form>
       </Modal.Body>
     </Modal>

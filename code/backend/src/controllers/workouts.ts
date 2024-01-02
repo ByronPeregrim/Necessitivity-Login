@@ -52,15 +52,15 @@ export const createWorkout: RequestHandler<
   }
 };
 
-interface TodaysData {
+interface UserWorkoutDates {
   id?: string;
   dates?: string[];
 }
 
-export const getCaloriesByDay: RequestHandler<
+export const getCaloriesForEachDay: RequestHandler<
   unknown,
   unknown,
-  TodaysData,
+  UserWorkoutDates,
   unknown
 > = async (req, res, next) => {
   const id = req.body.id;
@@ -101,7 +101,8 @@ export const getUserWorkouts: RequestHandler<
     if (!id) {
       throw createHttpError(400, "Parameters missing");
     }
-    const objectId = ObjectId.createFromHexString(id);
+    // User ID is stored in database as an ObjectId type, need to convert string.
+    const objectId = ObjectId.createFromHexString(id); 
     const workouts = await WorkoutModel.find({ user: objectId });
     if (!workouts) {
       throw createHttpError(404, "No workouts found");
@@ -133,7 +134,9 @@ export const editWorkout: RequestHandler<
     if (!id || !date || !calories) {
       throw createHttpError(400, "Parameters missing");
     }
+    // User ID is stored in database as an ObjectId type, need to convert string.
     const objectId = ObjectId.createFromHexString(id);
+    // If workout is edited to have zero calories, delete workout from database.
     if (calories <= 0) {
       const deletedWorkout = WorkoutModel.deleteOne({
         user: objectId,
@@ -145,6 +148,7 @@ export const editWorkout: RequestHandler<
         user: objectId,
         date: date,
       });
+      // Create a new workout if entry does not already exist for specified date
       if (!workout) {
         const newWorkout = await WorkoutModel.create({
           calories: calories,

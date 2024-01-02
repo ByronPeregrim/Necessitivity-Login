@@ -13,7 +13,7 @@ router.post("/login", UserController.login);
 
 router.post("/logout", UserController.logout);
 
-router.post("/account-recovery", UserController.verifyEmail);
+router.post("/account-recovery", UserController.sendRecoveryEmail);
 
 router.post("/admin-search", UserController.adminSearch);
 
@@ -23,7 +23,7 @@ router.post("/edit-user", UserController.editUser);
 
 router.post("/add-workout", WorkoutController.createWorkout);
 
-router.post("/get-calories-by-day", WorkoutController.getCaloriesByDay);
+router.post("/get-calories-for-each-day", WorkoutController.getCaloriesForEachDay);
 
 router.post("/get-user-workouts", WorkoutController.getUserWorkouts);
 
