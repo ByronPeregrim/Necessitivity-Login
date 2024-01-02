@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { NewWorkoutData } from "../../network/users_api";
@@ -25,7 +24,7 @@ const EditWorkoutModal = ({value, day, userId, currentCalories, onEditWorkoutSuc
 
     async function onSubmit(data: NewWorkoutData) {
         try {
-            const newWorkout = await UsersApi.editWorkout(data);
+            await UsersApi.editWorkout(data);
             onEditWorkoutSuccessful();
         } catch (error) {
             console.error(error);

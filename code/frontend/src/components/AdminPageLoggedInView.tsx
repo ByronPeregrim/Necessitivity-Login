@@ -104,7 +104,7 @@ const AdminPageLoggedInView = ({loggedInAdmin} : AdminPageLoggedInViewProps) => 
                 {
                     errorDisplayed === false ?
                     <>
-                        <p className={styles.form_text}>Search for user account.</p>
+                        <p className={styles.form_text}>Search for user by:</p>
                     </>
                     :null
                 }

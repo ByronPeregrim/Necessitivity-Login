@@ -27,11 +27,11 @@
     align-items: center;
     margin-top: 10px;
     margin-bottom: 5rem;
-    border: solid grey;
+    border: solid 1px grey;
     border-radius: 20px;
     width: 400px;
     padding-top: 20px;
-    box-shadow: whitesmoke 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   }
 
 .signup_message {
@@ -71,10 +71,14 @@
     font-weight: 700;
 }
 
-label {
-  color: grey;
+.user_signup_form > div > label, .user_signup_form > .weight_box > div > label {
+  color: gray !important;
+  text-shadow: none !important;
+  font-size: var(--small) !important;
   font-weight: bolder;
 }
+
+
 
 .inputField:focus{
   box-shadow: none;

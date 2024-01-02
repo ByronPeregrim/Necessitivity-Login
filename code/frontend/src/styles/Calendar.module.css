@@ -33,6 +33,10 @@
     border: solid 1px white;
 }
 
+.cell:not(.days_of_week > *):active {
+    border: solid 1px rgba(128, 128, 128, 0.5);
+}
+
 .days_of_week > * {
     border: none;
     margin-bottom: -30px;
@@ -54,6 +58,11 @@
 .arrows:hover {
     transition: .3s;
     color: darkgreen;
+}
+
+.arrows:active {
+    transition: .3s;
+    color: rgba(0, 100, 0, 0.75);
 }
 
 .arrows, .month {

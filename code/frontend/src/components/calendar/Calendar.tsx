@@ -99,13 +99,14 @@ const Calendar = ({id = "", value = new Date(), onChange, onCellClicked, onDateS
 
                 {Array.from({length: numDays}).map((_, index) => {
                     const date = index + 1;
-                    if (format(add(value, {days: date -1}), 'LLL d yy') === format(new Date(), 'LLL d yy')) {
+                    const day = add(value, {days: date-new Date().getDay()});
+                    if (format(day, 'LLL dd yy') === format(new Date(), 'LLL dd yy')) {
                         return (
-                            <Cell onClick={() => handleClickCell(value, date)} key={date} day={date} today={true} calories={getTodaysCalories(value, date)}/>
+                            <Cell onClick={() => handleClickCell(value, date-1)} key={date} day={date} today={true} calories={getTodaysCalories(value, date-1)}/>
                         );
                     } else {
                         return (
-                            <Cell onClick={() => handleClickCell(value, date)} key={date} day={date} calories={getTodaysCalories(value, date)}/>
+                            <Cell onClick={() => handleClickCell(value, date-1)} key={date} day={date} calories={getTodaysCalories(value, date-1)}/>
                         );
                     }
                     

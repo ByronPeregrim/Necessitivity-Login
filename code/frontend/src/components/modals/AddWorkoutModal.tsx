@@ -27,8 +27,7 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
     const [duration, setDuration] = useState(0);
     const [exercise, setExercise] = useState("");
     const [totalCalories, setTotalCalories] = useState(0);
-    const [showEstimatedCalories, setShowEstimatedCalories] = useState(0);
-    const [showEnteredCalories, setShowEnteredCalories] = useState(0);
+    const [estimatedCalories, setEstimatedCalories] = useState(0);
 
     async function onSubmit(newWorkoutInfo: NewWorkoutInfo) {
         try {
@@ -50,22 +49,6 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
         }
     }
 
-    const updateTotalCalories = (isAddition : boolean) => {
-        if (showEnteredCalories < 2001 && showEnteredCalories > 0) {
-            if (isAddition) {
-                if (totalCalories + showEnteredCalories <= 2000) {
-                    setTotalCalories(totalCalories + showEnteredCalories);
-                } else {
-                    setErrorText("Total calories may not exceed 2000.");
-                }
-            } else {
-                setShowEnteredCalories(0);
-            }
-        } else {
-            setErrorText("Number of calories entered must be between 1 and 2000.")
-        }
-    }
-
     const calculateCalories = () => {
         const userWeight = currentUser?.weight;
         if (userWeight !== undefined) {
@@ -74,8 +57,7 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                     const METScore = exercises[exercise];
                     let caloriesBurned = ((METScore * 3.5 * (userWeight/2.205)) / 200) * duration;
                     caloriesBurned = Math.round(caloriesBurned);
-                    setShowEstimatedCalories(caloriesBurned);
-                    setShowEnteredCalories(caloriesBurned);
+                    setEstimatedCalories(caloriesBurned);
                 } else {
                     setErrorText("Duration must be between 1 and 180 minutes.");
                 }
@@ -87,10 +69,6 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
         }
     }
 
-    const handleChange = (e: { preventDefault: () => void; target: { value: any; }; }) => {
-        setShowEnteredCalories(Number(e.target.value));
-    }
-
     let errorDisplayed = false;
 
     return ( 
@@ -100,6 +78,14 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                     <h1 className={styles.banner_text}>FitTracker 5000</h1>
                 </div>
                 <div className={styles.modal_wrapper}>
+                    <Button
+                        type="button"
+                        disabled={isSubmitting}
+                        onClick={onBackButtonClicked}
+                        className={styles.back_button}
+                    >
+                        X
+                    </Button>
                     <h2 className={styles.add_workout_text}>Add Workout</h2>
                     {errors.calories?.message?.toString().length !== undefined && errorDisplayed === false ?
                         <>
@@ -139,43 +125,36 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                                     type="button"
                                     disabled={isSubmitting}
                                     onClick={calculateCalories}
+                                    className={styles.calculate_button}
                                 >
-                                    Enter
+                                    Calculate
                                 </Button>
                             </div>
-                            <p><b>Estimated Calories: </b>{showEstimatedCalories}</p>
+                            <p>Estimated Calories:<b>{estimatedCalories}</b></p>
+                            <Button
+                                    type="button"
+                                    disabled={isSubmitting}
+                                    onClick={() => setTotalCalories(totalCalories + estimatedCalories)}
+                                    className={styles.add_to_total_button}
+                                >
+                                    Add To Total
+                            </Button>
                         </div>
                         <div className={styles.add_calories_wrapper}>
-                            <div className={styles.enter_calories_box}>
-                                <div>
-                                    <label htmlFor="calories">Adjust Total Calories:</label>
-                                    <input type="number" id="calories" name="calories" value={showEnteredCalories.toString()} onChange={handleChange}/>
-                                </div>
-                                <div>
-                                    <Button type="button" onClick={() => updateTotalCalories(false)}>RESET</Button>
-                                    <Button type="button" onClick={() => updateTotalCalories(true)}>ADD</Button>
-                                </div>
-                            </div>
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <input type="hidden" {...register("user")} defaultValue={currentUser?._id}/>
-                                <input type="hidden" {...register("calories")} defaultValue={totalCalories}/>
                                 <input type="hidden" {...register("date")} defaultValue={moment().format("MMM D YY")}/>
-                                <p className={styles.total_calories_text}><b>Total Calories Burned: </b>{totalCalories}</p>
-                                <div className={styles.button_box}>
-                                    <Button
-                                        type="button"
-                                        disabled={isSubmitting}
-                                        onClick={onBackButtonClicked}
-                                    >
-                                        BACK
-                                    </Button>
-                                    <Button
-                                        type="submit"
-                                        disabled={isSubmitting}
-                                    >
-                                        CONFIRM
-                                    </Button>
+                                <div className={styles.total_calories_box}>
+                                    <p className={styles.total_calories_text}><b>Total Calories: </b></p>
+                                    <input type="number" id="calories" {...register("calories")} value={totalCalories.toString()} onChange={e => setTotalCalories(Number(e.target.value))}/>
                                 </div>
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className={styles.submit_button}
+                                >
+                                    Submit Workout
+                                </Button>
                             </Form>
                         </div>
                     </div>

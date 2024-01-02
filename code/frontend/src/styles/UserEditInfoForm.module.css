@@ -18,6 +18,18 @@
       box-shadow: whitesmoke 0px 5px 15px;
     }
 
+  .user_edit_info_form > div > label {
+    color: whitesmoke;
+    text-shadow: 2px 2px grey;
+    font-size: var(--medium);
+  }
+
+  .weight_box > div > label {
+    color: whitesmoke;
+    text-shadow: 2px 2px grey;
+    font-size: var(--medium);
+  }
+
   
   .signup_message {
     margin-bottom: 8px;

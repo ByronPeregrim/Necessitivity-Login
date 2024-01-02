@@ -66,7 +66,7 @@
   .inputField:focus{
     background-color: rgb(35,35,35) !important;
     box-shadow: none;
-    border-color: none !important;
+    border: solid 1px whitesmoke!important;
   }
   
   .inputField:hover{

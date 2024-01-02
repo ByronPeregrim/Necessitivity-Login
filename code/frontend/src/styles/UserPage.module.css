@@ -1,9 +1,3 @@
-label {
-  color: whitesmoke;
-  text-shadow: 2px 2px grey;
-  font-size: var(--medium);
-}
-
 .wrapper {
     display: flex;
     width: 100vw;
@@ -57,8 +51,8 @@ label {
 }
 
 .user_page_button:hover {
-  background-color: rgba(70, 131, 180, 0.5) !important;
-  color: rgba(245, 245, 245, 0.5) !important;
+  background-color: rgba(70, 131, 180, 0.75) !important;
+  color: rgba(245, 245, 245, 0.75) !important;
 }
 
 .user_page_button:active {
@@ -115,6 +109,9 @@ label {
 
 .line_chart_wrapper > label { 
   margin-bottom: 10px;
+  color: whitesmoke;
+  text-shadow: 2px 2px grey;
+  font-size: var(--medium);
 }
 
 .calendar_wrapper {
@@ -125,6 +122,12 @@ label {
   align-items: center;
   width: 700px;
   height: 500px;
+}
+
+.calendar_wrapper > label {
+  color: whitesmoke;
+  text-shadow: 2px 2px grey;
+  font-size: var(--medium);
 }
 
 @media (max-width:1400px) {

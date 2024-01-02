@@ -19,7 +19,21 @@
   border-radius: 10px;
   margin-top: 10px;
   padding: 20px;
-  box-shadow: whitesmoke 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.back_button {
+  align-self: flex-end;
+  border: none;
+  font-size: var(--medium);
+}
+
+.back_button:hover {
+color: darkgray;
+}
+
+.back_button:active {
+  color: grey !important;
 }
 
 .add_workout_text {
@@ -49,21 +63,21 @@
   border: solid grey;
   border-radius: 10px;
   padding: 40px;
-  padding-bottom: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   width: 320px;
 }
 
 .add_exercise_wrapper > p {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: var(--small);
   text-align: center;
-  color: whitesmoke;
 }
 
-.add_exercise_wrapper > button {
-  width: 70px;
+.add_exercise_wrapper > p > b {
+  margin-right: 3px;
+  color: whitesmoke;
+  margin-left: 5px;
 }
 
 .add_exercise_wrapper > select {
@@ -82,6 +96,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .duration_label {
@@ -94,105 +109,97 @@
   align-items: center;
 }
 
-.duration_box > input, .enter_calories_box > div > input {
+.duration_box > input{
   width: 70px;
   height: 40px;
-  border: none;
   padding-left: 10px;
   color: whitesmoke;
   text-align: center;
+  border-radius: 10px;
+  font-size: var(--small);
+  font-weight: 800;
 }
 
 .duration_box > input {
-  background-color: rgb(50,50,50) !important;
+  border: solid 1px whitesmoke;
 }
 
-.enter_calories_box {
+.calculate_button {
+  border: solid 1px steelblue;
+  color: whitesmoke;
+}
+
+.calculate_button:hover {
+  border: solid 1px rgba(70, 131, 180, 0.75);
+  color: steelblue;
+}
+
+.calculate_button:active {
+  border: solid 1px rgba(70, 131, 180, 0.5) !important;
+  color: rgba(70, 131, 180, 0.75) !important
+}
+
+.add_to_total_button {
+  align-self: center;
+  width: 150px;
+  border: solid 1px var(--electric-green);
+  color: whitesmoke;
+}
+
+.add_to_total_button:hover {
+  border: solid 1px steelblue;
+  color: steelblue;
+}
+
+.add_to_total_button:active {
+  border: solid 1px rgba(70, 131, 180, 0.5) !important;
+  color: rgba(70, 131, 180, 0.5) !important;
+}
+
+.total_calories_box {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
-.enter_calories_box > div > label {
-  color: var(--electric-green);
-  font-size: var(--small);
-  margin-right: 3px;
-}
-
-.enter_calories_box > div:last-child {
-  display: flex;
-
-}
-
-.enter_calories_box > div > input {
-  width: 90px;
+.total_calories_box > p{
+  margin-bottom: 0;
+  margin-right: 10px;
   font-size: var(--medium);
 }
 
-.enter_calories_box > div > input:hover {
-  border: solid 1px whitesmoke;
-}
-
-.enter_calories_box > div > Button {
-  height: 40px;
-  border-radius: 0;
-  display: flex;
-  align-items: center;
+.total_calories_box > input {
+  width: 100px;
+  font-size: var(--medium);
+  border-radius: 16px;
+  text-align: center;
+  background-color: whitesmoke !important;
+  color: black;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border: none;
-  font-size: var(--small);
-  font-weight: bolder;
 }
 
-.enter_calories_box > div > Button:hover {
-  border: solid 1px white !important;
-  background-color: rgb(50, 50, 50) !important;
+.total_calories_box > input:focus-visible {
+  border: none;
+  box-shadow: none !important;
 }
 
-.enter_calories_box > div > Button:active {
-  border: solid 1px white !important;
-}
-
-.total_calories_text {
-  display: flex;
-  gap: 5px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-size: var(--small);
-  font-weight: 800;
+.submit_button {
   color: whitesmoke;
-  justify-content: center;
+  border: solid 1px steelblue;
+  margin-bottom: 20px;
 }
 
-.button_box {
-  display: flex;
-  height: 3rem;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  width: 300px;
+.submit_button:hover {
+  color: rgba(70, 131, 180, 0.75);
+  border: solid 1px rgba(70, 131, 180, 0.75);
 }
 
-.button_box > * {
-  width: 140px;
-  height: 45px;
-  border-radius: 10px;
-  background-color: var(--charcoal)!important;
-  border: solid 1px whitesmoke;
-  font-size: var(--small);
-  font-weight: 800;
-  color: var(--electric-green);
-}
-
-.button_box > :hover {
-  background-color: rgb(50,50,50) !important;
-  border: solid 1px white;
-  color: white;
-}
-
-.button_box > :active {
-  background-color: rgb(50,50,50) !important;
-  border: solid 1px white;
-  color: white;
+.submit_button:active{
+  color: rgba(70, 131, 180, 0.5) !important;
+  border: solid 1px rgba(70, 131, 180, 0.5) !important;
 }
 
 @media (max-width: 550px) {
@@ -217,14 +224,6 @@
 
   .add_workout_wrapper, .add_exercise_wrapper, .add_calories_wrapper {
     width: 280px;
-  }
-
-  .button_box {
-    width: 260px;
-   }
-
-  .button_box > Button {
-    width: 120px;
   }
 }
 
