@@ -1,170 +1,173 @@
 .modal_body {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 600px;
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 600px;
+}
 
 .banner_box {
-    display: flex;
-    align-self: center;
-    width: 100rem;
-    justify-content: center;
-    margin-bottom: 10px;
-    margin-top: 140px;
-  }
-  
-  .banner_text {
-    align-self: flex-end;
-    text-align: center;
-    font-size: var(--xx-large);
-    text-shadow: 5px 5px darkgreen;
-    cursor: pointer;
-    color: var(--electric-green);
-  }
+  display: flex;
+  align-self: center;
+  width: 100rem;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 140px;
+}
 
-  .account_recovery_text, .account_recovery_success_text {
-    font-size: var(--medium);
-    margin-bottom: 30px;
-    text-align: center;
-    margin-top: 30px;
-    text-shadow: 2px 2px darkgreen;
-  }
+.banner_text {
+  align-self: flex-end;
+  text-align: center;
+  font-size: var(--xx-large);
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+  color: var(--electric-green);
+}
 
-  .account_recovery_success_text {
-    margin-top: 50px;
-  }
-  
-  .account_recovery_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 300px;
-    width: 500px;
-    box-shadow: whitesmoke 0px 5px 15px;
-    border: solid grey;
-    border-radius: 10px;
-  }
-  
+.account_recovery_text,
+.account_recovery_success_text {
+  font-size: var(--medium);
+  margin-bottom: 30px;
+  text-align: center;
+  margin-top: 30px;
+  text-shadow: 2px 2px darkgreen;
+}
+
+.account_recovery_success_text {
+  margin-top: 50px;
+}
+
+.account_recovery_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  width: 500px;
+  box-shadow: whitesmoke 0px 5px 15px;
+  border: solid grey;
+  border-radius: 10px;
+}
+
 .inputField {
-    height: 50px;
-    color: whitesmoke!important;
-    padding: 0.5rem 1rem;
-    margin-bottom: 20px;
-    margin-top: 0px;
-    transition: .3s;
-    width: 300px;
-    border-radius: 10px;
-    border: solid 1px whitesmoke;
+  height: 50px;
+  color: whitesmoke !important;
+  padding: 0.5rem 1rem;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  transition: 0.3s;
+  width: 300px;
+  border-radius: 10px;
+  border: solid 1px whitesmoke;
 }
 
 .inputField::placeholder {
-  color: rgb(200,200,200, .6) !important;
+  color: rgb(200, 200, 200, 0.6) !important;
 }
-  
-  .inputField:focus{
-    background-color: rgb(35,35,35) !important;
-    box-shadow: none;
-    border: solid 1px whitesmoke!important;
+
+.inputField:focus {
+  background-color: rgb(35, 35, 35) !important;
+  box-shadow: none;
+  border: solid 1px whitesmoke !important;
+}
+
+.inputField:hover {
+  background-color: rgb(35, 35, 35) !important;
+}
+
+.inputField:active {
+  box-shadow: none;
+}
+
+.recovery_error,
+.recovery_form_text {
+  color: grey;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: -15px;
+  z-index: 1000;
+}
+
+.recovery_error {
+  color: whitesmoke;
+}
+
+.button_box {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.button_box > *,
+.success_button_box > * {
+  width: 140px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: var(--charcoal) !important;
+  border: solid 1px whitesmoke;
+  font-size: var(--small);
+  font-weight: 800;
+  color: var(--electric-green);
+}
+
+.button_box > :hover {
+  background-color: rgb(50, 50, 50) !important;
+  border: solid 1px white;
+  color: white;
+}
+
+.button_box > :active {
+  background-color: rgb(50, 50, 50) !important;
+  border: solid 1px white;
+  color: white;
+}
+
+@media (max-width: 870px) {
+  .banner_text {
+    font-size: var(--x-large);
   }
-  
-  .inputField:hover{
-    background-color: rgb(35,35,35) !important;
-  }
-  
-  .inputField:active {
-    box-shadow: none;
-  }
-  
-  .recovery_error, .recovery_form_text {
-    color: grey;
-    text-align: center;
-    margin-top: -10px;
-    margin-bottom: -15px;
-    z-index: 1000;
+}
+
+@media (max-width: 525px) {
+  .banner_text {
+    font-size: var(--large);
   }
 
-  .recovery_error {
-    color: whitesmoke;
+  .account_recovery_form {
+    width: 450px;
+  }
+
+  .account_recovery_text {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 450px) {
+  .banner_text {
+    text-shadow: 3px 3px darkgreen;
+  }
+
+  .account_recovery_form {
+    width: 320px;
+    height: 250px;
+  }
+
+  .account_recovery_text,
+  .account_recovery_success_text {
+    font-size: var(--small);
+  }
+
+  .inputField {
+    width: 250px;
   }
 
   .button_box {
-    display: flex;
-    justify-content: space-between;
-    width: 300px;
-  }
-  
-  .button_box > *, .success_button_box > * {
-      width: 140px;
-      height: 45px;
-      border-radius: 10px;
-      background-color: var(--charcoal)!important;
-      border: solid 1px whitesmoke;
-      font-size: var(--small);
-      font-weight: 800;
-      color: var(--electric-green);
-    }
-    
-    .button_box > :hover {
-      background-color: rgb(50,50,50) !important;
-      border: solid 1px white;
-      color: white;
-    }
-    
-    .button_box > :active {
-      background-color: rgb(50,50,50) !important;
-      border: solid 1px white;
-      color: white;
-    }
-
-  
-  @media (max-width:870px) {
-    .banner_text {
-      font-size: var(--x-large);
-    }
-  }
-  
-  @media (max-width:525px) {
-    .banner_text {
-      font-size: var(--large);
-    }
-
-    .account_recovery_form {
-      width: 450px;
-    }
-
-    .account_recovery_text {
-      margin-bottom: 30px;
-      margin-top: 30px;
-    }
+    width: 250px;
   }
 
-  @media (max-width:450px) {
-    .banner_text {
-      text-shadow: 3px 3px darkgreen;
-    }
-
-    .account_recovery_form {
-      width: 320px;
-      height: 250px;
-    }
-
-    .account_recovery_text, .account_recovery_success_text {
-      font-size: var(--small);
-    }
-
-    .inputField {
-      width: 250px;
-    }
-
-    .button_box {
-      width: 250px;
-    }
-
-    .button_box > *{
-      width: 120px;
-      height: 40px;
-      font-size: 16px;
-    }
+  .button_box > * {
+    width: 120px;
+    height: 40px;
+    font-size: 16px;
   }
+}

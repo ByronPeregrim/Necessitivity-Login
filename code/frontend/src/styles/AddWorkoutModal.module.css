@@ -4,12 +4,12 @@
   flex-direction: column;
   align-items: center;
 }
-  
+
 .banner_text {
-    font-size: var(--x-large);
-    text-shadow: 5px 5px darkgreen;
-    cursor: pointer;
-    text-align: center;
+  font-size: var(--x-large);
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+  text-align: center;
 }
 
 .modal_wrapper {
@@ -19,7 +19,11 @@
   border-radius: 10px;
   margin-top: 10px;
   padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border: solid 2px whitesmoke;
 }
 
 .back_button {
@@ -29,7 +33,7 @@
 }
 
 .back_button:hover {
-color: darkgray;
+  color: darkgray;
 }
 
 .back_button:active {
@@ -60,7 +64,7 @@ color: darkgray;
 .add_exercise_wrapper {
   display: flex;
   flex-direction: column;
-  border: solid grey;
+  border: solid 2px whitesmoke;
   border-radius: 10px;
   padding: 40px;
   margin-bottom: 30px;
@@ -109,7 +113,7 @@ color: darkgray;
   align-items: center;
 }
 
-.duration_box > input{
+.duration_box > input {
   width: 70px;
   height: 40px;
   padding-left: 10px;
@@ -122,6 +126,8 @@ color: darkgray;
 
 .duration_box > input {
   border: solid 1px whitesmoke;
+  margin-left: 24px;
+  padding-left: 14px;
 }
 
 .calculate_button {
@@ -136,7 +142,7 @@ color: darkgray;
 
 .calculate_button:active {
   border: solid 1px rgba(70, 131, 180, 0.5) !important;
-  color: rgba(70, 131, 180, 0.75) !important
+  color: rgba(70, 131, 180, 0.75) !important;
 }
 
 .add_to_total_button {
@@ -163,7 +169,7 @@ color: darkgray;
   margin-bottom: 30px;
 }
 
-.total_calories_box > p{
+.total_calories_box > p {
   margin-bottom: 0;
   margin-right: 10px;
   font-size: var(--medium);
@@ -174,10 +180,14 @@ color: darkgray;
   font-size: var(--medium);
   border-radius: 16px;
   text-align: center;
+  padding-left: 12px;
   background-color: whitesmoke !important;
   color: black;
   font-weight: 600;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   border: none;
 }
 
@@ -197,7 +207,7 @@ color: darkgray;
   border: solid 1px rgba(70, 131, 180, 0.75);
 }
 
-.submit_button:active{
+.submit_button:active {
   color: rgba(70, 131, 180, 0.5) !important;
   border: solid 1px rgba(70, 131, 180, 0.5) !important;
 }
@@ -222,7 +232,9 @@ color: darkgray;
     width: 300px;
   }
 
-  .add_workout_wrapper, .add_exercise_wrapper, .add_calories_wrapper {
+  .add_workout_wrapper,
+  .add_exercise_wrapper,
+  .add_calories_wrapper {
     width: 280px;
   }
 }

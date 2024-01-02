@@ -1,8 +1,8 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .banner_box {
   margin-top: 70px;
@@ -17,7 +17,8 @@
   cursor: pointer;
 }
 
-.login_button, .signup_button {
+.login_button,
+.signup_button {
   width: 300px;
   height: 75px;
   border-radius: 10px;
@@ -26,11 +27,12 @@
   border: solid 1px whitesmoke;
   margin-bottom: 1rem;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.login_button:hover, .signup_button:hover {
-  background-color: rgb(50,50,50) !important;
+.login_button:hover,
+.signup_button:hover {
+  background-color: rgb(50, 50, 50) !important;
 }
 
 .account_recovery_links {
@@ -39,32 +41,33 @@
   gap: 6px;
 }
 
-.account_recovery_links > *{
-  background-color: rgb(0,0,0,0);
+.account_recovery_links > * {
+  background-color: rgb(0, 0, 0, 0);
   border: none;
   font-size: var(--small);
   color: grey;
 }
 
-.account_recovery_links >:hover {
+.account_recovery_links > :hover {
   color: whitesmoke;
   cursor: pointer;
 }
 
-@media (max-width:850px) {
+@media (max-width: 850px) {
   .banner_text {
     font-size: var(--x-large);
   }
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .banner_text {
     font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
     margin-bottom: 0;
   }
 
-  .login_button, .signup_button {
+  .login_button,
+  .signup_button {
     width: 280px;
   }
 }

@@ -1,12 +1,11 @@
 .wrapper {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+}
 
-  }
-  
 .banner_box {
   display: flex;
   width: 100%;
@@ -41,7 +40,7 @@
   width: 180px;
   height: 45px;
   border-radius: 2px;
-  background-color: steelblue!important;
+  background-color: steelblue !important;
   border: none;
   font-size: 14px;
   font-weight: 800;
@@ -104,10 +103,10 @@
   align-items: center;
   padding: 50px 30px 90px 30px;
   border-top: dotted 1px rgba(128, 128, 128, 0.5);
-  border-bottom: dotted 1px rgb(128, 128, 128, .5);
+  border-bottom: dotted 1px rgb(128, 128, 128, 0.5);
 }
 
-.line_chart_wrapper > label { 
+.line_chart_wrapper > label {
   margin-bottom: 10px;
   color: whitesmoke;
   text-shadow: 2px 2px grey;
@@ -130,7 +129,7 @@
   font-size: var(--medium);
 }
 
-@media (max-width:1400px) {
+@media (max-width: 1400px) {
   .wrapper {
     width: 100%;
   }
@@ -140,38 +139,38 @@
   }
 }
 
-@media (max-width:1000px) {
-.banner_box {
-  width: 100%;
+@media (max-width: 1000px) {
+  .banner_box {
+    width: 100%;
+  }
+
+  .line_chart_wrapper {
+    width: 100%;
+  }
+
+  .calories_burned_wrapper {
+    width: 110%;
+  }
+
+  .calories_burned_wrapper > div {
+    padding: 16px;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .calorie_data {
+    font-size: var(--small);
+  }
 }
 
-.line_chart_wrapper {
-  width: 100%;
-}
-
-.calories_burned_wrapper {
-  width: 110%;
-}
-
-.calories_burned_wrapper > div {
-  padding: 16px;
-  gap: 10px;
-  font-size: 12px;
-}
-
-.calorie_data {
-  font-size: var(--small);
-}
-}
-
-@media (max-width:815px) {
+@media (max-width: 815px) {
   .line_chart_wrapper {
     width: 600px;
   }
 }
 
-@media (max-width:800px) {
-  .user_info>p {
+@media (max-width: 800px) {
+  .user_info > p {
     font-size: 16px;
   }
   .edit_info_button {
@@ -184,7 +183,6 @@
 }
 
 @media (max-width: 767px) {
-
   .banner_box {
     margin-top: 0;
   }
@@ -194,7 +192,7 @@
   }
 }
 
-@media (max-width:625px) {
+@media (max-width: 625px) {
   .line_chart_wrapper {
     width: 500px;
   }
@@ -212,7 +210,7 @@
   }
 }
 
-@media (max-width:525px) {
+@media (max-width: 525px) {
   .line_chart_wrapper {
     width: 450px;
   }
@@ -224,6 +222,5 @@
   }
 }
 
-@media (max-width:450px) {
-
+@media (max-width: 450px) {
 }

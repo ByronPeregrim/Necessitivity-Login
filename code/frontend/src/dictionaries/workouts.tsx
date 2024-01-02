@@ -1,4 +1,4 @@
-export var exercises: {[exercise: string] : number} = {};
+export var exercises: { [exercise: string]: number } = {};
 
 exercises["running"] = 11.2;
 exercises["walking"] = 3;

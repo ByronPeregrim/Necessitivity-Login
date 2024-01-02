@@ -22,21 +22,24 @@
 }
 
 .user_signup_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 5rem;
-    border: solid 1px grey;
-    border-radius: 20px;
-    width: 400px;
-    padding-top: 20px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5rem;
+  border: solid 1px grey;
+  border-radius: 20px;
+  width: 400px;
+  padding-top: 20px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
 
 .signup_message {
   margin-bottom: 8px;
-  border-bottom: solid rgb(50,50,50);
+  border-bottom: solid rgb(50, 50, 50);
   padding-bottom: 5px;
   width: 200px;
   text-align: center;
@@ -47,43 +50,42 @@
 .signup_form_text {
   color: var(--electric-green) !important;
 }
-  
-.signup_form_text, .registration_error {
-    text-align: center;
-    font-size: 14px;
-    width: 300px;
-    margin-bottom: 20px;
-  }
 
-.inputField {
-    height: 20px;
-    color: rgb(200,200,200) !important;
-    font-size: var(--small);
-    margin-bottom: 20px;
-    margin-top: -3px;
-    transition: .3s;
-    width: 300px;
-    border: none;
-    border-bottom: solid 1px grey;
-    border-radius: 0;
-    padding-left: 2px;
-    padding-bottom: 5px;
-    font-weight: 700;
+.signup_form_text,
+.registration_error {
+  text-align: center;
+  font-size: 14px;
+  width: 300px;
+  margin-bottom: 20px;
 }
 
-.user_signup_form > div > label, .user_signup_form > .weight_box > div > label {
+.inputField {
+  height: 20px;
+  color: rgb(200, 200, 200) !important;
+  font-size: var(--small);
+  margin-bottom: 20px;
+  margin-top: -3px;
+  transition: 0.3s;
+  width: 300px;
+  border: none;
+  border-bottom: solid 1px grey;
+  border-radius: 0;
+  padding-left: 2px;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+
+.user_signup_form > div > label,
+.user_signup_form > .weight_box > div > label {
   color: gray !important;
   text-shadow: none !important;
   font-size: var(--small) !important;
   font-weight: bolder;
 }
 
-
-
-.inputField:focus{
+.inputField:focus {
   box-shadow: none;
   border-bottom: solid 1px grey;
-  
 }
 
 .inputField:active {
@@ -102,7 +104,7 @@
 }
 
 .registration_error {
-    color: red !important;
+  color: red !important;
 }
 
 .button_box {
@@ -119,7 +121,7 @@
   width: 140px;
   height: 45px;
   border-radius: 10px;
-  background-color: var(--charcoal)!important;
+  background-color: var(--charcoal) !important;
   border: solid 1px whitesmoke;
   font-size: var(--small);
   font-weight: 800;
@@ -127,13 +129,13 @@
 }
 
 .button_box > :hover {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border: solid 1px white;
   color: white;
 }
 
 .button_box > :active {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border: solid 1px white;
   color: white;
 }
@@ -159,14 +161,14 @@
   margin-top: -10px;
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .banner_text {
     font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
   }
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .user_signup_form {
     width: 350px;
   }
@@ -180,7 +182,8 @@
     width: 70px;
   }
 
-  .registration_error, .signup_form_text {
+  .registration_error,
+  .signup_form_text {
     width: 250px;
   }
 
@@ -192,7 +195,7 @@
     width: 250px;
   }
 
-  .button_box { 
+  .button_box {
     width: 250px;
   }
 
@@ -201,13 +204,12 @@
   }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
   .user_signup_form {
     width: 285px;
   }
 
-  .banner_box{
+  .banner_box {
     width: 110%;
   }
 }
-

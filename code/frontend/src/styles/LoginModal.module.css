@@ -11,7 +11,8 @@
   cursor: pointer;
 }
 
-.signup_form_text, .login_error {
+.signup_form_text,
+.login_error {
   text-align: center;
   margin-bottom: 7px;
   margin-top: -29px;
@@ -19,13 +20,13 @@
 }
 
 .signup_form_text {
-  text-shadow: .5px .5px darkgreen;
+  text-shadow: 0.5px 0.5px darkgreen;
 }
 
 .user_login_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input_account_info_box {
@@ -36,7 +37,7 @@
   font-weight: 500;
   margin-bottom: 1rem;
   margin-top: -25px;
-  transition: .3s;
+  transition: 0.3s;
   width: 300px;
   border: none;
   border-radius: 10px;
@@ -44,19 +45,19 @@
 }
 
 .input_account_info_box::placeholder {
-  color: rgb(200,200,200, .5) !important;
+  color: rgb(200, 200, 200, 0.5) !important;
   font-weight: bold;
   font-size: var(--medium);
 }
 
 .input_account_info_box:focus {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   box-shadow: none;
   border: solid 1px white;
 }
 
 .input_account_info_box:hover {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border: solid 1px white;
 }
 
@@ -77,7 +78,7 @@
   width: 140px;
   height: 45px;
   border-radius: 10px;
-  background-color: var(--charcoal)!important;
+  background-color: var(--charcoal) !important;
   border: solid 1px whitesmoke;
   font-size: var(--small);
   font-weight: 800;
@@ -85,13 +86,13 @@
 }
 
 .button_box > :hover {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border: solid 1px white;
   color: white;
 }
 
 .button_box > :active {
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border: solid 1px white;
   color: white;
 }
@@ -106,34 +107,34 @@
   gap: 6px;
 }
 
-.account_recovery_links > *{
-  background-color: rgb(0,0,0,0);
+.account_recovery_links > * {
+  background-color: rgb(0, 0, 0, 0);
   border: none;
   font-size: 16px;
   color: grey;
   padding: 0;
 }
 
-.account_recovery_links >:hover {
+.account_recovery_links > :hover {
   color: whitesmoke;
   cursor: pointer;
-  background-color: rgb(0,0,0,0);
+  background-color: rgb(0, 0, 0, 0);
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .banner_text {
     font-size: var(--x-large);
   }
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .banner_text {
     font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
   }
 }
 
-@media (max-width:375px) {
+@media (max-width: 375px) {
   .input_account_info_box {
     width: 18rem;
   }
@@ -143,7 +144,7 @@
     margin-bottom: 10px;
   }
 
-  .button_box { 
+  .button_box {
     width: 18rem;
   }
 }

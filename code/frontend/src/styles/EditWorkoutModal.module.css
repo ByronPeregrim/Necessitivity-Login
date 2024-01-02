@@ -1,96 +1,98 @@
 .edit_workout_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: solid 1px rgb(50, 50, 50);
-    padding: 30px;
-    padding-top: 0;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px rgb(50, 50, 50);
+  padding: 30px;
+  padding-top: 0;
+  border-radius: 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  width: 400px;
 }
 
 .back_button {
-    align-self: flex-end;
-    margin-top: 10px;
-    margin-right: -20px;
-    color: whitesmoke;
-    border: none;
-    border-radius: 20px;
-    font-size: va;
+  align-self: flex-end;
+  margin-top: 10px;
+  margin-right: -20px;
+  color: whitesmoke;
+  border: none;
+  border-radius: 20px;
+  font-size: va;
 }
 
 .back_button:hover {
-    border: none;
-    color: darkgray;
+  border: none;
+  color: darkgray;
 }
 
 .back_button:active {
-    border: none !important;
-    color: gray !important;
+  border: none !important;
+  color: gray !important;
 }
 
 .header_date {
-    font-size: var(--medium);
-    text-shadow: 2px 2px darkgreen;
-    cursor: default;
+  font-size: var(--medium);
+  text-shadow: 2px 2px darkgreen;
+  cursor: default;
 }
 
 .current_calories {
-    color: grey;
-    margin-top: 10px;
-    margin-bottom: 8px;
+  color: grey;
+  margin-top: 10px;
+  margin-bottom: 8px;
 }
 
 .calorie_box > * {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 .calorie_box > * > label {
-    font-size: var(--small);
-    text-shadow: none;
-    color: whitesmoke;
-    width: 110px;
-    margin: 0;
+  font-size: var(--small);
+  text-shadow: none;
+  color: whitesmoke;
+  width: 110px;
+  margin: 0;
 }
 
 .calorie_box > * > input {
-    height: 40px;
-    width: 90px;
-    color: whitesmoke;
-    text-align: center;
+  height: 40px;
+  width: 90px;
+  color: whitesmoke;
+  text-align: center;
 }
 
 .calorie_box > * > input:hover {
-    box-shadow: steelblue 0px 5px 15px;
+  box-shadow: steelblue 0px 5px 15px;
 }
 
 .calorie_box > * > input:focus {
-    color: whitesmoke;
-    border: solid 1px whitesmoke;
-    box-shadow: steelblue 0px 5px 15px;
+  color: whitesmoke;
+  border: solid 1px whitesmoke;
+  box-shadow: steelblue 0px 5px 15px;
 }
 
 .submit_button {
-    border: 1px solid steelblue;
+  border: 1px solid steelblue;
 }
 
 .submit_button:hover {
-    border: 1px solid rgba(70, 131, 180, 0.75);
-    color: steelblue;
+  border: 1px solid rgba(70, 131, 180, 0.75);
+  color: steelblue;
 }
 
 .submit_button:active {
-    border: 1px solid rgba(70, 131, 180, 0.5) !important;
-    color: rgba(70, 131, 180, 0.75) !important;
+  border: 1px solid rgba(70, 131, 180, 0.5) !important;
+  color: rgba(70, 131, 180, 0.75) !important;
 }
 
 .error_message {
-    color: rgba(255, 0, 0, 0.75);
+  color: rgba(255, 0, 0, 0.75);
 }
-

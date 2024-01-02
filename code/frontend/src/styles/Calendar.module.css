@@ -1,107 +1,111 @@
 .calendar_wrapper {
-    width: 700px;
-    height: auto;
-    padding: 10px;
-    border-radius: 10px;
-    padding-bottom: 20px;
+  width: 700px;
+  height: auto;
+  padding: 10px;
+  border-radius: 10px;
+  padding-bottom: 20px;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .month {
-    grid-column: 3 / 6;
-    cursor: default;
+  grid-column: 3 / 6;
+  cursor: default;
 }
 
 .cell {
-    border: solid 1px grey;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  border: solid 1px grey;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .cell:not(.days_of_week > *):hover {
-    border: solid 1px white;
+  border: solid 1px white;
 }
 
 .cell:not(.days_of_week > *):active {
-    border: solid 1px rgba(128, 128, 128, 0.5);
+  border: solid 1px rgba(128, 128, 128, 0.5);
 }
 
 .days_of_week > * {
-    border: none;
-    margin-bottom: -30px;
+  border: none;
+  margin-bottom: -30px;
 }
 
 .day_of_week {
-    color: grey;
-    cursor: default;
+  color: grey;
+  cursor: default;
 }
 
-.day_of_week, .arrows{
-    font-weight: 800;
+.day_of_week,
+.arrows {
+  font-weight: 800;
 }
 
 .arrows {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .arrows:hover {
-    transition: .3s;
-    color: darkgreen;
+  transition: 0.3s;
+  color: darkgreen;
 }
 
 .arrows:active {
-    transition: .3s;
-    color: rgba(0, 100, 0, 0.75);
+  transition: 0.3s;
+  color: rgba(0, 100, 0, 0.75);
 }
 
-.arrows, .month {
-    font-size: var(--medium);
-    margin-top: 10px;
-    margin-bottom: 10px;
+.arrows,
+.month {
+  font-size: var(--medium);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.day, .today {
-    font-size: 12px;
-    align-self: flex-start;
-    margin-top: -30px;
-    margin-bottom: 5px;
-    margin-left: 3px;
-    color: whitesmoke;
-    cursor: default;
+.day,
+.today {
+  font-size: 12px;
+  align-self: flex-start;
+  margin-top: -30px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  color: whitesmoke;
+  cursor: default;
 }
 
 .today {
-    color: steelblue !important;
+  color: steelblue !important;
 }
 
-.zero_calories, .non_zero_calories {
-    font-weight: 800;
-    cursor: pointer;
+.zero_calories,
+.non_zero_calories {
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .zero_calories {
-    color: rgba(255, 0, 0, 0.75);
+  color: rgba(255, 0, 0, 0.75);
 }
 
 .zero_calories:hover {
-    color: darkred;
+  color: darkred;
 }
 
 .non_zero_calories {
-    color: var(--electric-green);
+  color: var(--electric-green);
 }
 
 .non_zero_calories:hover {
-    color: green;
+  color: green;
 }

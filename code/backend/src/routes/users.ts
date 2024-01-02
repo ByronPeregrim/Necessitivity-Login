@@ -1,6 +1,6 @@
 import express from "express";
 import * as UserController from "../controllers/users";
-import * as WorkoutController from "../controllers/workouts"
+import * as WorkoutController from "../controllers/workouts";
 import { requiresAuth } from "../middleware/auth";
 
 const router = express.Router();

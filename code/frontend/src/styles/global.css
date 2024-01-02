@@ -1,12 +1,12 @@
 @font-face {
   font-family: inter;
-  src: url(../../public/fonts/Inter-VariableFont_slnt\,wght.ttf);
+  src: url(../../public/fonts/Inter-VariableFont_slnt\wght.ttf);
 }
 
 :root {
-  --electric-green : #09b43a;
+  --electric-green: #09b43a;
   --electric-green-50: #09b4398a;
-  --charcoal: rgb(30,30,30);
+  --charcoal: rgb(30, 30, 30);
   --small: 16px;
   --medium: 26px;
   --large: 42px;
@@ -32,14 +32,16 @@ span {
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 0s 600000s, color 0s 600000s;
+  transition:
+    background-color 0s 600000s,
+    color 0s 600000s;
 }
 
 #main-navbar {
   margin-top: 10px;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +70,8 @@ a:hover {
   border: none;
 }
 
-.login_button, .signup_button {
+.login_button,
+.signup_button {
   width: 20rem;
   height: 5rem;
   border-radius: 20px;
@@ -80,14 +83,15 @@ a:hover {
   cursor: pointer;
 }
 
-.login_button:hover, .signup_button:hover {
+.login_button:hover,
+.signup_button:hover {
   width: 21rem;
   height: 5.5rem;
   margin-bottom: 1.25rem;
-  margin-top: -.25rem;
-  background-color: rgb(110,110,110);
+  margin-top: -0.25rem;
+  background-color: rgb(110, 110, 110);
   font-size: 35px;
-  box-shadow: 2px 2px 2px rgb(200,200,200);
+  box-shadow: 2px 2px 2px rgb(200, 200, 200);
 }
 
 #account_recovery_links {
@@ -96,13 +100,13 @@ a:hover {
   gap: 6px;
 }
 
-#account_recovery_links > *{
-  background-color: rgb(0,0,0,0);
+#account_recovery_links > * {
+  background-color: rgb(0, 0, 0, 0);
   border: none;
   font-size: 16px;
 }
 
-#account_recovery_links >:hover {
+#account_recovery_links > :hover {
   color: darkgreen;
   cursor: pointer;
 }
@@ -122,7 +126,7 @@ a:hover {
   height: 3rem;
   justify-content: space-around;
   border-radius: 20px;
-  background-color: rgb(100,100,100);
+  background-color: rgb(100, 100, 100);
   border-color: white;
   font-size: 20px;
   font-weight: bolder;
@@ -132,10 +136,10 @@ a:hover {
 .button_box > button:hover {
   width: 10.5rem;
   height: 3.25rem;
-  background-color: rgb(110,110,110);
+  background-color: rgb(110, 110, 110);
   font-size: 23px;
-  margin-right: -.25rem;
-  margin-left: -.25rem;
+  margin-right: -0.25rem;
+  margin-left: -0.25rem;
 }
 
 .modal-content {
@@ -146,11 +150,10 @@ input::placeholder {
   color: black !important;
 }
 
-
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .banner_text {
-      font-size:75px;
-      margin-top: 75px;
+    font-size: 75px;
+    margin-top: 75px;
   }
 
   #reg_banner_box {
@@ -160,13 +163,12 @@ input::placeholder {
   #reg_banner_text {
     font-size: 75px;
   }
-
 }
 
-@media (max-width:570px) {
+@media (max-width: 570px) {
   .banner_text {
-      font-size:55px;
-      margin-top: 100px;
+    font-size: 55px;
+    margin-top: 100px;
   }
   #reg_banner_text {
     font-size: 50px;
@@ -174,10 +176,10 @@ input::placeholder {
   }
 }
 
-@media (max-width:375px) {
+@media (max-width: 375px) {
   .banner_text {
-      font-size: 50px;
-      margin-top: 125px;
+    font-size: 50px;
+    margin-top: 125px;
   }
   #reg_banner_text {
     font-size: 45px;
@@ -188,22 +190,24 @@ input::placeholder {
     width: 20rem;
   }
 
-  .button_box > button{
+  .button_box > button {
     width: 9rem;
   }
 
-  .login_button, .signup_button {
+  .login_button,
+  .signup_button {
     width: 18rem;
   }
 
-  .login_button:hover, .signup_button:hover {
+  .login_button:hover,
+  .signup_button:hover {
     width: 19rem;
   }
 }
 
-@media (max-width:330px) {
+@media (max-width: 330px) {
   .banner_text {
-      font-size: 40px;
+    font-size: 40px;
   }
   #reg_banner_text {
     font-size: 40px;

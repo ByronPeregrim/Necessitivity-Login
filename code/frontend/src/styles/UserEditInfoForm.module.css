@@ -1,175 +1,174 @@
- .modal_body {
-    width: 70rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
+.modal_body {
+  width: 70rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user_edit_info_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5rem;
+  border: solid grey;
+  border-radius: 20px;
+  width: 350px;
+  padding-top: 20px;
+  box-shadow: whitesmoke 0px 5px 15px;
+}
+
+.user_edit_info_form > div > label {
+  color: whitesmoke;
+  text-shadow: 2px 2px grey;
+  font-size: var(--medium);
+}
+
+.weight_box > div > label {
+  color: whitesmoke;
+  text-shadow: 2px 2px grey;
+  font-size: var(--medium);
+}
+
+.signup_message {
+  margin-bottom: 8px;
+  border-bottom: solid rgb(50, 50, 50);
+  padding-bottom: 5px;
+  width: 200px;
+  text-align: center;
+  text-shadow: 3px 3px darkgreen;
+  font-size: 35px;
+}
+
+.signup_form_text {
+  color: rgb(200, 200, 200, 0.6) !important;
+}
+
+.signup_form_text,
+.error_message {
+  text-align: center;
+  font-size: small;
+  width: 300px;
+}
+
+.inputField {
+  height: 40px;
+  color: rgb(200, 200, 200) !important;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  margin-top: -6px;
+  transition: 0.3s;
+  color: black;
+  display: flex;
+  width: 300px;
+  border: none;
+  background-color: rgb(50, 50, 50) !important;
+}
+
+.inputField::placeholder {
+  color: rgb(200, 200, 200, 0.6) !important;
+}
+
+.inputField:focus {
+  background-color: rgb(35, 35, 35) !important;
+  box-shadow: none;
+  border-color: none !important;
+}
+
+.inputField:hover {
+  background-color: rgb(35, 35, 35) !important;
+}
+
+.inputField:active {
+  box-shadow: none;
+}
+
+.weight_box {
+  width: 300px;
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.weight_input {
+  width: 100px;
+}
+
+.error_message {
+  color: red !important;
+}
+
+.button_box {
+  display: flex;
+  height: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 300px;
+  align-self: center;
+}
+
+.button_box > * {
+  width: 140px;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: rgb(50, 50, 50) !important;
+  border-color: rgb(100, 100, 100);
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  color: green;
+}
+
+.button_box > :hover {
+  background-color: rgb(35, 35, 35) !important;
+  color: whitesmoke !important;
+  border-color: whitesmoke;
+}
+
+.button_box > :active {
+  border-color: whitesmoke !important;
+  color: whitesmoke !important;
+}
+
+@media (max-width: 500px) {
   .user_edit_info_form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 10px;
-      margin-bottom: 5rem;
-      border: solid grey;
-      border-radius: 20px;
-      width: 350px;
-      padding-top: 20px;
-      box-shadow: whitesmoke 0px 5px 15px;
-    }
-
-  .user_edit_info_form > div > label {
-    color: whitesmoke;
-    text-shadow: 2px 2px grey;
-    font-size: var(--medium);
-  }
-
-  .weight_box > div > label {
-    color: whitesmoke;
-    text-shadow: 2px 2px grey;
-    font-size: var(--medium);
-  }
-
-  
-  .signup_message {
-    margin-bottom: 8px;
-    border-bottom: solid rgb(50,50,50);
-    padding-bottom: 5px;
-    width: 200px;
-    text-align: center;
-    text-shadow: 3px 3px darkgreen;
-    font-size: 35px;
-  }
-  
-  .signup_form_text {
-    color: rgb(200,200,200, .6) !important;
-  }
-    
-  .signup_form_text, .error_message {
-      text-align: center;
-      font-size: small;
-      width: 300px;
-    }
-  
-  .inputField {
-      height: 40px;
-      color: rgb(200,200,200) !important;
-      outline: none;
-      padding: 0.5rem 1rem;
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      margin-top: -6px;
-      transition: .3s;
-      color: black;
-      display: flex;
-      width: 300px;
-      border: none;
-      background-color: rgb(50,50,50) !important;
-  }
-  
-  .inputField::placeholder {
-    color: rgb(200,200,200, .6) !important;
-  }
-  
-  .inputField:focus{
-    background-color: rgb(35,35,35) !important;
-    box-shadow: none;
-    border-color: none !important;
-  }
-  
-  .inputField:hover{
-    background-color: rgb(35,35,35) !important;
-  }
-  
-  .inputField:active {
-    box-shadow: none;
-  }
-  
-  .weight_box {
     width: 300px;
-    display: flex;
-    margin-bottom: 16px;
   }
-  
+
+  .inputField {
+    width: 250px;
+    align-self: center;
+  }
+
   .weight_input {
     width: 100px;
   }
-  
-  .error_message{
-      color: red !important;
-  }
-  
-  .button_box {
-    display: flex;
-    height: 3rem;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    width: 300px;
-    align-self: center;
-  }
-  
-  .button_box > * {
-    width: 140px;
-    height: 3rem;
-    border-radius: 10px;
-    background-color: rgb(50,50,50) !important;
-    border-color: rgb(100, 100, 100);
-    font-size: 20px;
-    font-weight: bolder;
-    cursor: pointer;
-    color: green;
-  }
-  
-  .button_box > :hover {
-    background-color: rgb(35,35,35) !important;
-    color: whitesmoke !important;
-    border-color: whitesmoke;
-  }
-  
-  .button_box > :active {
-    border-color: whitesmoke !important;
-    color: whitesmoke !important;
+
+  .signup_form_text {
+    width: 250px;
   }
 
-  @media (max-width:500px) {
-    .user_edit_info_form {
-      width: 300px;
-    }
-  
-    .inputField {
-      width: 250px;
-      align-self: center;
-    }
-  
-    .weight_input {
-      width: 100px;
-    }
-  
-    .signup_form_text {
-      width: 250px;
-    }
-  
-    .weight_box {
-      width: 250px;
-    }
-  
-    .admin_box {
-      width: 250px;
-    }
-  
-    .button_box { 
-      width: 250px;
-    }
-  
-    .button_box > * {
-      width: 120px;
-    }
+  .weight_box {
+    width: 250px;
   }
-  
-  @media (max-width:400px) {
-    .user_edit_info_form {
-      width: 285px;
-    }
+
+  .admin_box {
+    width: 250px;
   }
-  
+
+  .button_box {
+    width: 250px;
+  }
+
+  .button_box > * {
+    width: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .user_edit_info_form {
+    width: 285px;
+  }
+}

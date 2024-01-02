@@ -4,56 +4,56 @@
   flex-direction: column;
   align-items: center;
 }
-  
-  .banner_text {
-    align-self: flex-end;
-    text-align: center;
-    font-size: var(--x-large);
-    text-shadow: 5px 5px darkgreen;
-    cursor: pointer;
-    color: var(--electric-green);
-    margin-bottom: 20px;
-  }
 
-  .admin_search_form {
-    width: 300px;
-  }
+.banner_text {
+  align-self: flex-end;
+  text-align: center;
+  font-size: var(--x-large);
+  text-shadow: 5px 5px darkgreen;
+  cursor: pointer;
+  color: var(--electric-green);
+  margin-bottom: 20px;
+}
 
-  .form_text {
-    text-align: center;
-    margin-bottom: 0;
-    font-size: larger;
-    text-shadow: 1px 1px darkgreen;
-  }
+.admin_search_form {
+  width: 300px;
+}
 
-  .inputField {
-    height: 50px;
-    color: rgb(200,200,200) !important;
-    outline: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: -6px;
-    transition: .3s;
-    color: black;
-    display: flex;
-    width: 300px;
-    border: none;
-    background-color: rgb(50,50,50) !important;
+.form_text {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: larger;
+  text-shadow: 1px 1px darkgreen;
+}
+
+.inputField {
+  height: 50px;
+  color: rgb(200, 200, 200) !important;
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  margin-top: -6px;
+  transition: 0.3s;
+  color: black;
+  display: flex;
+  width: 300px;
+  border: none;
+  background-color: rgb(50, 50, 50) !important;
 }
 
 .inputField::placeholder {
-  color: rgb(200,200,200, .6) !important;
+  color: rgb(200, 200, 200, 0.6) !important;
 }
 
-.inputField:focus{
-  background-color: rgb(35,35,35) !important;
+.inputField:focus {
+  background-color: rgb(35, 35, 35) !important;
   box-shadow: none;
   border-color: none !important;
 }
 
-.inputField:hover{
-  background-color: rgb(35,35,35) !important;
+.inputField:hover {
+  background-color: rgb(35, 35, 35) !important;
 }
 
 .inputField:active {
@@ -72,14 +72,13 @@
   margin-bottom: 1rem;
   margin-top: 20px;
   width: 300px;
-  
 }
 
 .button_box > * {
   width: 140px;
   height: 3rem;
   border-radius: 10px;
-  background-color: rgb(50,50,50) !important;
+  background-color: rgb(50, 50, 50) !important;
   border-color: rgb(100, 100, 100);
   font-size: 20px;
   font-weight: bolder;
@@ -88,7 +87,7 @@
 }
 
 .button_box > :hover {
-  background-color: rgb(35,35,35) !important;
+  background-color: rgb(35, 35, 35) !important;
   color: whitesmoke !important;
   border-color: whitesmoke;
 }
@@ -115,7 +114,10 @@
   border-radius: 20px;
   padding: 10px;
   padding-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   margin-top: 10px;
 }
 
@@ -124,11 +126,11 @@
   padding-left: 20px;
 }
 
-.user_info > *{
+.user_info > * {
   color: whitesmoke;
 }
 
-.user_info > * > *{
+.user_info > * > * {
   color: green;
 }
 
@@ -154,25 +156,24 @@
   color: red;
 }
 
-@media (max-width:770px) {
+@media (max-width: 770px) {
   .banner_box {
     width: 120%;
   }
 }
 
-@media (max-width:520px) {
+@media (max-width: 520px) {
   .banner_text {
     font-size: var(--large);
     text-shadow: 3px 3px darkgreen;
   }
 }
 
-
-@media (max-width:330px) {
+@media (max-width: 330px) {
   .results_container {
     width: 300px;
   }
-  
+
   .button_box {
     width: 280px;
   }
