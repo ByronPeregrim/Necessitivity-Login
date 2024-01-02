@@ -25,4 +25,8 @@ router.post("/add-workout", WorkoutController.createWorkout);
 
 router.post("/get-calories-by-day", WorkoutController.getCaloriesByDay);
 
+router.post("/get-user-workouts", WorkoutController.getUserWorkouts);
+
+router.post("/edit-workout", WorkoutController.editWorkout);
+
 export default router;

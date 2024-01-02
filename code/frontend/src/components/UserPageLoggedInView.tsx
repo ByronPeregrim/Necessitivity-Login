@@ -15,6 +15,8 @@ import {
     Tooltip
 } from 'chart.js';
 import { Workout } from "../models/workouts";
+import Calendar from "./calendar/Calendar";
+import EditWorkoutModal from "./modals/EditWorkoutModal";
 
 ChartJS.register(
     LineElement,
@@ -38,6 +40,11 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
     const [showLastSevenDaysCalories, setShowLastSevenDaysCalories] = useState(0);
     const [showLastThirtyDaysCalories, setShowLastThirtyDaysCalories] = useState(0);
     const [lastTenDays, setLastTenDays] = useState(array);
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [clickedCellDay, setClickedCellDay] = useState(0);
+    const [showEditDate, setShowEditDate] = useState(false);
+    const [showCalendar, setShowCalendar] = useState(true);
+    const [selectedDatesCalories, setSelectedDatesCalories] = useState(0);
     const id = user?._id;
     
     useEffect(() => {
@@ -96,7 +103,7 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
     const getLastXDays = (days : number) => {
         const dates = [];
         for (let i = 0; i < days; i++) {
-          dates.push(moment().subtract(i, 'day').format("MMM Do YY"));
+          dates.push(moment().subtract(i, 'day').format("MMM D YY"));
         }
         return dates;
     }
@@ -231,11 +238,19 @@ const UserPageLoggedInView = ({user} : UserPageLoggedInViewProps) => {
                     options={options}
                 ></Line>
             </div>
-            <div className={styles.calendar_wrapper}>
-                <label htmlFor="calendar">Daily Calories Burned</label>
-                
-            </div>
+            {showCalendar? 
+                <div className={styles.calendar_wrapper}>
+                    <label htmlFor="calendar">Daily Calories Burned</label>
+                    <Calendar id={id} value={currentDate} setCalories={setSelectedDatesCalories} onChange={setCurrentDate} onCellClicked={setClickedCellDay} onDateSet={() => [setShowEditDate(true), setShowCalendar(false)]}/>
+                </div>
+            :null}
+            {showEditDate?
+                <div className={styles.calendar_wrapper}>
+                    <EditWorkoutModal userId={id} value={currentDate} day={clickedCellDay} currentCalories={selectedDatesCalories} onEditWorkoutSuccessful={() => [setShowEditDate(false), setShowCalendar(true), window.location.reload()]} onBackButtonClicked={() => [setShowEditDate(false), setShowCalendar(true)]}/>
+                </div>
+            :null}
         </Container>
+        
     );
 }
 

@@ -159,7 +159,7 @@ const AddWorkoutModal = ({currentUser, onAddWorkoutSuccessful, onBackButtonClick
                             <Form onSubmit={handleSubmit(onSubmit)}>
                                 <input type="hidden" {...register("user")} defaultValue={currentUser?._id}/>
                                 <input type="hidden" {...register("calories")} defaultValue={totalCalories}/>
-                                <input type="hidden" {...register("date")} defaultValue={moment().format("MMM Do YY")}/>
+                                <input type="hidden" {...register("date")} defaultValue={moment().format("MMM D YY")}/>
                                 <p className={styles.total_calories_text}><b>Total Calories Burned: </b>{totalCalories}</p>
                                 <div className={styles.button_box}>
                                     <Button

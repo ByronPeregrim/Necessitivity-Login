@@ -4,9 +4,8 @@ Reset Password
 
 User:
 
-Add Calendar feature
+Change Add Workout to be more intuitive. Put an X in the corner instead of a back button.
 
 Admin:
 
 Clear buttons, clears entries and removes user results modal
-

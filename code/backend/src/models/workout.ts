@@ -6,7 +6,7 @@ const workoutSchema = new Schema({
         required:true,
         trim:true,
     },
-    date: { //true if user has admin priveleges.
+    date: {
         type:String,
         required:true,
         trim:true,

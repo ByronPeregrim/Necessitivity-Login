@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 import WorkoutModel from "../models/workout";
+import { ObjectId } from "mongodb";
 
 interface CreateWorkoutBody {
     user: string,
@@ -55,14 +56,78 @@ export const getCaloriesByDay: RequestHandler<unknown, unknown, TodaysData, unkn
             throw createHttpError(400, "Parameters missing");
         }
 
-        // How to search for every possible date in dates array with one query
-
         const workouts = await WorkoutModel.find({user: id, date: { $in: dates}});
         if (!workouts) {
             throw createHttpError(404, "No workouts found");
         }
 
         res.status(201).json(workouts);
+    } catch (error) {
+        next(error);
+    }
+};
+
+interface UserData {
+    id?: string,
+}
+
+export const getUserWorkouts: RequestHandler<unknown, unknown, UserData, unknown> = async(req, res, next) => {
+    const id = req.body.id;
+
+    try {
+        if (!id) {
+            throw createHttpError(400, "Parameters missing");
+        }
+        const objectId = ObjectId.createFromHexString(id);
+        const workouts = await WorkoutModel.find({user: objectId});
+        if (!workouts) {
+            throw createHttpError(404, "No workouts found");
+        }
+
+        res.status(201).json(workouts);
+    } catch (error) {
+        next(error);
+    }
+};
+
+interface EditWorkoutData {
+    id?: string,
+    date?: string,
+    calories?: number,
+}
+
+export const editWorkout: RequestHandler<unknown, unknown, EditWorkoutData, unknown> = async(req, res, next) => {
+    const id = req.body.id;
+    const date = req.body.date;
+    const calories = req.body.calories;
+
+    try {
+        if (!id || !date || !calories) {
+            throw createHttpError(400, "Parameters missing");
+        }
+        const objectId = ObjectId.createFromHexString(id);
+        if (calories <= 0) {
+            const deletedWorkout = WorkoutModel.deleteOne({user:objectId, date: date}).exec();
+            res.status(201).json(deletedWorkout);
+        } else {
+            const workout = await WorkoutModel.findOne({user: objectId, date: date});
+            if (!workout) {
+                const newWorkout = await WorkoutModel.create({
+                    calories: calories,
+                    date: date,
+                    user: objectId,
+                });
+                if (!newWorkout) {
+                    throw createHttpError(404, "Unable to edit workout.");
+                }
+                res.status(201).json(newWorkout);
+            } else {
+                const updatedWorkout = await WorkoutModel.findOneAndUpdate({user: objectId, date: date}, {calories: calories});
+                res.status(201).json(updatedWorkout);
+            }
+        }
+        
+        
     } catch (error) {
         next(error);
     }

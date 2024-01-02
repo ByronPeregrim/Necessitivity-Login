@@ -167,6 +167,41 @@ export async function getCaloriesByDay(selectors: TodaysData): Promise<Workout[]
     return response.json();
 }
 
+export interface UserData {
+    id : string,
+}
+
+export async function getUserWorkouts(selectors: UserData): Promise<Workout[]> {
+    const response = await fetchData("/api/users/get-user-workouts",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(selectors),
+    });
+    return response.json();
+}
+
 export async function logout() {
     await fetchData("/api/users/logout", { method: "POST"});
 }
+
+export interface NewWorkoutData {
+    calories: number;
+    date: string;
+    id: string;
+}
+
+export async function editWorkout(data: NewWorkoutData): Promise<Workout> {
+    const response = await fetchData("/api/users/edit-workout",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+    return response.json();
+}
+
