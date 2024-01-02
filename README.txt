@@ -1,13 +1,23 @@
 STARTUP:
 
-In order the deploy the project, one must first ensure that all appropriate packages are installed by running "npm install" on the command line while in the project directory. Next, login to MongoDB Atlas at https://account.mongodb.com/account/login with the following credentials:
+In order the deploy the project, one must first ensure that all appropriate packages are installed by running "npm install" on the
+command line while in the project directory. Next, login to MongoDB Atlas at https://account.mongodb.com/account/login with the 
+following credentials:
 
 User Email: XXXXXXXXXXXXXXX
 Password: XXXXXXX
 
 Click “Database Access” on the left-hand menu then make sure your IP is added to the list of trusted addresses.
 
-Next, open up your terminal and travel to the “code” directory. Travel to the "backend" directory and run the command "npm start". Ensure that console prints message indicating server successfully connected to database. In a seperate terminal, open up the "frontend" directory located in the "code" folder, and run "npm start" as well. The browser should automatically open with the application in view.
+Next, open up your terminal and travel to the “code” directory. Travel to the "backend" directory and run the command "npm start". 
+Ensure that console prints message indicating server successfully connected to database. In a seperate terminal, open up the "frontend"
+directory located in the "code" folder, and run "npm start" as well. The browser should automatically open with the application in view.
+
+From the browser home view, users can signup for a new user account. In order to view an account with workouts already added, use
+the following credentials:
+
+Username: User1
+Password: pass123!
 
 Nunito Variable Font
 ====================
