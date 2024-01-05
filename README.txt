@@ -1,3 +1,6 @@
+Project can be found hosted on: FitTracker5000.com
+
+
 STARTUP:
 
 In order the deploy the project, one must first ensure that all appropriate packages are installed by running "npm install" on the
