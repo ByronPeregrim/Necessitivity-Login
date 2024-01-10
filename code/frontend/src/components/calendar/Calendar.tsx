@@ -75,7 +75,7 @@ const Calendar = ({
   };
 
   const handleClickCell = (firstDateOfMonth: Date, daysToAdd: number) => {
-    const selectedDate = add(firstDateOfMonth, { days: daysToAdd - 1 });
+    const selectedDate = add(firstDateOfMonth, { days: daysToAdd});
     const today = new Date();
     if (isBefore(selectedDate, today)) { //Prevents interaction with future dates
       onCellClicked && onCellClicked(daysToAdd);
@@ -85,7 +85,7 @@ const Calendar = ({
   };
 
   const getCaloriesForDate = (firstDateOfMonth: Date, daysToAdd: number) => {
-    const selectedDate = add(firstDateOfMonth, { days: daysToAdd - 1 });
+    const selectedDate = add(firstDateOfMonth, { days: daysToAdd});
     const formattedDate = format(selectedDate, "LLL d yy");
     let calories = 0;
     userWorkouts.forEach((workout) => {
@@ -118,24 +118,24 @@ const Calendar = ({
         ))}
         {Array.from({ length: numDays }).map((_, index) => {
           const date = index + 1;
-          const day = add(value, { days: date - new Date().getDay() });
+          const day = add(value, { days: date - new Date().getDate() });
           if (format(day, "LLL dd yy") === format(new Date(), "LLL dd yy")) {
             return (
               <Cell
-                onClick={() => handleClickCell(value, date - 1)}
+                onClick={() => handleClickCell(value, date - new Date().getDate())}
                 key={date}
                 day={date}
                 today={true}
-                calories={getCaloriesForDate(value, date - 1)}
+                calories={getCaloriesForDate(value, date - new Date().getDate())}
               />
             );
           } else {
             return (
               <Cell
-                onClick={() => handleClickCell(value, date - 1)}
+                onClick={() => handleClickCell(value, date - new Date().getDate())}
                 key={date}
                 day={date}
-                calories={getCaloriesForDate(value, date - 1)}
+                calories={getCaloriesForDate(value, date - new Date().getDate())}
               />
             );
           }

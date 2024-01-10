@@ -9,3 +9,12 @@ User:
 Admin:
 
 Clear buttons, clears entries and removes user results modal
+
+
+Elastic Beanstalk:
++Easier
+-More Expensive
+
+EC2:
++Cheaper
+-Harder

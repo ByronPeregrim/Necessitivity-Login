@@ -53,6 +53,12 @@ const HomeView = ({
         </button>
 
       </div>
+      <div className={styles.demo_wrapper}>
+          <div className={styles.white_demo_text}>Demo account credentials:</div>
+          <div>Username: User1</div>
+          <div>Password: pass123!</div>
+          <div className={styles.white_demo_text}>Email byronperegrim@gmail.com to hear about Admin accounts!</div>
+      </div>
     </div>
   );
 };

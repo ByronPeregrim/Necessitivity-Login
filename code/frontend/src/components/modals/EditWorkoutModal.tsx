@@ -42,13 +42,13 @@ const EditWorkoutModal = ({
   }
 
   const getHeaderDate = () => {
-    const selectedDate = add(value, { days: day - 1 });
+    const selectedDate = add(value, { days: day });
     const header = format(selectedDate, "LLLL do yyyy");
     return header;
   };
 
   const getSubmitDate = () => {
-    const selectedDate = add(value, { days: day - 1 });
+    const selectedDate = add(value, { days: day });
     const submitDate = format(selectedDate, "LLL d yy");
     return submitDate;
   };

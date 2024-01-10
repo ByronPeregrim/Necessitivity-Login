@@ -238,7 +238,7 @@ const UserPageLoggedInView = ({ user }: UserPageLoggedInViewProps) => {
 
       {showCalendar ? (
         <div className={styles.calendar_wrapper}>
-          <label htmlFor="calendar">Daily Calories Burned</label>
+          <label htmlFor={id}>Daily Calories Burned</label>
           <Calendar
             id={id}
             value={currentDate}

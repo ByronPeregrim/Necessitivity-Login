@@ -163,6 +163,11 @@ const LoginModal = ({
               Reset Password?
             </Button>
           </div>
+          <div className={styles.demo_wrapper}>
+            <div className={styles.white_demo_text}>Demo account credentials:</div>
+            <div>Username: User1</div>
+            <div>Password: pass123!</div>
+          </div>
         </Form>
       </Modal.Body>
     </Modal>

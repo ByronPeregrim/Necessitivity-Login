@@ -53,6 +53,20 @@
   cursor: pointer;
 }
 
+.demo_wrapper {
+  margin-top: 40px;
+  border: solid 1px var(--electric-green);
+  padding: 10px;
+}
+
+.demo_wrapper > div {
+  cursor: text;
+}
+
+.white_demo_text {
+  color: whitesmoke;
+}
+
 @media (max-width: 850px) {
   .banner_text {
     font-size: var(--x-large);
